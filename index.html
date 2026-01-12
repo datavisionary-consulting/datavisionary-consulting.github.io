@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Visionary | Data Science & International Trade Analytics</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #f7f7f8;
+      padding-top: 56px;
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: #f7f7f8;
+    }
+
+    .about-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .about-section img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid #ddd;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+
+    .about-section p {
+      max-width: 900px;
+      margin: 0 auto 15px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .about-section h2 { font-size: 2.5rem; }
+      .about-section img { width: 150px; height: 150px; }
+      .about-section p { font-size: 1rem; }
+    }
+
+    .projects-section {
+      padding: 60px 20px;
+      background-color: #f7f7f8;
+    }
+
+    .projects-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-bottom: 20px;
+    }
+
+    .project-img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-text {
+      text-align: justify;
+    }
+
+    .skills-section {
+      padding: 60px 20px;
+      background-color: #f7f7f8;
+    }
+
+    .skills-section h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      margin-bottom: 30px;
+      height: 100%;
+      border: 1px solid #eee;
+    }
+
+    .skill-card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      object-fit: contain;
+    }
+
+    .contact-section { padding: 50px 0; }
+    .contact-section h2 { font-size: 2.5rem; margin-bottom: 40px; }
+    .social-icon { width: 50px; margin-bottom: 10px; transition: 0.3s; }
+    .social-icon:hover { opacity: 0.7; transform: scale(1.1); }
+    
+    .navbar { box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">DATA VISIONARY</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Capabilities</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ml-lg-3">
+            <a class="nav-link font-weight-bold" href="es/index.html" style="color: #ffc107;">ES</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Us</h2>
+      <img src="images/about/FotoPerfil2.jpg" alt="Managing Director">
+
+      <p>
+        <strong>DATA VISIONARY</strong> is a consulting and analytics firm specialized in applying <strong>data science and data engineering</strong>
+        to <strong>international trade and business operations</strong>. We help organizations transform complex and fragmented data into
+        <strong>reliable decision-making systems</strong>.
+      </p>
+
+      <p>
+        Our services span the full data lifecycle — from <strong>data ingestion and architecture</strong> to <strong>advanced analytics,
+        automation, and executive reporting</strong>. We design solutions that are technically robust, scalable, and aligned with real
+        commercial and operational needs.
+      </p>
+
+      <p>
+        DATA VISIONARY is led by <strong>Alexander Sandoval</strong>, an international business professional with a strong background in
+        <strong>data science and data engineering</strong>. This dual expertise allows us to bridge the gap between technical execution and
+        real-world trade dynamics, delivering analytical solutions grounded in how businesses actually operate.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section bg-light">
+    <div class="container">
+      <h2>Selected Projects</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card project-card">
+            <img src="images/projects/airflow.jpg" class="card-img-top project-img" alt="ETL Pipeline">
+            <div class="card-body">
+              <h5 class="card-title">Automated Trade ETL Pipeline</h5>
+              <p class="card-text">Engineered a scalable ETL workflow using <strong>Apache Airflow</strong> and <strong>Docker</strong> to automate trade data ingestion into <strong>Amazon Redshift</strong>. Implemented idempotent tasks and monitoring to ensure high data reliability for downstream commercial analytics.</p>
+              <a href="https://github.com/kevsanmm/API_redshift" class="btn btn-secondary btn-sm" target="_blank">Source Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card project-card">
+            <img src="images/projects/powerbi.png" class="card-img-top project-img" alt="Market Intelligence">
+            <div class="card-body">
+              <h5 class="card-title">Market Intelligence Dashboard</h5>
+              <p class="card-text">Developed an interactive monitoring system using <strong>Python</strong> and <strong>Power BI</strong> to analyze pricing dynamics and market correlations, enabling stakeholders to identify trends and support commercial decision-making.</p>
+              <a href="https://app.powerbi.com/reportEmbed?reportId=b4f9dfe3-97f2-4b35-8e17-56982cdc5224&autoAuth=true&ctid=0e0cb060-09ad-49f5-a005-68b9b49aa1f6" class="btn btn-primary btn-sm" target="_blank">View Dashboard</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card project-card">
+            <img src="images/projects/tableau.png" class="card-img-top project-img" alt="Predictive Modeling">
+            <div class="card-body">
+              <h5 class="card-title">Predictive Demand Forecasting</h5>
+              <p class="card-text">Analyzed large-scale commercial datasets to identify operational bottlenecks and forecast demand patterns, supporting improved planning, workforce allocation, and customer satisfaction outcomes.</p>
+              <a href="https://public.tableau.com/views/EntregaFinalSandoval/Manager?:language=es-ES" class="btn btn-primary btn-sm" target="_blank">View Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <h2>Core Capabilities</h2>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="skill-card">
+            <img src="images/skills/python.png" alt="Python">
+            <h5>Data Engineering</h5>
+            <p class="small text-muted">Python-based ETL pipelines, automation, and scalable data workflows.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <img src="images/skills/data_visualization.png" alt="Data Viz">
+            <h5>Analytics & Visualization</h5>
+            <p class="small text-muted">Executive dashboards and decision-support systems in Power BI and Tableau.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <img src="images/skills/sql.png" alt="SQL">
+            <h5>Data Architecture</h5>
+            <p class="small text-muted">Relational modeling, warehouse design, and performance-optimized SQL.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="skill-card">
+            <img src="images/skills/storytelling.png" alt="Storytelling">
+            <h5>Business Insight</h5>
+            <p class="small text-muted">Translating analytical results into clear, actionable insights for leadership.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section text-center text-white bg-dark">
+    <div class="container">
+      <h2 class="mb-4">Contact</h2>
+      <p class="lead mb-5">For consulting or partnership inquiries, reach out at <strong>data.visionary.z6q@gmail.com</strong></p>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-4 col-6">
+          <a href="https://www.linkedin.com/in/alexandersandoval/" target="_blank" class="text-white">
+            <img src="icons/Linkedin.svg" alt="LinkedIn" class="social-icon">
+            <p>LinkedIn</p>
+          </a>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6">
+          <a href="https://github.com/kevsanmm/" target="_blank" class="text-white">
+            <img src="icons/github.svg" alt="GitHub" class="social-icon">
+            <p>GitHub</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
