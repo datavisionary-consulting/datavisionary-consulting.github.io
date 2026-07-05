@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══════════════════════════════════════════════
+       CORE SEO
+  ═══════════════════════════════════════════════ -->
+  <title>Data Visionary | Analytics Engineering & Data Consulting · Lima, Peru</title>
+  <meta name="description" content="Analytics engineering and data strategy for retail and mid-market companies in Peru. Python ETL pipelines, Power BI dashboards, Microsoft Fabric architecture, and DuckDB-based data flows.">
+  <meta name="keywords" content="analytics engineer Lima, data consultancy Peru, Power BI Peru, ETL Python, Microsoft Fabric, DuckDB, business intelligence Lima, data engineering Peru">
+  <meta name="author" content="Alexander Sandoval">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://datavisionary-consulting.github.io/">
+
+  <!-- ═══════════════════════════════════════════════
+       OPEN GRAPH — LinkedIn, WhatsApp, Slack previews
+  ═══════════════════════════════════════════════ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://datavisionary-consulting.github.io/">
+  <meta property="og:title"       content="Data Visionary | Analytics Engineering & Data Consulting · Lima">
+  <meta property="og:description" content="Analytics engineering and data strategy for retail and mid-market companies in Peru. ETL pipelines, Power BI, Microsoft Fabric.">
+  <meta property="og:image"       content="https://datavisionary-consulting.github.io/assets/images/og-cover.png"><!-- ← EDIT: create 1200×630px image -->
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt"   content="Data Visionary — Analytics Engineering & Data Consulting">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Data Visionary">
+
+  <!-- ═══════════════════════════════════════════════
+       TWITTER / X CARD
+  ═══════════════════════════════════════════════ -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Data Visionary | Analytics Engineering & Consulting · Lima">
+  <meta name="twitter:description" content="Analytics engineering and data strategy for retail and mid-market companies in Peru.">
+  <meta name="twitter:image"       content="https://datavisionary-consulting.github.io/assets/images/og-cover.png"><!-- ← EDIT -->
+
+  <!-- ═══════════════════════════════════════════════
+       SCHEMA.ORG JSON-LD — structured data for Google
+  ═══════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Data Visionary",
+    "description": "Analytics engineering and data strategy for retail and mid-market companies in Peru. Python ETL pipelines, Power BI dashboards, and Microsoft Fabric architecture.",
+    "url": "https://datavisionary.pe",
+    "logo": "https://datavisionary-consulting.github.io/assets/images/logo.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Alexander Sandoval",
+      "jobTitle": "Analytics Engineer",
+      "url": "https://datavisionary.pe",
+      "sameAs": "https://linkedin.com/in/alexandersandoval"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lima",
+      "addressRegion": "Lima",
+      "addressCountry": "PE"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Peru" },
+      { "@type": "Continent", "name": "South America" }
+    ],
+    "knowsAbout": [
+      "Analytics Engineering",
+      "ETL Pipeline Development",
+      "Power BI",
+      "Microsoft Fabric",
+      "DuckDB",
+      "Apache Parquet",
+      "Data Strategy",
+      "Business Intelligence",
+      "Python",
+      "Data Architecture"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Data Consulting Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "ETL Pipeline Development",
+            "description": "Python-based ETL pipelines with Parquet and DuckDB for scalable data flows."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Power BI Dashboards",
+            "description": "Business intelligence dashboards and reporting infrastructure with Power BI."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Data Architecture & Strategy",
+            "description": "Data modernization roadmaps including on-premise formalization and Microsoft Fabric migration."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════════
+       FAVICON — add these files to your root folder
+       Generate at: https://realfavicongenerator.net
+  ═══════════════════════════════════════════════ -->
+  <link rel="icon"             type="image/x-icon"   href="/favicon.ico">
+  <link rel="icon"             type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon"             type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180"       href="/apple-touch-icon.png">
+  <link rel="manifest"                                href="/site.webmanifest">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <!-- ═══════════════════════════════════════════════
+       PERFORMANCE
+  ═══════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-container">
+    <div class="logo">DATA <span>VISIONARY</span></div>
+    
+    <div id="back-button-container" style="display: none;">
+       <button onclick="showHome()" class="btn-secondary" style="padding: 8px 15px; cursor: pointer;">
+         ← Volver al inicio
+       </button>
+    </div>
+
+    <div id="main-nav-links" class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#impact">Impact</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Contact</a>
+      <a href="https://datavisionary-consulting.github.io/vision-lab/" target="_blank" rel="noopener">Training Lab</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div id="home-view">
+    <div id="hero"></div>
+    <div id="services"></div>
+    <div id="solutions"></div>
+    <div id="impact"></div>
+    <div id="approach"></div>
+    <div id="about"></div>
+  </div>
+
+  <div id="project-view" style="display: none;">
+    </div>
+
+  <div id="contact"></div>
+</main>
+
+<footer>© 2026 Data Visionary — Data Consulting</footer>
+<script src="assets/js/main.js?v=2"></script>
+</body>
+</html>
