@@ -6,12 +6,7 @@
     "cta": {
       "label": "Request a consultation",
       "href": "#contact"
-    },
-    "kpis": [
-      { "value": "856",    "label": "Stores Monitored in Real Time" },
-      { "value": "260K+",  "label": "Daily Transactions Monitored" },
-      { "value": "<5 sec", "label": "Per Invoice (was 1.3 hrs)" }
-    ]
+    }
   },
 
   "services": [

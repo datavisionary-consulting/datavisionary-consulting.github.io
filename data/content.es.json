@@ -6,12 +6,7 @@
     "cta": {
       "label": "Solicitar una consultoría",
       "href": "#contact"
-    },
-    "kpis": [
-      { "value": "856",    "label": "Tiendas Monitoreadas en Tiempo Real" },
-      { "value": "260K+",  "label": "Transacciones Diarias Monitoreadas" },
-      { "value": "<5 seg", "label": "Por Factura (antes 1.3 hrs)" }
-    ]
+    }
   },
 
   "services": [

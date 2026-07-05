@@ -68,18 +68,10 @@ const fetchContent = async (lang) => {
 
 /* ── Renderers ─────────────────────────────────── */
 
-const renderHero = ({ headline, headline_highlight, subheadline, cta, kpis }) => {
-  const kpiHTML = kpis.map((k, i) => `
-    ${i > 0 ? '<div class="hero-line"></div>' : ''}
-    <div class="hero-mini">
-      <span>${k.label}</span>
-      <strong>${k.value}</strong>
-    </div>
-  `).join('');
-
+const renderHero = ({ headline, headline_highlight, subheadline, cta }) => {
   return `
     <section id="hero" class="hero fade-in">
-      <div class="hero-container">
+      <div class="hero-container hero-container--single">
         <div class="hero-left">
           <h1>
             ${headline}<br>
@@ -87,19 +79,6 @@ const renderHero = ({ headline, headline_highlight, subheadline, cta, kpis }) =>
           </h1>
           <p>${subheadline}</p>
           <a href="${cta.href}" class="btn">${cta.label}</a>
-        </div>
-        <div class="hero-right">
-          <div class="hero-card">
-            <div class="hero-kpi">${kpis[0].value}</div>
-            <div class="hero-label">${kpis[0].label}</div>
-            <div class="hero-line"></div>
-            ${kpis.slice(1).map(k => `
-              <div class="hero-mini">
-                <span>${k.label}</span>
-                <strong>${k.value}</strong>
-              </div>
-            `).join('')}
-          </div>
         </div>
       </div>
     </section>

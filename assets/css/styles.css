@@ -175,6 +175,19 @@ section {
   align-items: center;
 }
 
+.hero-container--single {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-container--single .hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
@@ -191,45 +204,6 @@ section {
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 30px;
-}
-
-/* HERO CARD */
-.hero-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  padding: 24px;
-  border-radius: 10px;
-  width: 260px;
-  transition: all 0.3s ease;
-}
-
-.hero-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-.hero-kpi {
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--gold);
-}
-
-.hero-label {
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.hero-line {
-  height: 1px;
-  background: var(--line);
-  margin: 12px 0;
-}
-
-.hero-mini {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
 }
 
 /* =========================
@@ -423,10 +397,6 @@ footer {
 
   .hero-container {
     grid-template-columns: 1fr;
-  }
-
-  .hero-card {
-    width: 100%;
   }
 
   /* Mobile nav */
