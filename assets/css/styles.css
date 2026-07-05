@@ -104,6 +104,64 @@ section {
 }
 
 /* =========================
+   LANGUAGE TOGGLE
+========================= */
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--navy);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+}
+
+.lang-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* =========================
+   MOBILE NAV TOGGLE
+========================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================
    HERO
 ========================= */
 .hero {
@@ -200,6 +258,14 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.metrics-grid {
+  margin-bottom: 40px;
 }
 
 .card {
@@ -343,12 +409,82 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
   .case-container {
     grid-template-columns: 1fr;
   }
 
   .hero-container {
     grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    width: 100%;
+  }
+
+  /* Mobile nav */
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+  }
+
+  .nav-links a {
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+}
+
+@media(max-width: 600px){
+  section {
+    padding: 80px 24px;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid .result-value {
+    font-size: 20px;
   }
 }
 
@@ -501,6 +637,25 @@ section[id] {
   color: var(--gold);
 }
 
+.about-cv {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.about-cv-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.about-cv-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
 @media (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;
@@ -645,4 +800,38 @@ section[id] {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.6;
+}
+
+/* =========================
+   FLOATING WHATSAPP BUTTON
+========================= */
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 600px) {
+  .wa-fab {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+  }
 }

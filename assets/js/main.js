@@ -1,17 +1,68 @@
 /* =========================
    DATA-DRIVEN RENDERER
-   Reads content.json and renders all sections.
-   To update content: edit content.json only.
+   Reads content.json / content.es.json and renders all sections.
+   To update content: edit those JSON files only.
 ========================= */
 
-const fetchContent = async () => {
-  const res = await fetch('data/content.json');
+const UI_STRINGS = {
+  en: {
+    workWithUs: 'Work with us →',
+    caseStudy: 'Case Study',
+    viewDashboard: 'View Dashboard',
+    viewLinkedin: 'View LinkedIn →',
+    downloadCvLabel: 'Download CV',
+    cvEnLabel: 'English',
+    cvEsLabel: 'Español',
+    aboutTag: 'About',
+    sectionServices: 'Services',
+    sectionSolutions: 'Industry Solutions',
+    waPrefill: "Hi Alexander, I found your site and I'd like to discuss a data project.",
+    whatsappNote: 'Or just message on WhatsApp — same response time.',
+    formNameLabel: 'Your name',
+    formCompanyLabel: 'Company',
+    formChallengeLabel: 'Data challenge',
+    formChallengePlaceholder: 'We have data scattered across 3 systems and no unified view...',
+    formWaMsg: (name, company, challenge) =>
+      `Hi Alexander, I found your site.\n\nName: ${name}\nCompany: ${company || '—'}\n\nChallenge: ${challenge}`,
+    langToggleLabel: 'ES',
+    footer: '© 2026 Data Visionary — Data Consulting',
+    nav: { services: 'Services', solutions: 'Solutions', impact: 'Impact', approach: 'Approach', about: 'About', contact: 'Contact', training: 'Training Lab' }
+  },
+  es: {
+    workWithUs: 'Trabajemos juntos →',
+    caseStudy: 'Caso de Estudio',
+    viewDashboard: 'Ver Dashboard',
+    viewLinkedin: 'Ver LinkedIn →',
+    downloadCvLabel: 'Descargar CV',
+    cvEnLabel: 'English',
+    cvEsLabel: 'Español',
+    aboutTag: 'Sobre mí',
+    sectionServices: 'Servicios',
+    sectionSolutions: 'Soluciones por Industria',
+    waPrefill: 'Hola Alexander, encontré tu web y me gustaría conversar sobre un proyecto de datos.',
+    whatsappNote: 'O simplemente escríbeme por WhatsApp — mismo tiempo de respuesta.',
+    formNameLabel: 'Tu nombre',
+    formCompanyLabel: 'Empresa',
+    formChallengeLabel: 'Desafío de datos',
+    formChallengePlaceholder: 'Tenemos datos dispersos en 3 sistemas y ninguna vista unificada...',
+    formWaMsg: (name, company, challenge) =>
+      `Hola Alexander, encontré tu web.\n\nNombre: ${name}\nEmpresa: ${company || '—'}\n\nDesafío: ${challenge}`,
+    langToggleLabel: 'EN',
+    footer: '© 2026 Data Visionary — Consultoría de Datos',
+    nav: { services: 'Servicios', solutions: 'Soluciones', impact: 'Impacto', approach: 'Enfoque', about: 'Sobre mí', contact: 'Contacto', training: 'Training Lab' }
+  }
+};
+
+let currentLang = localStorage.getItem('site_lang') || 'en';
+
+const fetchContent = async (lang) => {
+  const file = lang === 'es' ? 'data/content.es.json' : 'data/content.json';
+  const res = await fetch(file);
   if (!res.ok) {
-    console.error("Error al cargar el JSON. Ruta probada: data/content.json");
-    throw new Error('Could not load content.json');
+    console.error("Error al cargar el JSON. Ruta probada: " + file);
+    throw new Error('Could not load ' + file);
   }
   const data = await res.json();
-  console.log("Proyecto actual en el JSON:", data.solutions[0].title); 
   return data;
 };
 
@@ -56,6 +107,7 @@ const renderHero = ({ headline, headline_highlight, subheadline, cta, kpis }) =>
 };
 
 const renderServices = (services) => {
+  const t = UI_STRINGS[currentLang];
   const cardsHTML = services.map(s => `
     <div class="card">
       <h3>${s.title}</h3>
@@ -63,13 +115,13 @@ const renderServices = (services) => {
       <div class="card-stack">
         ${s.stack.map(tag => `<span class="stack-tag">${tag}</span>`).join('')}
       </div>
-      <a href="#contact" class="card-cta">Work with us →</a>
+      <a href="#contact" class="card-cta">${t.workWithUs}</a>
     </div>
   `).join('');
 
   return `
     <section id="services" class="fade-in">
-      <div class="section-title">Services</div>
+      <div class="section-title">${t.sectionServices}</div>
       <div class="grid">${cardsHTML}</div>
     </section>
   `;
@@ -77,14 +129,16 @@ const renderServices = (services) => {
 
 const renderSolutions = (solutions) => {
   if (!solutions || !Array.isArray(solutions)) return '';
+  const t = UI_STRINGS[currentLang];
 
   const cards = solutions.map((s, index) => {
     // Eliminamos la variable githubBtn de aquí para la tarjeta principal
-    
-    // Unificamos el botón a "Ver Dashboard"
-    const demoBtn = s.dashboard_url 
-      ? `<button onclick="openProject('${s.title}', '${s.description}', '${s.dashboard_url}', '${s.github_url}')" class="btn" style="padding: 10px 20px; font-size: 13px; cursor: pointer; border:none; width: 100%;">Ver Dashboard</button>` 
-      : '';
+
+    const demoBtn = s.dashboard_url
+      ? `<button onclick="openProject('${s.title}', '${s.description}', '${s.dashboard_url}', '${s.github_url}')" class="btn" style="padding: 10px 20px; font-size: 13px; cursor: pointer; border:none; width: 100%;">${t.viewDashboard}</button>`
+      : (s.link_url
+        ? `<a href="${s.link_url}" target="_blank" rel="noopener" class="btn" style="padding: 10px 20px; font-size: 13px; border:none; width: 100%; display:block; text-align:center; box-sizing:border-box;">${s.link_label || t.viewDashboard}</a>`
+        : '');
 
     const techStack = s.stack 
       ? `<div class="card-stack" style="margin: 12px 0;">
@@ -102,7 +156,7 @@ const renderSolutions = (solutions) => {
       <div class="card fade-in" style="display:flex; flex-direction:column; justify-content: space-between;">
         <div>
             ${projectImage}
-            <div class="case-tag">${s.tag || 'Case Study'}</div>
+            <div class="case-tag">${s.tag || t.caseStudy}</div>
             <h3>${s.title}</h3>
             <p>${s.description}</p>
             ${techStack}
@@ -116,7 +170,7 @@ const renderSolutions = (solutions) => {
 
   return `
     <section id="solutions" class="fade-in">
-      <div class="section-title">Industry Solutions</div>
+      <div class="section-title">${t.sectionSolutions}</div>
       <div class="grid">
         ${cards}
       </div>
@@ -142,7 +196,7 @@ const renderProof = ({ headline, metrics, capabilities }) => {
   return `
     <section id="impact" class="fade-in">
       <div class="section-title">${headline}</div>
-      <div class="grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 40px;">
+      <div class="grid grid-4 metrics-grid">
         ${metricsHTML}
       </div>
       <div class="trust-grid">${capHTML}</div>
@@ -162,17 +216,28 @@ const renderApproach = ({ headline, steps }) => {
   return `
     <section id="approach" class="fade-in">
       <div class="section-title">${headline}</div>
-      <div class="grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="grid grid-4">
         ${stepsHTML}
       </div>
     </section>
   `;
 };
 
-const renderAbout = ({ name, role, photo, bio, highlights, linkedin }) => {
+const renderAbout = ({ name, role, photo, bio, highlights, stack, cv, linkedin }) => {
+  const t = UI_STRINGS[currentLang];
   const highlightsHTML = highlights.map(h => `
     <li class="about-highlight">${h}</li>
   `).join('');
+  const stackHTML = stack
+    ? `<div class="card-stack">${stack.map(tag => `<span class="stack-tag">${tag}</span>`).join('')}</div>`
+    : '';
+  const cvHTML = cv
+    ? `<div class="about-cv">
+        <span class="about-cv-label">${t.downloadCvLabel}:</span>
+        <a href="${cv.en}" download class="btn btn-outline about-cv-btn">${t.cvEnLabel}</a>
+        <a href="${cv.es}" download class="btn btn-outline about-cv-btn">${t.cvEsLabel}</a>
+       </div>`
+    : '';
 
   return `
     <section id="about" class="fade-in">
@@ -181,13 +246,15 @@ const renderAbout = ({ name, role, photo, bio, highlights, linkedin }) => {
           <img src="${photo}" alt="${name}" class="about-photo">
         </div>
         <div class="about-text">
-          <div class="case-tag">About</div>
+          <div class="case-tag">${t.aboutTag}</div>
           <h2 class="about-name">${name}</h2>
           <div class="about-role">${role}</div>
           <p>${bio}</p>
           <ul class="about-highlights">${highlightsHTML}</ul>
+          ${stackHTML}
+          ${cvHTML}
           <a href="${linkedin}" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top: 20px; display: inline-block;">
-            View LinkedIn →
+            ${t.viewLinkedin}
           </a>
         </div>
       </div>
@@ -196,7 +263,8 @@ const renderAbout = ({ name, role, photo, bio, highlights, linkedin }) => {
 };
 
 const renderContact = ({ headline, subheadline, email, whatsapp_number, whatsapp_label, linkedin, cta_label }) => {
-  const waUrl = `https://wa.me/${whatsapp_number}?text=Hi%20Alexander%2C%20I%20found%20your%20site%20and%20I%27d%20like%20to%20discuss%20a%20data%20project.`;
+  const t = UI_STRINGS[currentLang];
+  const waUrl = `https://wa.me/${whatsapp_number}?text=${encodeURIComponent(t.waPrefill)}`;
 
   return `
     <section id="contact" class="contact fade-in">
@@ -221,19 +289,19 @@ const renderContact = ({ headline, subheadline, email, whatsapp_number, whatsapp
         </div>
         <form class="contact-form" onsubmit="handleFormSubmit(event)">
           <div class="form-field">
-            <label for="cf-name">Your name</label>
+            <label for="cf-name">${t.formNameLabel}</label>
             <input id="cf-name" name="name" type="text" placeholder="María García" required>
           </div>
           <div class="form-field">
-            <label for="cf-company">Company</label>
+            <label for="cf-company">${t.formCompanyLabel}</label>
             <input id="cf-company" name="company" type="text" placeholder="Acme Corp">
           </div>
           <div class="form-field">
-            <label for="cf-challenge">Data challenge</label>
-            <textarea id="cf-challenge" name="challenge" rows="4" placeholder="We have data scattered across 3 systems and no unified view..." required></textarea>
+            <label for="cf-challenge">${t.formChallengeLabel}</label>
+            <textarea id="cf-challenge" name="challenge" rows="4" placeholder="${t.formChallengePlaceholder}" required></textarea>
           </div>
           <button type="submit" class="btn" style="width: 100%;">${cta_label}</button>
-          <p class="form-note">Or just message on WhatsApp — same response time.</p>
+          <p class="form-note">${t.whatsappNote}</p>
         </form>
       </div>
     </section>
@@ -306,6 +374,31 @@ const initSmoothScroll = () => {
   }
 };
 
+/* ── Mobile nav ────────────────────────────────── */
+const initMobileNav = () => {
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('main-nav-links');
+  if (!toggle || !links) return;
+
+  const closeMenu = () => {
+    links.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMenu();
+  });
+};
+
 /* ── Form handler ──────────────────────────────── */
 window.handleFormSubmit = (e) => {
   e.preventDefault();
@@ -314,30 +407,52 @@ window.handleFormSubmit = (e) => {
   const company   = form.company.value.trim();
   const challenge = form.challenge.value.trim();
   const phone     = '51959942669';
-  const msg = encodeURIComponent(
-    `Hi Alexander, I found your site.\n\nName: ${name}\nCompany: ${company || '—'}\n\nChallenge: ${challenge}`
-  );
+  const msg = encodeURIComponent(UI_STRINGS[currentLang].formWaMsg(name, company, challenge));
   window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+};
+
+/* ── Language toggle ──────────────────────────── */
+const applyNavStrings = () => {
+  const t = UI_STRINGS[currentLang].nav;
+  document.querySelector('.nav-links a[href="#services"]').textContent = t.services;
+  document.querySelector('.nav-links a[href="#solutions"]').textContent = t.solutions;
+  document.querySelector('.nav-links a[href="#impact"]').textContent = t.impact;
+  document.querySelector('.nav-links a[href="#approach"]').textContent = t.approach;
+  document.querySelector('.nav-links a[href="#about"]').textContent = t.about;
+  document.querySelector('.nav-links a.cta').textContent = t.contact;
+  document.querySelector('.nav-links a[target="_blank"]').textContent = t.training;
+  document.querySelector('footer').textContent = UI_STRINGS[currentLang].footer;
+  document.documentElement.lang = currentLang;
+  const langBtn = document.getElementById('lang-toggle');
+  if (langBtn) langBtn.textContent = UI_STRINGS[currentLang].langToggleLabel;
+};
+
+const renderAllSections = async () => {
+  const data = await fetchContent(currentLang);
+  document.getElementById('hero').innerHTML      = renderHero(data.hero);
+  document.getElementById('services').innerHTML  = renderServices(data.services);
+  document.getElementById('solutions').innerHTML = renderSolutions(data.solutions);
+  document.getElementById('impact').innerHTML    = renderProof(data.proof);
+  document.getElementById('approach').innerHTML  = renderApproach(data.approach);
+  document.getElementById('about').innerHTML     = renderAbout(data.about);
+  document.getElementById('contact').innerHTML   = renderContact(data.contact);
+  applyNavStrings();
+  initAnimations();
+};
+
+window.toggleLang = async () => {
+  currentLang = currentLang === 'en' ? 'es' : 'en';
+  localStorage.setItem('site_lang', currentLang);
+  await renderAllSections();
 };
 
 /* ── Init ──────────────────────────────────────── */
 const init = async () => {
   try {
-    const data = await fetchContent();
-
-    // Render all sections into their container divs
-    document.getElementById('hero').innerHTML      = renderHero(data.hero);
-    document.getElementById('services').innerHTML  = renderServices(data.services);
-    document.getElementById('solutions').innerHTML = renderSolutions(data.solutions);
-    document.getElementById('impact').innerHTML    = renderProof(data.proof);
-    document.getElementById('approach').innerHTML  = renderApproach(data.approach);
-    document.getElementById('about').innerHTML     = renderAbout(data.about);
-    document.getElementById('contact').innerHTML   = renderContact(data.contact);
-
-    initAnimations();
+    await renderAllSections();
     initNav();
     initSmoothScroll();
-
+    initMobileNav();
   } catch (err) {
     console.error('Data Visionary init error:', err);
   }

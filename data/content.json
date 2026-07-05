@@ -8,17 +8,17 @@
       "href": "#contact"
     },
     "kpis": [
-      { "value": "$2.4M",  "label": "Revenue Processed" },
-      { "value": "+38%",   "label": "Operational Efficiency" },
-      { "value": "91%",    "label": "Pipeline Automation" }
+      { "value": "856",    "label": "Stores Monitored in Real Time" },
+      { "value": "260K+",  "label": "Daily Transactions Monitored" },
+      { "value": "<5 sec", "label": "Per Invoice (was 1.3 hrs)" }
     ]
   },
 
   "services": [
     {
       "title": "Data Engineering",
-      "description": "Python ETL pipelines, Parquet-based data flows, and DuckDB architectures for scalable, maintainable data systems.",
-      "stack": ["Python", "DuckDB", "Parquet", "Airflow"]
+      "description": "Distributed pipelines on Databricks (PySpark, Delta Lake), incremental loads, and Medallion architecture for scalable, governed data systems.",
+      "stack": ["Python", "PySpark", "Databricks", "Delta Lake"]
     },
     {
       "title": "Business Intelligence",
@@ -27,12 +27,32 @@
     },
     {
       "title": "Data Strategy",
-      "description": "Two-phase modernization roadmaps: from on-premise formalization to cloud migration with Microsoft Fabric.",
-      "stack": ["Microsoft Fabric", "Azure", "Data Architecture"]
+      "description": "Modernization roadmaps that move analytics off spreadsheets and on-premise systems onto a governed lakehouse on Databricks — phased so value shows up early, not just at the end.",
+      "stack": ["Databricks", "Azure", "Data Architecture"]
     }
   ],
 
   "solutions": [
+    {
+      "tag": "Retail / Data Engineering",
+      "title": "Real-Time Inventory Anomaly Detection",
+      "description": "A statistical monitoring system that watches inventory across hundreds of stores and flags unusual stock adjustments automatically — turning a monthly manual review into a same-day alert, before small discrepancies become real losses.",
+      "stack": ["PySpark", "Databricks", "Delta Lake", "Unity Catalog"]
+    },
+    {
+      "tag": "Finance / Process Automation",
+      "title": "Automated Invoice & Ledger Analytics",
+      "description": "Reads PDF invoices from dozens of suppliers and extracts the data automatically — cutting per-invoice processing from over an hour to seconds, feeding a live dashboard instead of a spreadsheet nobody opens. The same approach turns large accounting ledgers (general ledger, purchase records) into metrics finance teams can act on immediately.",
+      "stack": ["Python", "PDF Parsing", "Google Sheets", "Looker Studio"]
+    },
+    {
+      "tag": "Corporate Training / EdTech",
+      "title": "Custom Certification & Training Platform",
+      "description": "Many companies need to train teams on a specific tool, internal process, or compliance topic — and generic courses don't cover that. This is a self-paced trainer with spaced-repetition scheduling, built to turn any body of knowledge into a certification-style question bank that actually sticks, instead of a slide deck nobody reopens. I originally built it to stay sharp on my own technical fundamentals — because in this field, you either keep training or you fall behind.",
+      "stack": ["JavaScript", "Spaced Repetition", "SQL", "Apache Spark"],
+      "link_url": "https://datavisionary-consulting.github.io/vision-lab/",
+      "link_label": "Try the Live Trainer →"
+    },
     {
       "tag": "Fintech / Crypto",
       "title": "CriptoRadar: Tendencias de Mercado",
@@ -102,13 +122,19 @@
     "name": "Alexander Sandoval",
     "role": "Analytics Engineer · BI & Data Pipelines · 5+ Years",
     "photo": "assets/images/foto_alexander_sandoval.jpg",
-    "bio": "Analytics engineer with 5+ years building data pipelines, dashboards, and decision-ready systems for retail, finance, and international trade. I work hands-on — from architecture design to final delivery — and document everything so your team can operate independently.",
+    "bio": "Analytics engineer with 5+ years turning messy operational data into systems that make decisions faster — inventory monitoring that catches problems before they become losses, invoice processing that used to take hours and now takes seconds, and dashboards leadership actually checks. I work hands-on, end to end, and use AI tools daily to move from idea to working system faster. Recently expanded into large-scale distributed data processing and applied statistics for production-grade alerting.",
     "highlights": [
-      "DuckDB & Parquet pipelines processing millions of rows",
-      "Power BI reporting infrastructure with On-premises Gateway",
-      "Microsoft Fabric modernization roadmaps",
+      "Real-time inventory monitoring across hundreds of stores — flags unusual activity automatically instead of waiting for a monthly review",
+      "Invoice automation that cut per-document processing from over an hour to seconds, feeding live dashboards",
+      "Turned large-scale accounting ledgers into metrics leadership actually uses, not just more reports",
+      "Uses AI tools daily to build and ship faster",
       "End-to-end ownership, no subcontracting"
     ],
+    "stack": ["Python", "SQL", "Spark", "Databricks", "Power BI"],
+    "cv": {
+      "en": "assets/cv/Alexander_Sandoval_CV_EN.pdf",
+      "es": "assets/cv/Alexander_Sandoval_CV_ES.pdf"
+    },
     "linkedin": "https://linkedin.com/in/alexandersandoval"
   },
 
