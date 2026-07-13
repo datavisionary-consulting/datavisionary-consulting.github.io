@@ -1,0 +1,145 @@
+{
+  "hero": {
+    "headline": "De datos fragmentados",
+    "headline_highlight": "a sistemas de decisión confiables",
+    "subheadline": "Diseñamos e implementamos soluciones de datos para organizaciones de retail, finanzas y comercio internacional — transformando datos crudos en sistemas estructurados, listos para decidir.",
+    "cta": {
+      "label": "Solicitar una consultoría",
+      "href": "#contact"
+    }
+  },
+
+  "services": [
+    {
+      "title": "Ingeniería de Datos",
+      "description": "Pipelines distribuidos en Databricks (PySpark, Delta Lake), cargas incrementales, y arquitectura Medallion para sistemas de datos escalables y gobernados.",
+      "stack": ["Python", "PySpark", "Databricks", "Delta Lake"]
+    },
+    {
+      "title": "Business Intelligence",
+      "description": "Dashboards ejecutivos, sistemas de KPIs, e infraestructura de reportería Power BI conectada vía On-premises Data Gateway.",
+      "stack": ["Power BI", "DAX", "SQL Server", "Data Gateway"]
+    },
+    {
+      "title": "Estrategia de Datos",
+      "description": "Hojas de ruta de modernización que llevan la analítica de hojas de cálculo y sistemas on-premise a un lakehouse gobernado en Databricks — por fases, para que el valor se vea desde el inicio, no solo al final.",
+      "stack": ["Databricks", "Azure", "Data Architecture"]
+    }
+  ],
+
+  "solutions": [
+    {
+      "tag": "Retail / Ingeniería de Datos",
+      "title": "Detección de Anomalías de Inventario en Tiempo Real",
+      "description": "Sistema estadístico que monitorea el inventario en cientos de tiendas y detecta ajustes de stock inusuales automáticamente — convirtiendo una revisión manual mensual en una alerta el mismo día, antes de que pequeñas diferencias se conviertan en pérdidas reales.",
+      "stack": ["PySpark", "Databricks", "Delta Lake", "Unity Catalog"]
+    },
+    {
+      "tag": "Finanzas / Automatización",
+      "title": "Automatización de Facturas y Análisis Contable",
+      "description": "Lee facturas en PDF de decenas de proveedores y extrae la información automáticamente — reduciendo el procesamiento por factura de más de una hora a segundos, alimentando un dashboard en vivo en lugar de una hoja de cálculo que nadie abre. El mismo enfoque convierte libros contables de gran volumen (libro mayor, registro de compras) en métricas que el equipo financiero puede usar de inmediato.",
+      "stack": ["Python", "PDF Parsing", "Google Sheets", "Looker Studio"]
+    },
+    {
+      "tag": "Capacitación Corporativa / EdTech",
+      "title": "Plataforma de Certificación y Entrenamiento a Medida",
+      "description": "Muchas empresas necesitan capacitar a sus equipos en una herramienta específica, un proceso interno, o un tema de cumplimiento — y los cursos genéricos no cubren eso. Este es un entrenador de auto-estudio con repetición espaciada, pensado para convertir cualquier cuerpo de conocimiento en un banco de preguntas tipo certificación que realmente se queda en la memoria, en lugar de una presentación que nadie vuelve a abrir. Lo construí originalmente para mantenerme afilado en mis propios fundamentos técnicos — porque en este rubro, o te sigues entrenando, o te quedas atrás.",
+      "stack": ["JavaScript", "Repetición Espaciada", "SQL", "Apache Spark"],
+      "link_url": "https://datavisionary-consulting.github.io/vision-lab/",
+      "link_label": "Probar el Entrenador en Vivo →"
+    },
+    {
+      "tag": "Fintech / Crypto",
+      "title": "CriptoRadar: Tendencias de Mercado",
+      "image_url": "assets/images/projects/powerbi.png",
+      "description": "Pipeline ETL que extrae datos históricos de BTC, ETH y LTC. Procesamiento de indicadores técnicos (RSI, Medias Móviles) para identificar tendencias de inversión.",
+      "github_url": "https://github.com/kevsanmm/PowerBIProjects/tree/main/CryptoAnalysis",
+      "dashboard_url": "https://app.powerbi.com/view?r=eyJrIjoiNWMyZDJkYjgtMmM5Yy00NjAzLWE3NGMtY2VkMjc0ZmQxNDVkIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9",
+      "stack": ["Python", "Power BI", "GitHub Actions"]
+    }
+  ],
+
+  "proof": {
+    "headline": "Construido para organizaciones que operan con datos",
+    "metrics": [
+      { "value": "8+",    "label": "Proyectos entregados" },
+      { "value": "3",     "label": "Industrias atendidas" },
+      { "value": "100%",  "label": "Entregas a tiempo" },
+      { "value": "Lima",  "label": "Con base en Perú, trabajo regional" }
+    ],
+    "capabilities": [
+      {
+        "title": "Responsabilidad de punta a punta",
+        "description": "Desde el diseño de la arquitectura de datos hasta la entrega del dashboard — sin traspasos, sin vacíos."
+      },
+      {
+        "title": "Agnóstico de stack",
+        "description": "Trabajamos con tu infraestructura actual antes de recomendar migraciones."
+      },
+      {
+        "title": "Pipelines listos para auditoría",
+        "description": "Cada job de ETL está documentado, versionado y es reproducible."
+      },
+      {
+        "title": "Diseñado para transferir",
+        "description": "Documentamos y capacitamos a tu equipo para que nunca dependas de nosotros para operar."
+      }
+    ]
+  },
+
+  "approach": {
+    "headline": "Cómo trabajamos",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Diagnosticar",
+        "description": "Mapeamos tus flujos de datos actuales, identificamos cuellos de botella, y definimos cómo se ve 'listo para decidir' para tu organización."
+      },
+      {
+        "number": "02",
+        "title": "Diseñar",
+        "description": "Diseñamos una hoja de ruta por fases — empezando por lo que genera valor más rápido, sin sobre-ingeniería desde el día uno."
+      },
+      {
+        "number": "03",
+        "title": "Construir",
+        "description": "Implementamos pipelines, modelos y dashboards de forma iterativa, con revisiones semanales y entregables funcionando en cada etapa."
+      },
+      {
+        "number": "04",
+        "title": "Transferir",
+        "description": "Documentamos todo, capacitamos a tu equipo, y aseguramos que puedan operar y extender el sistema de forma independiente."
+      }
+    ]
+  },
+
+  "about": {
+    "name": "Alexander Sandoval",
+    "role": "Analytics Engineer · BI & Data Pipelines · 5+ Años",
+    "photo": "assets/images/foto_alexander_sandoval.jpg",
+    "bio": "Analytics engineer con más de 5 años convirtiendo datos operativos desordenados en sistemas que aceleran las decisiones — monitoreo de inventario que detecta problemas antes de que se conviertan en pérdidas, procesamiento de facturas que antes tomaba horas y ahora toma segundos, y dashboards que la gerencia realmente revisa. Trabajo de forma práctica, de punta a punta, y uso herramientas de IA a diario para pasar de la idea a un sistema funcionando más rápido. Recientemente amplié mi especialización hacia procesamiento de datos distribuido a gran escala y estadística aplicada para sistemas de alertas en producción.",
+    "highlights": [
+      "Monitoreo de inventario en tiempo real en cientos de tiendas — detecta actividad inusual automáticamente en lugar de esperar una revisión mensual",
+      "Automatización de facturas que redujo el procesamiento por documento de más de una hora a segundos, alimentando dashboards en vivo",
+      "Convertí libros contables de gran volumen en métricas que la gerencia realmente usa, no solo más reportes",
+      "Uso herramientas de IA a diario para construir y entregar más rápido",
+      "Responsabilidad de punta a punta, sin subcontratación"
+    ],
+    "stack": ["Python", "SQL", "Spark", "Databricks", "Power BI"],
+    "cv": {
+      "en": "assets/cv/Alexander_Sandoval_CV_EN.pdf",
+      "es": "assets/cv/Alexander_Sandoval_CV_ES.pdf"
+    },
+    "linkedin": "https://linkedin.com/in/alexandersandoval"
+  },
+
+  "contact": {
+    "headline": "¿Listo para convertir tus datos en decisiones?",
+    "subheadline": "Cuéntame tu desafío y te respondo dentro de 24 horas — por correo o WhatsApp, lo que te sea más cómodo.",
+    "email": "data.visionary.z6q@gmail.com",
+    "whatsapp_number": "51959942669",
+    "whatsapp_label": "Chatear por WhatsApp",
+    "linkedin": "https://linkedin.com/in/alexandersandoval",
+    "cta_label": "Enviar mensaje"
+  }
+}
