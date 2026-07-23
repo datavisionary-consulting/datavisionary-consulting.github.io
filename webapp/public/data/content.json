@@ -29,20 +29,36 @@
 
   "solutions": [
     {
-      "tag": "Retail / Data Engineering",
-      "title": "Real-Time Inventory Anomaly Detection",
-      "description": "A statistical monitoring system that watches inventory across hundreds of stores and flags unusual stock adjustments automatically — turning a monthly manual review into a same-day alert, before small discrepancies become real losses.",
-      "stack": ["PySpark", "Databricks", "Delta Lake", "Unity Catalog"]
-    },
-    {
-      "tag": "Finance / Process Automation",
-      "title": "Automated Invoice & Ledger Analytics",
-      "description": "Reads PDF invoices from dozens of suppliers and extracts the data automatically — cutting per-invoice processing from over an hour to seconds, feeding a live dashboard instead of a spreadsheet nobody opens. The same approach turns large accounting ledgers (general ledger, purchase records) into metrics finance teams can act on immediately.",
-      "stack": ["Python", "PDF Parsing", "Google Sheets", "Looker Studio"]
+      "tag": "Healthcare / Machine Learning",
+      "title": "Fetal Health Risk Detection & Clustering",
+      "image_url": "assets/images/projects/fetal-health-anomaly-pca.png",
+      "description": "An unsupervised pipeline that flags at-risk fetal heart-rate patterns and groups 2,126 real cardiotocogram recordings into risk tiers — without ever seeing the clinical diagnosis. Isolation Forest anomalies concentrate 12x more in cases obstetricians independently classified as pathological (48.9% vs. 4.1%), and K-Means recovers a high-risk cluster where pathological cases outnumber normal ones. A real early-warning signal, built entirely from the signal itself.",
+      "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "PCA"],
+      "study": {
+        "challenge": "Flag clinically meaningful risk in fetal heart-rate monitoring without relying on the outcome label — turning 20 raw histogram, variability, and deceleration features per recording into an automatic early-warning signal, on real cardiotocograms from Ayres-de-Campos & Bernardes (2000).",
+        "architecture": "An Isolation Forest trained on 20 standardized clinical features (baseline heart rate, variability, decelerations, FHR histogram shape) flags the 8% most unusual recordings. A K-Means model (k=3, chosen against silhouette score and validated post-hoc against the real diagnosis) groups every recording into a risk tier.",
+        "pipeline": [
+          "🩺 Data: 2,126 real cardiotocograms (Ayres-de-Campos & Bernardes, 2000)",
+          "🧹 Cleaning: dropped 3 export-artifact rows + 1 zero-variance field (DR)",
+          "📊 EDA: descriptive statistics, correlation matrix, missing-value audit",
+          "🚨 Anomaly detection: Isolation Forest, 8% contamination",
+          "🧩 Clustering: K-Means (k=3), silhouette-selected",
+          "✅ Validation: cross-checked against real obstetrician diagnoses + ACOG clinical ranges"
+        ],
+        "code_lang": "Python / scikit-learn",
+        "code_spotlight": "# 1. Anomaly detection — unsupervised, never sees NSP\niso = IsolationForest(n_estimators=300, contamination=0.08, random_state=42)\ndf['anomaly'] = iso.fit_predict(X_scaled) == -1\n\n# 2. Clustering — validated post-hoc against the real diagnosis\nkm = KMeans(n_clusters=3, n_init=10, random_state=42)\ndf['cluster'] = km.fit_predict(X_scaled)\n\n# 3. External validation — did the model rediscover real clinical risk?\npd.crosstab(df['anomaly'], df['NSP_label'], normalize='columns') * 100\n# Pathologic: 48.9% flagged anomalous  |  Normal: 4.1% flagged anomalous",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/fetal-health-ctg-analysis",
+        "charts": [
+          { "src": "assets/images/projects/fetal-health-result.png", "caption": "Anomaly rate by real clinical diagnosis — the model never saw these labels." },
+          { "src": "assets/images/projects/fetal-health-anomaly-pca.png", "caption": "Isolation Forest anomalies, 2,126 recordings in PCA space." },
+          { "src": "assets/images/projects/fetal-health-clusters.png", "caption": "K-Means (k=3) — real diagnosis composition per cluster." }
+        ]
+      }
     },
     {
       "tag": "Corporate Training / EdTech",
       "title": "Custom Certification & Training Platform",
+      "image_url": "assets/images/projects/training-platform-command-center.png",
       "description": "Many companies need to train teams on a specific tool, internal process, or compliance topic — and generic courses don't cover that. This is a self-paced trainer with spaced-repetition scheduling, built to turn any body of knowledge into a certification-style question bank that actually sticks, instead of a slide deck nobody reopens. I originally built it to stay sharp on my own technical fundamentals — because in this field, you either keep training or you fall behind.",
       "stack": ["JavaScript", "Spaced Repetition", "SQL", "Apache Spark"],
       "link_url": "https://datavisionary-consulting.github.io/vision-lab/",
@@ -53,7 +69,7 @@
       "title": "CriptoRadar: Tendencias de Mercado",
       "image_url": "assets/images/projects/powerbi.png",
       "description": "Pipeline ETL que extrae datos históricos de BTC, ETH y LTC. Procesamiento de indicadores técnicos (RSI, Medias Móviles) para identificar tendencias de inversión.",
-      "github_url": "https://github.com/kevsanmm/PowerBIProjects/tree/main/CryptoAnalysis",
+      "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/criptoradar-btc-eth-ltc",
       "dashboard_url": "https://app.powerbi.com/view?r=eyJrIjoiNWMyZDJkYjgtMmM5Yy00NjAzLWE3NGMtY2VkMjc0ZmQxNDVkIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9",
       "stack": ["Python", "Power BI", "GitHub Actions"]
     }

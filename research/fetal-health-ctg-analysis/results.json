@@ -1,0 +1,66 @@
+{
+  "n_records_clean": 2126,
+  "n_anomalies": 170,
+  "pct_anomalies": 8.0,
+  "anomaly_rate_by_nsp_pct": {
+    "Normal": 4.1,
+    "Pathologic": 48.9,
+    "Suspect": 5.4
+  },
+  "n_lb_out_of_clinical_range_110_160bpm": 7,
+  "overlap_anomaly_and_clinical_range_flag": 0,
+  "silhouette_by_k": {
+    "2": 0.2124,
+    "3": 0.1723,
+    "4": 0.1699,
+    "5": 0.1767,
+    "6": 0.1645,
+    "7": 0.1561
+  },
+  "best_k_by_silhouette": 2,
+  "cluster_k3_vs_nsp_counts": {
+    "Normal": {
+      "0": 1019,
+      "1": 538,
+      "2": 98
+    },
+    "Pathologic": {
+      "0": 1,
+      "1": 69,
+      "2": 106
+    },
+    "Suspect": {
+      "0": 37,
+      "1": 246,
+      "2": 12
+    }
+  },
+  "categorical_frequencies": {
+    "NSP": {
+      "Normal": 1655,
+      "Suspect": 295,
+      "Pathologic": 176
+    },
+    "CLASS": {
+      "B - REM sleep": 579,
+      "A - Calm sleep": 384,
+      "AD - Accelerative/decelerative (stress situation)": 332,
+      "DE - Decelerative (vagal stimulation)": 252,
+      "SUSP - Suspect pattern": 197,
+      "LD - Largely decelerative": 107,
+      "D - Active vigilance": 81,
+      "E - Shift pattern": 72,
+      "FS - Flat-sinusoidal (pathological)": 69,
+      "C - Calm vigilance": 53
+    },
+    "Tendency": {
+      "Symmetric": 1115,
+      "Right asymmetric": 846,
+      "Left asymmetric": 165
+    }
+  },
+  "pca_explained_variance_ratio": [
+    0.3,
+    0.167
+  ]
+}

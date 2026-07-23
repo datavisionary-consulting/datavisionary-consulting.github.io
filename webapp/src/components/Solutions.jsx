@@ -52,14 +52,14 @@ export default function Solutions({ solutions, onOpenProject }) {
                 )}
               </div>
               <div className="card-actions" style={{ marginTop: '20px' }}>
-                {s.dashboard_url ? (
+                {s.dashboard_url || s.study ? (
                   <motion.button
                     onClick={() => onOpenProject(s)}
                     className="btn"
                     style={{ padding: '10px 20px', fontSize: '13px', cursor: 'pointer', border: 'none', width: '100%' }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    {t.viewDashboard}
+                    {s.study ? 'View the Study →' : t.viewDashboard}
                   </motion.button>
                 ) : s.link_url ? (
                   <motion.a
