@@ -2,7 +2,7 @@
   "hero": {
     "headline": "From fragmented data",
     "headline_highlight": "to reliable decision systems",
-    "subheadline": "We design and implement data solutions for organizations in retail, finance, and international trade — transforming raw data into structured, decision-ready systems.",
+    "subheadline": "We design and implement data and research solutions across industries and disciplines — from retail, finance, and international trade to scientific and environmental research — transforming raw data into structured, decision-ready systems.",
     "cta": {
       "label": "Request a consultation",
       "href": "#contact"
@@ -128,6 +128,56 @@
         "code_lang": "PDDL",
         "code_spotlight": "(:action deliver\n    :parameters (?rover ?mineral ?loc)\n    :precondition\n    (and\n        (at ?rover ?loc)\n        (carrying ?rover ?mineral)\n        (LAB ?loc)\n    )\n    :effect\n    (and\n        (analyzed ?mineral)\n        (not (carrying ?rover ?mineral))\n        (free ?rover)\n    )\n)\n\n; Run to provable optimality:\n; fast-downward.sif domain.pddl problem3.pddl --search \"astar(lmcut())\"\n; -> Plan cost: 18 (optimal) -- planner delivers to whichever LAB is closer",
         "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning"
+      }
+    },
+    {
+      "tag": "Computer Vision / Image Processing",
+      "title": "Impulse Noise Restoration & Contrast Enhancement",
+      "image_url": "assets/images/projects/image-restoration-dashboard.png",
+      "description": "Two classical image-processing pipelines — median-filter denoising and contrast enhancement — built from scratch in NumPy and benchmarked against OpenCV rather than assumed correct. The from-scratch median filter matches OpenCV's restoration quality within 0.04 dB PSNR (94%+ MSE reduction) while running four orders of magnitude slower, which is exactly why production systems never loop over pixels in Python. A second, honest finding: gamma correction reliably brightens a dark image but doesn't reliably add contrast — only histogram equalization does that.",
+      "stack": ["Python", "NumPy", "OpenCV", "scikit-image"],
+      "study": {
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "Two everyday image defects, two different fixes: impulse (salt-and-pepper) noise needs a filter that rejects outliers instead of averaging them in, and a genuinely low-contrast image needs its intensity range redistributed, not just brightened. Build both from the underlying math, then prove each one actually works — against a library, not just by eye."
+          },
+          {
+            "label": "Injecting a Known Corruption",
+            "text": "5% of pixels in two test images were forced to pure black or pure white, with a fixed random seed — a controlled, reproducible corruption rather than a real but unmeasurable one, so the recovery can be scored exactly.",
+            "image": "assets/images/projects/image-restoration-noise.png",
+            "caption": "5% salt-and-pepper noise injected into two test images."
+          },
+          {
+            "label": "Building the Filter From Scratch",
+            "text": "A median filter replaces every pixel with the middle value of its 3×3 neighborhood — non-linear, so it excludes extreme outliers instead of blending them in the way a mean filter would. Implemented as a raw double loop over every pixel in NumPy, with reflect-padding at the borders.",
+            "image": "assets/images/projects/image-restoration-median.png",
+            "caption": "Noisy image, own median filter, and cv2.medianBlur — visually indistinguishable."
+          },
+          {
+            "label": "Checking the Work Against OpenCV",
+            "text": "PSNR (peak signal-to-noise ratio) against the clean original quantifies the restoration: the from-scratch filter and cv2.medianBlur land within 0.04 dB of each other on both images — the math is correct. The only real difference is speed: the naive Python loop took over 5 seconds per image against 0.13 milliseconds for OpenCV's sliding-histogram algorithm (Huang, 1979) — a ~40,000x gap that has nothing to do with correctness.",
+            "image": "assets/images/projects/image-restoration-psnr.png",
+            "caption": "PSNR before and after filtering — own implementation vs. OpenCV, camera and coins."
+          },
+          {
+            "label": "Finding Low Contrast Automatically",
+            "text": "Rather than picking images by eye, six candidates were ranked by intensity standard deviation (σ), and the two lowest were treated as \"low contrast\" — moon (σ=13.3) and clock (σ=20.9) — then enhanced two ways: a from-scratch gamma (power-law) lookup table, and cv2.equalizeHist.",
+            "image": "assets/images/projects/image-restoration-gamma.png",
+            "caption": "Low-contrast originals vs. gamma correction (γ=0.4) vs. histogram equalization."
+          },
+          {
+            "label": "The Finding That Wasn't Forced",
+            "text": "Gamma correction more than doubled mean brightness on both images (+39% to +63%) — but actual contrast (σ) didn't rise with it, and on one image it dropped. Histogram equalization was the technique that genuinely maximized contrast, boosting σ by 250–455%, because it redistributes the pixel distribution itself instead of remapping it along one fixed curve. Brighter and higher-contrast are not the same property, and only one of these two methods reliably delivers the second."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "Neither result was assumed — both were checked against an independent implementation and a real metric before being reported. That's the same discipline applied here that goes into every dataset this practice touches: build it, then verify it actually did what it claims."
+          }
+        ],
+        "code_lang": "Python / NumPy",
+        "code_spotlight": "def median_filter_own(image, kernel_size=3):\n    r = kernel_size // 2\n    padded = np.pad(image, pad_width=r, mode='reflect')\n    output = np.zeros_like(image, dtype=np.uint8)\n    for i in range(image.shape[0]):\n        for j in range(image.shape[1]):\n            window = padded[i:i+kernel_size, j:j+kernel_size]\n            output[i, j] = np.median(window)\n    return output\n\n# Own filter vs. cv2.medianBlur: PSNR within 0.04 dB, ~40,000x slower\n\ndef gamma_correction_own(image, gamma=0.4):\n    lut = np.clip(((np.arange(256) / 255.0) ** gamma) * 255.0, 0, 255).astype(np.uint8)\n    return lut[image]\n# Brightens (+39-63% mean) but does not reliably raise contrast (sigma)",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/image-noise-contrast-restoration"
       }
     },
     {

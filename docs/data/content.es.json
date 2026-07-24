@@ -2,7 +2,7 @@
   "hero": {
     "headline": "De datos fragmentados",
     "headline_highlight": "a sistemas de decisión confiables",
-    "subheadline": "Diseñamos e implementamos soluciones de datos para organizaciones de retail, finanzas y comercio internacional — transformando datos crudos en sistemas estructurados, listos para decidir.",
+    "subheadline": "Diseñamos e implementamos soluciones de datos e investigación en distintas industrias y disciplinas — desde retail, finanzas y comercio internacional hasta investigación científica y ambiental — transformando datos crudos en sistemas estructurados, listos para decidir.",
     "cta": {
       "label": "Solicitar una consultoría",
       "href": "#contact"
@@ -128,6 +128,56 @@
         "code_lang": "PDDL",
         "code_spotlight": "(:action deliver\n    :parameters (?rover ?mineral ?loc)\n    :precondition\n    (and\n        (at ?rover ?loc)\n        (carrying ?rover ?mineral)\n        (LAB ?loc)\n    )\n    :effect\n    (and\n        (analyzed ?mineral)\n        (not (carrying ?rover ?mineral))\n        (free ?rover)\n    )\n)\n\n; Run to provable optimality:\n; fast-downward.sif domain.pddl problem3.pddl --search \"astar(lmcut())\"\n; -> Plan cost: 18 (optimal) -- planner delivers to whichever LAB is closer",
         "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning"
+      }
+    },
+    {
+      "tag": "Visión por Computadora / Procesamiento de Imágenes",
+      "title": "Restauración de Ruido Impulsivo y Realce de Contraste",
+      "image_url": "assets/images/projects/image-restoration-dashboard.png",
+      "description": "Dos pipelines clásicos de procesamiento de imágenes — filtrado de mediana para eliminar ruido y realce de contraste — construidos desde cero en NumPy y comparados contra OpenCV en vez de asumirlos correctos. El filtro de mediana propio iguala la calidad de restauración de OpenCV con una diferencia de apenas 0.04 dB en PSNR (reducción de MSE superior al 94%), aunque corre cuatro órdenes de magnitud más lento — precisamente la razón por la que ningún sistema en producción itera píxel por píxel en Python. Un segundo hallazgo, honesto: la corrección gamma aclara una imagen oscura de forma confiable, pero no aumenta el contraste de forma confiable — sólo la ecualización de histograma lo logra.",
+      "stack": ["Python", "NumPy", "OpenCV", "scikit-image"],
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "Dos defectos cotidianos de imagen, dos soluciones distintas: el ruido impulsivo (sal y pimienta) necesita un filtro que rechace valores atípicos en vez de promediarlos, y una imagen genuinamente de bajo contraste necesita que su rango de intensidades se redistribuya, no sólo que se aclare. Construir ambas desde las matemáticas subyacentes, y luego comprobar que realmente funcionan — contra una librería, no sólo a simple vista."
+          },
+          {
+            "label": "Inyectando una Corrupción Conocida",
+            "text": "El 5% de los píxeles de dos imágenes de prueba se forzaron a negro o blanco puro, con una semilla aleatoria fija — una corrupción controlada y reproducible en lugar de una real pero imposible de medir, para poder puntuar la recuperación con exactitud.",
+            "image": "assets/images/projects/image-restoration-noise.png",
+            "caption": "Ruido sal y pimienta (5%) inyectado en dos imágenes de prueba."
+          },
+          {
+            "label": "Construyendo el Filtro desde Cero",
+            "text": "Un filtro de mediana reemplaza cada píxel por el valor central de su vecindad 3×3 — no lineal, por lo que excluye valores atípicos extremos en vez de mezclarlos como haría un filtro de media. Implementado como un doble bucle puro sobre cada píxel en NumPy, con padding tipo reflect en los bordes.",
+            "image": "assets/images/projects/image-restoration-median.png",
+            "caption": "Imagen ruidosa, filtro de mediana propio y cv2.medianBlur — visualmente indistinguibles."
+          },
+          {
+            "label": "Verificando el Trabajo contra OpenCV",
+            "text": "El PSNR (relación señal-ruido de pico) contra el original limpio cuantifica la restauración: la implementación propia y cv2.medianBlur quedan a menos de 0.04 dB de diferencia en ambas imágenes — las matemáticas son correctas. La única diferencia real es la velocidad: el bucle ingenuo en Python tardó más de 5 segundos por imagen frente a 0.13 milisegundos del algoritmo de histograma deslizante de OpenCV (Huang, 1979) — una brecha de ~40,000x que no tiene nada que ver con la corrección del resultado.",
+            "image": "assets/images/projects/image-restoration-psnr.png",
+            "caption": "PSNR antes y después del filtrado — implementación propia vs. OpenCV, camera y coins."
+          },
+          {
+            "label": "Detectando Bajo Contraste de Forma Automática",
+            "text": "En vez de elegir imágenes a simple vista, seis candidatas se ordenaron por desviación estándar de intensidad (σ), y las dos más bajas se trataron como \"bajo contraste\" — moon (σ=13.3) y clock (σ=20.9) — y se realzaron de dos formas: una tabla de búsqueda gamma (ley de potencia) propia, y cv2.equalizeHist.",
+            "image": "assets/images/projects/image-restoration-gamma.png",
+            "caption": "Originales de bajo contraste vs. corrección gamma (γ=0.4) vs. ecualización de histograma."
+          },
+          {
+            "label": "El Hallazgo que No Fue Forzado",
+            "text": "La corrección gamma más que duplicó el brillo medio en ambas imágenes (+39% a +63%) — pero el contraste real (σ) no aumentó con ella, y en una imagen incluso bajó. La ecualización de histograma fue la técnica que realmente maximizó el contraste, aumentando σ entre 250% y 455%, porque redistribuye la distribución de píxeles en sí, en vez de solo remapearla sobre una curva fija. Más brillante y más contraste no son la misma propiedad, y sólo uno de estos dos métodos entrega la segunda de forma confiable."
+          },
+          {
+            "label": "Por Qué Importa",
+            "text": "Ninguno de los dos resultados se asumió — ambos se verificaron contra una implementación independiente y una métrica real antes de reportarlos. Es la misma disciplina que se aplica a cada conjunto de datos que toca esta práctica: construirlo, y luego comprobar que realmente hizo lo que dice hacer."
+          }
+        ],
+        "code_lang": "Python / NumPy",
+        "code_spotlight": "def median_filter_own(image, kernel_size=3):\n    r = kernel_size // 2\n    padded = np.pad(image, pad_width=r, mode='reflect')\n    output = np.zeros_like(image, dtype=np.uint8)\n    for i in range(image.shape[0]):\n        for j in range(image.shape[1]):\n            window = padded[i:i+kernel_size, j:j+kernel_size]\n            output[i, j] = np.median(window)\n    return output\n\n# Filtro propio vs. cv2.medianBlur: PSNR a 0.04 dB, ~40,000x más lento\n\ndef gamma_correction_own(image, gamma=0.4):\n    lut = np.clip(((np.arange(256) / 255.0) ** gamma) * 255.0, 0, 255).astype(np.uint8)\n    return lut[image]\n# Aclara (+39-63% media) pero no aumenta el contraste (sigma) de forma confiable",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/image-noise-contrast-restoration"
       }
     },
     {
