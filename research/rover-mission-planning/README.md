@@ -43,6 +43,6 @@ Before writing the rover domain, the exact same Singularity + Fast Downward pipe
 
 International Conference on Automated Planning and Scheduling. (n.d.). *IPC 2018 — Classical Track*. https://ipc2018-classical.bitbucket.io/
 
-Katz, M., Sohrabi, S., Samulowitz, H., & Sievers, S. (2018). *Delfi: Online planner selection for cost-optimal planning* [Competition abstract]. https://bitbucket.org/ipc2018-classical/classical-tracks/planner-abstracts/teams_23_24.pdf
+Katz, M., Sohrabi, S., Samulowitz, H., & Sievers, S. (2018). *Delfi: Online planner selection for cost-optimal planning* [Competition abstract]. https://research.ibm.com/publications/delfi-online-planner-selection-for-cost-optimal-planning
 
 Helmert, M. (2006). The Fast Downward planning system. *Journal of Artificial Intelligence Research, 26*, 191–246. https://doi.org/10.1613/jair.1705
