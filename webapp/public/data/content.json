@@ -35,24 +35,45 @@
       "description": "An unsupervised pipeline that flags at-risk fetal heart-rate patterns and groups 2,126 real cardiotocogram recordings into risk tiers — without ever seeing the clinical diagnosis. Isolation Forest anomalies concentrate 12x more in cases obstetricians independently classified as pathological (48.9% vs. 4.1%), and K-Means recovers a high-risk cluster where pathological cases outnumber normal ones. A real early-warning signal, built entirely from the signal itself.",
       "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "PCA"],
       "study": {
-        "challenge": "Flag clinically meaningful risk in fetal heart-rate monitoring without relying on the outcome label — turning 20 raw histogram, variability, and deceleration features per recording into an automatic early-warning signal, on real cardiotocograms from Ayres-de-Campos & Bernardes (2000).",
-        "architecture": "An Isolation Forest trained on 20 standardized clinical features (baseline heart rate, variability, decelerations, FHR histogram shape) flags the 8% most unusual recordings. A K-Means model (k=3, chosen against silhouette score and validated post-hoc against the real diagnosis) groups every recording into a risk tier.",
-        "pipeline": [
-          "🩺 Data: 2,126 real cardiotocograms (Ayres-de-Campos & Bernardes, 2000)",
-          "🧹 Cleaning: dropped 3 export-artifact rows + 1 zero-variance field (DR)",
-          "📊 EDA: descriptive statistics, correlation matrix, missing-value audit",
-          "🚨 Anomaly detection: Isolation Forest, 8% contamination",
-          "🧩 Clustering: K-Means (k=3), silhouette-selected",
-          "✅ Validation: cross-checked against real obstetrician diagnoses + ACOG clinical ranges"
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "Real clinical monitoring produces a dense stream of numbers per patient — heart rate, variability, contractions — that even trained clinicians have to read holistically, in real time. Could an algorithm that never sees the diagnosis still learn to spot what actually matters?"
+          },
+          {
+            "label": "The Data",
+            "text": "2,126 real cardiotocogram recordings, each independently classified Normal, Suspect, or Pathologic by a consensus of expert obstetricians (Ayres-de-Campos & Bernardes, 2000). That diagnosis was set aside completely during modeling — it comes back later, only to grade the work, never to train on."
+          },
+          {
+            "label": "Finding What's Unusual",
+            "text": "An Isolation Forest was trained on the 20 raw measured features per recording — never the diagnosis — and asked one question: which recordings look structurally different from the rest? The red points below are everything it flagged.",
+            "image": "assets/images/projects/fetal-health-anomaly-pca.png",
+            "caption": "Isolation Forest anomalies, 2,126 recordings in PCA space — the model never saw a diagnosis."
+          },
+          {
+            "label": "Did It Actually Work?",
+            "text": "Only after the model made its decisions did we compare its flags against the real diagnoses. Recordings doctors called Pathologic were flagged anomalous 12x more often than recordings they called Normal — a gap this wide doesn't happen by chance.",
+            "image": "assets/images/projects/fetal-health-result.png",
+            "caption": "Anomaly rate by real clinical diagnosis, checked after the fact."
+          },
+          {
+            "label": "Grouping by Risk",
+            "text": "A second, independent model — K-Means — sorted every recording into one of three groups, again with zero access to the diagnosis. One group came out almost entirely Normal. Another inverted the dataset's own risk ratio: inside that one cluster, Pathologic cases actually outnumber Normal ones.",
+            "image": "assets/images/projects/fetal-health-clusters.png",
+            "caption": "K-Means (k=3) — real diagnosis composition per cluster, revealed only afterward."
+          },
+          {
+            "label": "An Honest Extra Check",
+            "text": "We also compared the flagged anomalies against a real external clinical threshold — ACOG's normal fetal heart-rate range. They barely overlapped. That's not a failure: it shows this multivariate model catches risk patterns a single clinical rule alone would miss, instead of just rediscovering what a simpler check already knows."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "None of this replaces a doctor. What it demonstrates is that a fully unsupervised model, given only the raw signal, independently rediscovers real clinical risk — a legitimate, honest early-warning layer worth building on, not a black box asked to take over."
+          }
         ],
         "code_lang": "Python / scikit-learn",
         "code_spotlight": "# 1. Anomaly detection — unsupervised, never sees NSP\niso = IsolationForest(n_estimators=300, contamination=0.08, random_state=42)\ndf['anomaly'] = iso.fit_predict(X_scaled) == -1\n\n# 2. Clustering — validated post-hoc against the real diagnosis\nkm = KMeans(n_clusters=3, n_init=10, random_state=42)\ndf['cluster'] = km.fit_predict(X_scaled)\n\n# 3. External validation — did the model rediscover real clinical risk?\npd.crosstab(df['anomaly'], df['NSP_label'], normalize='columns') * 100\n# Pathologic: 48.9% flagged anomalous  |  Normal: 4.1% flagged anomalous",
-        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/fetal-health-ctg-analysis",
-        "charts": [
-          { "src": "assets/images/projects/fetal-health-result.png", "caption": "Anomaly rate by real clinical diagnosis — the model never saw these labels." },
-          { "src": "assets/images/projects/fetal-health-anomaly-pca.png", "caption": "Isolation Forest anomalies, 2,126 recordings in PCA space." },
-          { "src": "assets/images/projects/fetal-health-clusters.png", "caption": "K-Means (k=3) — real diagnosis composition per cluster." }
-        ]
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/fetal-health-ctg-analysis"
       }
     },
     {
@@ -62,8 +83,40 @@
       "description": "A PDDL domain and optimal planner (Fast Downward, A* + LM-Cut, run in a Singularity container) that plans multi-stop rover routes over a directional path network — provably optimal every time, verified independently against a second planner. The same domain.pddl handles three growing scenarios without a single line changed, and in the hardest one the planner independently chose the closer of two labs for each delivery.",
       "stack": ["PDDL", "Fast Downward", "Singularity", "A* / LM-Cut"],
       "study": {
-        "challenge": "Plan an optimal multi-stop route for a rover retrieving mineral samples across a directional path network (some routes are one-way only) and delivering them to an analysis lab — formalized as a PDDL planning problem and solved to a provably optimal plan, not just a feasible one.",
-        "architecture": "A PDDL domain (move / pick-up / deliver actions over a directed CONNECTED relation and a generic LAB predicate) solved with Fast Downward using A* search with the LM-Cut admissible heuristic — the same class of guarantee IPC's optimal track requires. Every plan was independently cross-checked with a second, unrelated planner (pyperplan) before being run for real.",
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "A rover has already excavated two mineral samples at two different sites. Bad weather stopped it from moving them. Plan the route that gets both to the analysis lab — over a path network where some roads only go one way."
+          },
+          {
+            "label": "Proving the Pipeline First",
+            "text": "Before writing a single line of the actual problem, the exact tool chain — a Singularity container running Fast Downward — was verified against a real competition task, pulled directly from the official IPC 2018 repository, rather than trusted blindly."
+          },
+          {
+            "label": "Modeling the Problem",
+            "text": "The rover's world becomes three PDDL actions: move between connected locations, pick up a mineral, deliver it to any location marked as a lab — deliberately generic, never hardcoded to one specific lab."
+          },
+          {
+            "label": "Solving It — Provably",
+            "text": "Run against the real path network from the brief, the planner doesn't just find a route — it proves this is the shortest one possible: 14 steps, mathematically optimal.",
+            "image": "assets/images/projects/rover-planning-network.png",
+            "caption": "The real directional path network from the problem brief."
+          },
+          {
+            "label": "Scaling It Up, Without Touching the Model",
+            "text": "Two new scenarios were added — another mineral and site, then a second lab entirely — and the exact same domain file solved both. Zero modifications to the model itself.",
+            "image": "assets/images/projects/rover-planning-scaling.png",
+            "caption": "Optimal plan length across three growing scenarios — same domain.pddl, unchanged."
+          },
+          {
+            "label": "The Interesting Part",
+            "text": "In the hardest scenario, with two labs available, the planner independently chose to deliver each mineral to whichever lab was actually closer — proof the model generalizes on its own, rather than happening to work by coincidence."
+          },
+          {
+            "label": "Why Delfi 1 Isn't Here",
+            "text": "The actual IPC 2018 champion planner, Delfi 1, is honestly unreachable today: its container lived on Singularity Hub (shut down in 2021), its source on a Mercurial repository (Bitbucket dropped Mercurial support in 2020). Since Delfi 1 is itself built on Fast Downward, this project runs Fast Downward directly — with the same optimality guarantee the competition's own optimal track requires."
+          }
+        ],
         "pipeline": [
           "🗺️ Modeling: PDDL domain — move / pick-up / deliver, generic over any number of labs",
           "🧪 Pipeline validation: real IPC 2018 benchmark task (Snake), solved in 24 optimal steps",
@@ -74,11 +127,7 @@
         ],
         "code_lang": "PDDL",
         "code_spotlight": "(:action deliver\n    :parameters (?rover ?mineral ?loc)\n    :precondition\n    (and\n        (at ?rover ?loc)\n        (carrying ?rover ?mineral)\n        (LAB ?loc)\n    )\n    :effect\n    (and\n        (analyzed ?mineral)\n        (not (carrying ?rover ?mineral))\n        (free ?rover)\n    )\n)\n\n; Run to provable optimality:\n; fast-downward.sif domain.pddl problem3.pddl --search \"astar(lmcut())\"\n; -> Plan cost: 18 (optimal) -- planner delivers to whichever LAB is closer",
-        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning",
-        "charts": [
-          { "src": "assets/images/projects/rover-planning-network.png", "caption": "The real directional path network from the problem brief." },
-          { "src": "assets/images/projects/rover-planning-scaling.png", "caption": "Optimal plan length across three growing scenarios — same domain.pddl, unchanged." }
-        ]
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning"
       }
     },
     {

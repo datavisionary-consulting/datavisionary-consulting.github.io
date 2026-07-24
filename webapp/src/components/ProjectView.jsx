@@ -75,60 +75,59 @@ df['price_category'] = pd.cut(df['price'], bins=bins, labels=labels)`}
 }
 
 function StudyView({ title, description, study }) {
-  const { challenge, architecture, pipeline, code_lang, code_spotlight, charts, github_url } = study;
+  const { narrative, pipeline, code_lang, code_spotlight, github_url } = study;
 
   return (
-    <div style={{ padding: '120px 20px 60px', maxWidth: '1100px', margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+    <div style={{ padding: '120px 20px 60px', maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '70px' }}>
         <h1 style={{ fontSize: '2.8rem', color: '#1a1a1a', marginBottom: '15px' }}>{title}</h1>
         <p style={{ fontSize: '1.2rem', color: '#666', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>{description}</p>
       </div>
 
-      {charts && charts.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginBottom: '80px' }}>
-          {charts.map((c) => (
-            <figure key={c.src} style={{ margin: 0 }}>
-              <div style={{ borderRadius: '15px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', border: '1px solid #eee' }}>
-                <img src={c.src} alt={c.caption} style={{ width: '100%', display: 'block' }} />
+      {narrative && narrative.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {narrative.map((step, i) => (
+            <div key={step.label} style={{ marginBottom: '40px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.5rem', color: '#c8943a', fontWeight: 700, flexShrink: 0 }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h2 style={{ fontSize: '1.35rem', color: '#1a1a1a', margin: 0 }}>{step.label}</h2>
+                <span style={{ flex: 1, height: '1px', background: '#e5e0d8' }} />
               </div>
-              {c.caption && (
-                <figcaption style={{ textAlign: 'center', color: '#888', fontSize: '0.9rem', marginTop: '12px' }}>{c.caption}</figcaption>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.75, color: '#333', marginBottom: step.image ? '24px' : 0 }}>
+                {step.text}
+              </p>
+              {step.image && (
+                <figure style={{ margin: 0 }}>
+                  <div style={{ borderRadius: '15px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.12)', border: '1px solid #eee' }}>
+                    <img src={step.image} alt={step.caption || step.label} style={{ width: '100%', display: 'block' }} />
+                  </div>
+                  {step.caption && (
+                    <figcaption style={{ textAlign: 'center', color: '#888', fontSize: '0.9rem', marginTop: '12px' }}>{step.caption}</figcaption>
+                  )}
+                </figure>
               )}
-            </figure>
+            </div>
           ))}
         </div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', marginBottom: '80px' }}>
-        <div>
-          <h2 style={{ color: '#c8943a', marginBottom: '20px', fontSize: '1.8rem' }}>Technical Executive Summary</h2>
-          {challenge && (
-            <p style={{ marginBottom: '20px', lineHeight: 1.7 }}>
-              <strong>The Challenge:</strong> {challenge}
-            </p>
-          )}
-          {architecture && (
-            <p style={{ lineHeight: 1.7 }}>
-              <strong>The Approach:</strong> {architecture}
-            </p>
-          )}
+      {pipeline && pipeline.length > 0 && (
+        <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '12px', borderLeft: '4px solid #c8943a', marginBottom: '56px' }}>
+          <h3 style={{ marginBottom: '15px', fontSize: '1.1rem', color: '#1a1a1a' }}>Pipeline, step by step</h3>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2 }}>
+            {pipeline.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ul>
         </div>
-        {pipeline && pipeline.length > 0 && (
-          <div style={{ background: '#f8f9fa', padding: '30px', borderRadius: '12px', borderLeft: '4px solid #c8943a' }}>
-            <h3 style={{ marginBottom: '15px', fontSize: '1.2rem' }}>Pipeline</h3>
-            <ul style={{ listStyle: 'none', padding: 0, lineHeight: 2 }}>
-              {pipeline.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+      )}
 
       {code_spotlight && (
         <div style={{ background: '#1e1e1e', color: '#d4d4d4', padding: '40px', borderRadius: '15px', fontFamily: "'Courier New', Courier, monospace", position: 'relative' }}>
           <div style={{ position: 'absolute', top: '15px', right: '20px', color: '#666', fontSize: '0.8rem' }}>{code_lang}</div>
-          <h3 style={{ color: '#c8943a', fontFamily: 'sans-serif', marginBottom: '25px' }}>Engineering Code Spotlight</h3>
+          <h3 style={{ color: '#c8943a', fontFamily: 'sans-serif', marginBottom: '25px' }}>For the curious: engineering spotlight</h3>
           <pre style={{ margin: 0, whiteSpace: 'pre-wrap', fontSize: '0.95rem', lineHeight: 1.5 }}>{code_spotlight}</pre>
           {github_url && (
             <div style={{ marginTop: '30px', textAlign: 'center' }}>
