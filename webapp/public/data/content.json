@@ -56,6 +56,32 @@
       }
     },
     {
+      "tag": "Robotics / AI Planning",
+      "title": "Automated Mission Planning for Autonomous Rovers",
+      "image_url": "assets/images/projects/rover-planning-network.png",
+      "description": "A PDDL domain and optimal planner (Fast Downward, A* + LM-Cut, run in a Singularity container) that plans multi-stop rover routes over a directional path network — provably optimal every time, verified independently against a second planner. The same domain.pddl handles three growing scenarios without a single line changed, and in the hardest one the planner independently chose the closer of two labs for each delivery.",
+      "stack": ["PDDL", "Fast Downward", "Singularity", "A* / LM-Cut"],
+      "study": {
+        "challenge": "Plan an optimal multi-stop route for a rover retrieving mineral samples across a directional path network (some routes are one-way only) and delivering them to an analysis lab — formalized as a PDDL planning problem and solved to a provably optimal plan, not just a feasible one.",
+        "architecture": "A PDDL domain (move / pick-up / deliver actions over a directed CONNECTED relation and a generic LAB predicate) solved with Fast Downward using A* search with the LM-Cut admissible heuristic — the same class of guarantee IPC's optimal track requires. Every plan was independently cross-checked with a second, unrelated planner (pyperplan) before being run for real.",
+        "pipeline": [
+          "🗺️ Modeling: PDDL domain — move / pick-up / deliver, generic over any number of labs",
+          "🧪 Pipeline validation: real IPC 2018 benchmark task (Snake), solved in 24 optimal steps",
+          "🪨 Problem 1: base scenario — 2 minerals, 1 lab — 14 optimal steps",
+          "⛏️ Problem 2: +1 mineral, +1 site — 22 optimal steps",
+          "🔬 Problem 3: +1 mineral, +1 lab — 18 optimal steps, planner chose the nearer lab per delivery",
+          "✅ Validation: every plan cross-checked against a second, independent planner"
+        ],
+        "code_lang": "PDDL",
+        "code_spotlight": "(:action deliver\n    :parameters (?rover ?mineral ?loc)\n    :precondition\n    (and\n        (at ?rover ?loc)\n        (carrying ?rover ?mineral)\n        (LAB ?loc)\n    )\n    :effect\n    (and\n        (analyzed ?mineral)\n        (not (carrying ?rover ?mineral))\n        (free ?rover)\n    )\n)\n\n; Run to provable optimality:\n; fast-downward.sif domain.pddl problem3.pddl --search \"astar(lmcut())\"\n; -> Plan cost: 18 (optimal) -- planner delivers to whichever LAB is closer",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning",
+        "charts": [
+          { "src": "assets/images/projects/rover-planning-network.png", "caption": "The real directional path network from the problem brief." },
+          { "src": "assets/images/projects/rover-planning-scaling.png", "caption": "Optimal plan length across three growing scenarios — same domain.pddl, unchanged." }
+        ]
+      }
+    },
+    {
       "tag": "Corporate Training / EdTech",
       "title": "Custom Certification & Training Platform",
       "image_url": "assets/images/projects/training-platform-command-center.png",
