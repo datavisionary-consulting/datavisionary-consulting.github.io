@@ -29,20 +29,111 @@
 
   "solutions": [
     {
-      "tag": "Retail / Ingeniería de Datos",
-      "title": "Detección de Anomalías de Inventario en Tiempo Real",
-      "description": "Sistema estadístico que monitorea el inventario en cientos de tiendas y detecta ajustes de stock inusuales automáticamente — convirtiendo una revisión manual mensual en una alerta el mismo día, antes de que pequeñas diferencias se conviertan en pérdidas reales.",
-      "stack": ["PySpark", "Databricks", "Delta Lake", "Unity Catalog"]
+      "tag": "Salud / Machine Learning",
+      "title": "Detección de Riesgo Fetal y Agrupamiento",
+      "image_url": "assets/images/projects/fetal-health-anomaly-pca.png",
+      "description": "Un pipeline no supervisado que detecta patrones de riesgo en la frecuencia cardiaca fetal y agrupa 2,126 registros reales de cardiotocografía en niveles de riesgo — sin ver nunca el diagnóstico clínico. Las anomalías de Isolation Forest se concentran 12 veces más en los casos que los obstetras clasificaron independientemente como patológicos (48.9% vs. 4.1%), y K-Means recupera un clúster de alto riesgo donde los casos patológicos superan a los normales. Una señal de alerta temprana real, construida enteramente a partir de la señal misma.",
+      "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "PCA"],
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "El monitoreo clínico real produce un flujo denso de números por paciente — frecuencia cardiaca, variabilidad, contracciones — que incluso los clínicos entrenados deben leer de forma integral, en tiempo real. ¿Podría un algoritmo que nunca ve el diagnóstico aprender igual a detectar lo que realmente importa?"
+          },
+          {
+            "label": "Los Datos",
+            "text": "2,126 registros reales de cardiotocografía, cada uno clasificado de forma independiente como Normal, Sospechoso o Patológico por consenso de obstetras expertos (Ayres-de-Campos & Bernardes, 2000). Ese diagnóstico se dejó completamente de lado durante el modelado — regresa después, solo para calificar el trabajo, nunca para entrenar."
+          },
+          {
+            "label": "Encontrando lo Inusual",
+            "text": "Se entrenó un Isolation Forest con las 20 variables medidas de cada registro — nunca el diagnóstico — y se le hizo una sola pregunta: ¿qué registros se ven estructuralmente distintos al resto? Los puntos rojos abajo son todo lo que marcó.",
+            "image": "assets/images/projects/fetal-health-anomaly-pca.png",
+            "caption": "Anomalías de Isolation Forest, 2,126 registros en espacio PCA — el modelo nunca vio un diagnóstico."
+          },
+          {
+            "label": "¿Realmente Funcionó?",
+            "text": "Solo después de que el modelo tomó sus decisiones comparamos sus marcas contra los diagnósticos reales. Los registros que los médicos llamaron Patológico fueron marcados como anómalos 12 veces más que los que llamaron Normal — una diferencia así de grande no ocurre por azar.",
+            "image": "assets/images/projects/fetal-health-result.png",
+            "caption": "Tasa de anomalías por diagnóstico clínico real, verificada después de los hechos."
+          },
+          {
+            "label": "Agrupando por Riesgo",
+            "text": "Un segundo modelo, independiente — K-Means — ordenó cada registro en uno de tres grupos, otra vez sin ningún acceso al diagnóstico. Un grupo resultó casi completamente Normal. Otro invirtió la proporción de riesgo propia del conjunto de datos: dentro de ese clúster, los casos Patológico superan en número a los Normal.",
+            "image": "assets/images/projects/fetal-health-clusters.png",
+            "caption": "K-Means (k=3) — composición real de diagnóstico por clúster, revelada solo después."
+          },
+          {
+            "label": "Una Verificación Extra Honesta",
+            "text": "También comparamos las anomalías marcadas contra un umbral clínico externo real — el rango normal de frecuencia cardiaca fetal de la ACOG. Casi no se superpusieron. Eso no es un fracaso: muestra que este modelo multivariante detecta patrones de riesgo que una sola regla clínica no alcanzaría a capturar, en vez de simplemente redescubrir lo que ya sabe una verificación más simple."
+          },
+          {
+            "label": "Por Qué Importa",
+            "text": "Nada de esto reemplaza a un médico. Lo que demuestra es que un modelo completamente no supervisado, con solo la señal cruda, redescubre por su cuenta un riesgo clínico real — una capa de alerta temprana legítima y honesta sobre la cual construir, no una caja negra a la que se le pide tomar el control."
+          }
+        ],
+        "code_lang": "Python / scikit-learn",
+        "code_spotlight": "# 1. Anomaly detection — unsupervised, never sees NSP\niso = IsolationForest(n_estimators=300, contamination=0.08, random_state=42)\ndf['anomaly'] = iso.fit_predict(X_scaled) == -1\n\n# 2. Clustering — validated post-hoc against the real diagnosis\nkm = KMeans(n_clusters=3, n_init=10, random_state=42)\ndf['cluster'] = km.fit_predict(X_scaled)\n\n# 3. External validation — did the model rediscover real clinical risk?\npd.crosstab(df['anomaly'], df['NSP_label'], normalize='columns') * 100\n# Pathologic: 48.9% flagged anomalous  |  Normal: 4.1% flagged anomalous",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/fetal-health-ctg-analysis"
+      }
     },
     {
-      "tag": "Finanzas / Automatización",
-      "title": "Automatización de Facturas y Análisis Contable",
-      "description": "Lee facturas en PDF de decenas de proveedores y extrae la información automáticamente — reduciendo el procesamiento por factura de más de una hora a segundos, alimentando un dashboard en vivo en lugar de una hoja de cálculo que nadie abre. El mismo enfoque convierte libros contables de gran volumen (libro mayor, registro de compras) en métricas que el equipo financiero puede usar de inmediato.",
-      "stack": ["Python", "PDF Parsing", "Google Sheets", "Looker Studio"]
+      "tag": "Robótica / Planificación IA",
+      "title": "Planificación Automática de Misiones para Rovers Autónomos",
+      "image_url": "assets/images/projects/rover-planning-network.png",
+      "description": "Un dominio PDDL y un planificador óptimo (Fast Downward, A* + LM-Cut, ejecutado en un contenedor Singularity) que planifica rutas de rover con múltiples paradas sobre una red de trayectorias direccional — óptimo de forma demostrable en cada caso, validado de forma independiente contra un segundo planificador. El mismo domain.pddl resuelve tres escenarios crecientes sin cambiar una sola línea, y en el más difícil el planificador eligió por su cuenta el laboratorio más cercano para cada entrega.",
+      "stack": ["PDDL", "Fast Downward", "Singularity", "A* / LM-Cut"],
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "Un rover ya excavó dos muestras minerales en dos sitios distintos. El mal clima impidió trasladarlas. Hay que planificar la ruta que lleve ambas al laboratorio de análisis — sobre una red de trayectorias donde algunos caminos son de una sola vía."
+          },
+          {
+            "label": "Probando Primero el Pipeline",
+            "text": "Antes de escribir una sola línea del problema real, se verificó la cadena de herramientas exacta —un contenedor Singularity ejecutando Fast Downward— contra una tarea real de competencia, descargada directamente del repositorio oficial de la IPC 2018, en lugar de confiar a ciegas."
+          },
+          {
+            "label": "Modelando el Problema",
+            "text": "El mundo del rover se reduce a tres acciones PDDL: moverse entre localidades conectadas, recoger un mineral, entregarlo en cualquier localidad marcada como laboratorio — deliberadamente genérico, nunca fijado a un único laboratorio."
+          },
+          {
+            "label": "Resolviéndolo — de Forma Demostrable",
+            "text": "Ejecutado contra la red de trayectorias real del enunciado, el planificador no solo encuentra una ruta — demuestra que esta es la más corta posible: 14 pasos, matemáticamente óptimo.",
+            "image": "assets/images/projects/rover-planning-network.png",
+            "caption": "La red de trayectorias direccional real, tomada del enunciado del problema."
+          },
+          {
+            "label": "Escalando, Sin Tocar el Modelo",
+            "text": "Se añadieron dos escenarios nuevos —otro mineral y sitio, y luego un segundo laboratorio— y el mismo archivo de dominio, sin ninguna modificación, resolvió ambos.",
+            "image": "assets/images/projects/rover-planning-scaling.png",
+            "caption": "Longitud del plan óptimo en tres escenarios crecientes — mismo domain.pddl, sin cambios."
+          },
+          {
+            "label": "La Parte Interesante",
+            "text": "En el escenario más difícil, con dos laboratorios disponibles, el planificador decidió por su cuenta entregar cada mineral en el laboratorio que realmente quedaba más cerca — prueba de que el modelo generaliza de verdad, no que funcionó por coincidencia."
+          },
+          {
+            "label": "Por Qué Delfi 1 No Está Aquí",
+            "text": "El planificador campeón real de la IPC 2018, Delfi 1, hoy es honestamente inalcanzable: su contenedor vivía en Singularity Hub (cerrado en 2021), su código fuente en un repositorio Mercurial (Bitbucket eliminó el soporte a Mercurial en 2020). Como Delfi 1 está construido sobre Fast Downward, este proyecto ejecuta Fast Downward directamente — con la misma garantía de optimalidad que exige la pista óptima de la propia competencia."
+          }
+        ],
+        "pipeline": [
+          "🗺️ Modelado: dominio PDDL — mover / recoger / entregar, genérico para cualquier número de laboratorios",
+          "🧪 Validación del pipeline: tarea real de referencia de la IPC 2018 (Snake), resuelta en 24 pasos óptimos",
+          "🪨 Problema 1: escenario base — 2 minerales, 1 laboratorio — 14 pasos óptimos",
+          "⛏️ Problema 2: +1 mineral, +1 sitio — 22 pasos óptimos",
+          "🔬 Problema 3: +1 mineral, +1 laboratorio — 18 pasos óptimos, el planificador eligió el laboratorio más cercano en cada entrega",
+          "✅ Validación: cada plan verificado contra un segundo planificador independiente"
+        ],
+        "code_lang": "PDDL",
+        "code_spotlight": "(:action deliver\n    :parameters (?rover ?mineral ?loc)\n    :precondition\n    (and\n        (at ?rover ?loc)\n        (carrying ?rover ?mineral)\n        (LAB ?loc)\n    )\n    :effect\n    (and\n        (analyzed ?mineral)\n        (not (carrying ?rover ?mineral))\n        (free ?rover)\n    )\n)\n\n; Run to provable optimality:\n; fast-downward.sif domain.pddl problem3.pddl --search \"astar(lmcut())\"\n; -> Plan cost: 18 (optimal) -- planner delivers to whichever LAB is closer",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/rover-mission-planning"
+      }
     },
     {
       "tag": "Capacitación Corporativa / EdTech",
       "title": "Plataforma de Certificación y Entrenamiento a Medida",
+      "image_url": "assets/images/projects/training-platform-command-center.png",
       "description": "Muchas empresas necesitan capacitar a sus equipos en una herramienta específica, un proceso interno, o un tema de cumplimiento — y los cursos genéricos no cubren eso. Este es un entrenador de auto-estudio con repetición espaciada, pensado para convertir cualquier cuerpo de conocimiento en un banco de preguntas tipo certificación que realmente se queda en la memoria, en lugar de una presentación que nadie vuelve a abrir. Lo construí originalmente para mantenerme afilado en mis propios fundamentos técnicos — porque en este rubro, o te sigues entrenando, o te quedas atrás.",
       "stack": ["JavaScript", "Repetición Espaciada", "SQL", "Apache Spark"],
       "link_url": "https://datavisionary-consulting.github.io/vision-lab/",
@@ -53,7 +144,7 @@
       "title": "CriptoRadar: Tendencias de Mercado",
       "image_url": "assets/images/projects/powerbi.png",
       "description": "Pipeline ETL que extrae datos históricos de BTC, ETH y LTC. Procesamiento de indicadores técnicos (RSI, Medias Móviles) para identificar tendencias de inversión.",
-      "github_url": "https://github.com/kevsanmm/PowerBIProjects/tree/main/CryptoAnalysis",
+      "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/criptoradar-btc-eth-ltc",
       "dashboard_url": "https://app.powerbi.com/view?r=eyJrIjoiNWMyZDJkYjgtMmM5Yy00NjAzLWE3NGMtY2VkMjc0ZmQxNDVkIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9",
       "stack": ["Python", "Power BI", "GitHub Actions"]
     }

@@ -59,7 +59,7 @@ export default function Solutions({ solutions, onOpenProject }) {
                     style={{ padding: '10px 20px', fontSize: '13px', cursor: 'pointer', border: 'none', width: '100%' }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    {s.study ? 'View the Study →' : t.viewDashboard}
+                    {s.study ? t.viewStudy : t.viewDashboard}
                   </motion.button>
                 ) : s.link_url ? (
                   <motion.a
