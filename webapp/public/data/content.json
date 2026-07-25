@@ -29,11 +29,63 @@
 
   "solutions": [
     {
+      "tag": "International Trade / Customs Risk",
+      "title": "Import Price Anomaly Detection & Country Risk Clustering",
+      "image_url": "assets/images/projects/trade-anomaly-scatter.png",
+      "description": "Isolation Forest applied to 39,955 real UK customs import records — declared value and weight per shipment, queried live from HMRC's public trade API — flags unit prices that look statistically unusual for their product category, the same signal customs risk teams check for under- or over-invoicing. Cross-checked against an independent statistical rule rather than assumed correct: only about half the flags agree, an honest finding showing the two methods catch genuinely different things. K-Means then separates country-product pairs into risk tiers — one group of 41 pairs runs a 29% anomaly rate against 1.7% everywhere else.",
+      "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "HMRC API"],
+      "stackGroup": "anomaly-clustering",
+      "study": {
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "Customs and trade-risk teams need a cheap way to flag which import declarations deserve a second look — without the one thing that would make it easy: labeled examples of confirmed fraud, which no customs agency publishes."
+          },
+          {
+            "label": "Real Data, Queried Live",
+            "text": "39,955 real import shipments — declared value in GBP and net mass in kg — pulled directly from HM Revenue & Customs' public Overseas Trade Statistics API. No account, no key: it's fully open government data. Four months of 2024, 19 commodity categories, 164 countries, nothing cherry-picked."
+          },
+          {
+            "label": "Comparing Fairly",
+            "text": "A kilo of live animals and a kilo of electrical machinery are never on the same price scale, so unit price is standardized as a z-score within each commodity category before anything else happens — otherwise the model would just rediscover category price differences, not real anomalies.",
+            "image": "assets/images/projects/trade-anomaly-scatter.png",
+            "caption": "Real shipments, six categories: value vs. weight, flagged shipments in red — off the normal price line for their product."
+          },
+          {
+            "label": "Flagging the Outliers",
+            "text": "Isolation Forest, trained jointly on standardized price and value, flags the 3% most unusual shipments — fully unsupervised, since no ground-truth fraud label exists to train against.",
+            "image": "assets/images/projects/trade-anomaly-distribution.png",
+            "caption": "Flagged shipments cluster at the tails of the real price distribution, exactly where they should."
+          },
+          {
+            "label": "An Honest Cross-Check",
+            "text": "A second, independent method — a simple IQR rule on price alone, sharing zero logic with Isolation Forest — agrees with only about half of its flags. That's not a failure: it shows the two methods are genuinely catching different things. Isolation Forest weighs price and value together, so it catches combinations that look off even when price alone doesn't; the IQR rule catches the reverse. Reporting only the overlap that flattered the result would have been the dishonest version of this chart.",
+            "image": "assets/images/projects/trade-anomaly-agreement.png",
+            "caption": "602 flagged only by Isolation Forest, 499 only by the IQR rule, 597 where both agree."
+          },
+          {
+            "label": "Grouping by Risk",
+            "text": "K-Means groups country-commodity pairs by their average price deviation, anomaly rate, and shipment volume. One cluster of 41 pairs comes out with a 29.3% anomaly rate — seventeen times higher than the other 542 pairs at 1.7%. That's not 41 confirmed fraud cases; it's 41 places a human reviewer's limited time would actually be well spent.",
+            "image": "assets/images/projects/trade-anomaly-clusters.png",
+            "caption": "K-Means (k=2, silhouette-selected) — a small, sharply distinct high-risk cluster separates cleanly from the rest."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "Every published customs-fraud model with strong accuracy numbers was trained on confirmed fraud labels held internally by a national customs agency — data nobody outside that agency ever sees. This is the honest version available to everyone else: no ground truth to train against, only internal consistency checks and a defensible way to prioritize where scarce review time goes."
+          }
+        ],
+        "code_lang": "Python / scikit-learn",
+        "code_spotlight": "# Standardize price WITHIN category -- never compare raw prices across products\ndf['z_price'] = df.groupby('category')['log_price'].transform(\n    lambda x: (x - x.mean()) / x.std())\n\niso = IsolationForest(n_estimators=300, contamination=0.03, random_state=42)\ndf['anomaly'] = iso.fit_predict(df[['z_price', 'z_value']]) == -1\n# 1,199 / 39,955 flagged (3.0%) -- only 49.8% also flagged by an independent IQR rule\n\n# K-Means on country x category risk profile\nkm = KMeans(n_clusters=2, n_init=10, random_state=42)\n# Cluster 1: 41 pairs, 29.3% anomaly rate vs. 1.7% everywhere else",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/import-price-anomaly-detection"
+      }
+    },
+    {
       "tag": "Healthcare / Machine Learning",
       "title": "Fetal Health Risk Detection & Clustering",
       "image_url": "assets/images/projects/fetal-health-anomaly-pca.png",
       "description": "An unsupervised pipeline that flags at-risk fetal heart-rate patterns and groups 2,126 real cardiotocogram recordings into risk tiers — without ever seeing the clinical diagnosis. Isolation Forest anomalies concentrate 12x more in cases obstetricians independently classified as pathological (48.9% vs. 4.1%), and K-Means recovers a high-risk cluster where pathological cases outnumber normal ones. A real early-warning signal, built entirely from the signal itself.",
       "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "PCA"],
+      "stackGroup": "anomaly-clustering",
       "study": {
         "narrative": [
           {
@@ -77,11 +129,62 @@
       }
     },
     {
+      "tag": "Mining / Peru",
+      "title": "Automated Haul Truck Dispatch Planning for Open-Pit Mining",
+      "image_url": "assets/images/projects/mine-network.png",
+      "description": "A PDDL domain and optimal planner routing open-pit mine haul trucks from extraction benches to the mill or waste dump over a one-way haul-road network — the same real dispatch problem behind the DISPATCH® system used across the mining industry since 1986, now solved with provable optimality instead of a heuristic rule. The same domain handles three growing scenarios unchanged, and adding a second mill actually shortens the optimal plan — the planner found and used a dedicated shortcut on its own.",
+      "stack": ["PDDL", "pyperplan", "A* / LM-Cut", "Classical Planning"],
+      "stackGroup": "planning",
+      "study": {
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "Open-pit haul truck dispatch — which truck goes to which pit, which one delivers to the mill or the dump — is a real, decades-old mining operations problem, not a toy example. Model it as a classical planning problem and get a provably optimal answer instead of a heuristic dispatch rule."
+          },
+          {
+            "label": "Modeling a Real Mine Layout",
+            "text": "One-way haul roads, exactly like real open-pit traffic control that keeps loaded and empty trucks off the same bench road: trucks leave the yard, reach a pit, pick up ore or waste, and deliver — ore only accepted where a location is marked as a mill, waste only where it's marked as a dump."
+          },
+          {
+            "label": "Solving It — Provably",
+            "text": "Two trucks, two pits, one mill, one dump. A* with the LM-Cut admissible heuristic doesn't just find a route — it proves this is the cheapest one possible: 10 actions, mathematically optimal.",
+            "image": "assets/images/projects/mine-network.png",
+            "caption": "The full haul-road network, one-way loops, the dedicated pit-c → mill2 shortcut highlighted in gold."
+          },
+          {
+            "label": "Scaling It Up, Without Touching the Model",
+            "text": "A third pit and a second ore load were added — the exact same domain file solved the bigger scenario too. Zero modifications to the model itself, plan length grows to 16 actions.",
+            "image": "assets/images/projects/mine-scaling.png",
+            "caption": "Optimal plan length across three growing scenarios — same domain.pddl, unchanged."
+          },
+          {
+            "label": "The Interesting Part",
+            "text": "A second mill was added with its own dedicated short haul road from one specific pit. The optimal plan for that harder scenario is actually shorter than the simpler one before it — 15 actions instead of 16 — because the planner independently discovered and used the shortcut for that pit's ore, while routing the other pit's ore the normal way. Nobody told it to prefer it."
+          },
+          {
+            "label": "Why Pyperplan, Not Fast Downward",
+            "text": "The related rover-planning project in this portfolio runs Fast Downward inside a Singularity container. This one deliberately used pyperplan — a pure-Python planner, zero container or Linux dependency — because A* with an admissible heuristic gives the same provable-optimality guarantee either way. The tool changed; the guarantee didn't."
+          }
+        ],
+        "pipeline": [
+          "🗺️ Modeling: PDDL domain — move / pick-up / deliver-ore / deliver-waste, generic for any number of mills or dumps",
+          "⛏️ Scenario 1: base case — 2 pits, 1 mill, 1 dump — 10 steps optimal",
+          "🪨 Scenario 2: +1 pit, +1 ore load — 16 steps optimal",
+          "🏭 Scenario 3: +1 mill with a dedicated shortcut — 15 steps optimal, planner used the shortcut on its own",
+          "✅ Solved with pyperplan, A* search + LM-Cut admissible heuristic — provably optimal, not heuristic"
+        ],
+        "code_lang": "PDDL",
+        "code_spotlight": "(:action deliver-ore\n    :parameters (?t - truck ?l - load ?loc - location)\n    :precondition\n    (and\n        (at ?t ?loc)\n        (carrying ?t ?l)\n        (ore ?l)\n        (mill ?loc)\n    )\n    :effect\n    (and\n        (delivered ?l)\n        (free ?t)\n        (not (carrying ?t ?l))\n    )\n)\n\n; python -m pyperplan -s astar -H lmcut domain.pddl problem3.pddl\n; -> Plan length: 15 (optimal) -- planner routes pit-c's ore via the shortcut to mill2",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/mine-haul-truck-dispatch"
+      }
+    },
+    {
       "tag": "Robotics / AI Planning",
       "title": "Automated Mission Planning for Autonomous Rovers",
       "image_url": "assets/images/projects/rover-planning-network.png",
       "description": "A PDDL domain and optimal planner (Fast Downward, A* + LM-Cut, run in a Singularity container) that plans multi-stop rover routes over a directional path network — provably optimal every time, verified independently against a second planner. The same domain.pddl handles three growing scenarios without a single line changed, and in the hardest one the planner independently chose the closer of two labs for each delivery.",
       "stack": ["PDDL", "Fast Downward", "Singularity", "A* / LM-Cut"],
+      "stackGroup": "planning",
       "study": {
         "narrative": [
           {
@@ -131,10 +234,64 @@
       }
     },
     {
+      "tag": "International Trade / Logistics",
+      "title": "Automated Pallet & Carton Counting from Images",
+      "image_url": "assets/images/projects/pallet-counting-photo.png",
+      "description": "A classical computer-vision pipeline that counts cartons on a pallet from a single top-down image — and an honest test of the standard published fix for the hardest failure case. When two cartons sit flush against each other, the textbook method (watershed segmentation, used successfully for counting fruit) does NOT recover the correct count, because rectangular cartons don't have the shape it depends on. The actual fix — reading the thin shadow seam between adjacent boxes — gets it exactly right, matching where the current 2025 research literature on this problem is heading.",
+      "stack": ["Python", "OpenCV", "Otsu Thresholding", "Watershed", "Canny"],
+      "stackGroup": "cv-imaging",
+      "study": {
+        "narrative": [
+          {
+            "label": "The Challenge",
+            "text": "A quick, honest question for any warehouse or import operation: how many cartons are actually on this pallet, counted straight from a photo, without touching a barcode scanner? Build the counting pipeline, then test it against the one case that actually breaks it — two boxes pushed flush together."
+          },
+          {
+            "label": "Building an Exact Ground Truth",
+            "text": "Rather than a real warehouse photo (with no controlled way to know the true count), a synthetic top-down pallet image was generated — 30 cartons, randomized size, rotation, and position, with one pair deliberately pushed together with zero gap. The count is known exactly because it was drawn.",
+            "image": "assets/images/projects/pallet-counting-photo.png",
+            "caption": "Synthetic top-down pallet — 30 cartons, kraft-cardboard rendering, ground truth known exactly."
+          },
+          {
+            "label": "The Naive Count Falls Short",
+            "text": "Otsu thresholding plus connected-component counting is fast and simple — and it undercounts by exactly one carton, because the two touching boxes merge into a single blob in the binary silhouette.",
+            "image": "assets/images/projects/pallet-counting-overview.png",
+            "caption": "Grayscale render, Otsu binary mask, and the naive connected-component count — 29 instead of 30."
+          },
+          {
+            "label": "Trying the Textbook Fix",
+            "text": "Distance-transform watershed is the standard published method for separating touching objects — it's what makes fruit-counting and cell-counting research work. Applied here directly, not assumed to work, it still returns 29. The reason is structural: watershed finds a concave \"waist\" where two round objects touch, and two rectangles pushed flush together have no waist at all — their silhouette is just one bigger rectangle.",
+            "image": "assets/images/projects/pallet-counting-methods.png",
+            "caption": "Naive, distance-transform watershed, and edge-aware correction, side by side — only one gets 30."
+          },
+          {
+            "label": "What Actually Works",
+            "text": "Two cartons touching still cast a thin shadow crease where their surfaces meet — a real physical cue a photo shows, invisible to a binary silhouette. Canny edge detection recovers that seam directly from the grayscale image and uses it to cut the mask before recounting.",
+            "image": "assets/images/projects/pallet-counting-zoom.png",
+            "caption": "Zoomed on the touching pair — the textbook fix stays merged, the edge-aware correction splits it correctly."
+          },
+          {
+            "label": "The Result",
+            "text": "30 out of 30, exactly matching the ground truth — and getting there required knowing why the obvious fix doesn't apply to this shape of object, not just running more algorithms at it.",
+            "image": "assets/images/projects/pallet-counting-chart.png",
+            "caption": "Carton count by method: ground truth 30, naive 29, watershed 29, edge-aware correction 30."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "This runs on a single 2D photo, needs no training data and no GPU, and the current 2025 research on this exact problem is moving toward full 3D reconstruction specifically because flat images lose cues that matter for touching or occluded boxes — the same limitation this project hit directly, at a fraction of the complexity. That makes it a cheap, fast pilot to run against real pallet photos before deciding whether it's worth building further."
+          }
+        ],
+        "code_lang": "Python / OpenCV",
+        "code_spotlight": "# Textbook fix for touching objects -- does NOT work for flush rectangles\ndist = cv2.distanceTransform(binary, cv2.DIST_L2, 5)\n# -> still 29/30: no concave \"waist\" between two flush rectangles\n\n# What actually works: read the real seam, not the silhouette\nedges = cv2.Canny(gray, 40, 120)\ncut = cv2.bitwise_and(binary, cv2.bitwise_not(cv2.dilate(edges, kernel)))\nn_labels, labels, stats, _ = cv2.connectedComponentsWithStats(cut)\n# -> 30/30, exact match to ground truth",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/pallet-box-counting"
+      }
+    },
+    {
       "tag": "Computer Vision / Image Processing",
       "title": "Impulse Noise Restoration & Contrast Enhancement",
       "image_url": "assets/images/projects/image-restoration-dashboard.png",
       "description": "Two classical image-processing pipelines — median-filter denoising and contrast enhancement — built from scratch in NumPy and benchmarked against OpenCV rather than assumed correct. The from-scratch median filter matches OpenCV's restoration quality within 0.04 dB PSNR (94%+ MSE reduction) while running four orders of magnitude slower, which is exactly why production systems never loop over pixels in Python. A second, honest finding: gamma correction reliably brightens a dark image but doesn't reliably add contrast — only histogram equalization does that.",
+      "stackGroup": "cv-imaging",
       "stack": ["Python", "NumPy", "OpenCV", "scikit-image"],
       "study": {
         "narrative": [

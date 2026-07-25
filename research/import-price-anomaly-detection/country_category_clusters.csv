@@ -1,0 +1,584 @@
+country,category,n_records,mean_z_price,anomaly_rate,total_value_gbp,log_n_records,cluster
+Afghanistan,Edible fruit and nuts; peel of citrus fruits or melons,31,0.13197647966318687,0.0,254244.0,3.4339872044851463,0
+Afghanistan,Edible vegetables and certain roots and tubers,8,-0.4327576740331622,0.0,23705.0,2.0794415416798357,0
+Albania,Edible fruit and nuts; peel of citrus fruits or melons,8,-1.266797335111382,0.125,277050.0,2.0794415416798357,0
+Albania,Edible vegetables and certain roots and tubers,5,-0.4187865974967348,0.0,25206.0,1.6094379124341003,0
+Algeria,Edible fruit and nuts; peel of citrus fruits or melons,11,-0.6889915261609564,0.0,468695.0,2.3978952727983707,0
+Algeria,"Salt; sulphur; earths and stone; plastering material, lime and cement",6,-0.7922702964462186,0.0,6697555.0,1.791759469228055,0
+Argentina,Edible fruit and nuts; peel of citrus fruits or melons,22,-0.6335422923345173,0.0,3956020.0,3.091042453358316,0
+Argentina,Edible vegetables and certain roots and tubers,30,-0.8173559130035364,0.0,5211312.0,3.4011973816621555,0
+Argentina,"Fish and crustaceans, molluscs and other aquatic invertebrates",22,-0.8238324526761969,0.0,2887954.0,3.091042453358316,0
+Argentina,Live animals,10,-0.4754986105976071,0.0,769735.0,2.302585092994046,0
+Argentina,Meat and edible meat offal,15,0.7070738429056543,0.0,3659519.0,2.70805020110221,0
+Australia,"Aircraft, spacecraft, and parts thereof",8,-0.2105881953132768,0.0,2040627.0,2.0794415416798357,0
+Australia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",8,0.8631727927303745,0.0,318811.0,2.0794415416798357,0
+Australia,Edible fruit and nuts; peel of citrus fruits or melons,10,0.26279758043572354,0.0,1896038.0,2.302585092994046,0
+Australia,Edible vegetables and certain roots and tubers,32,0.8344910891501415,0.15625,3535958.0,3.4657359027997265,1
+Australia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",13,0.8687663045319343,0.07692307692307693,1100258.0,2.5649493574615367,0
+Australia,"Fish and crustaceans, molluscs and other aquatic invertebrates",19,1.3868066076883319,0.10526315789473684,355743.0,2.9444389791664403,1
+Australia,Live animals,10,0.052244286682354105,0.0,141753.0,2.302585092994046,0
+Australia,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",5,-1.2856801862891623,0.0,291289.0,1.6094379124341003,0
+Australia,Meat and edible meat offal,112,0.37032634472451076,0.026785714285714284,40361969.0,4.718498871295094,0
+Australia,Products of animal origin not elsewhere specified or included,10,0.7412420412337435,0.0,369189.0,2.302585092994046,0
+Australia,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",5,0.0034777563423452175,0.0,212729.0,1.6094379124341003,0
+Austria,"Aircraft, spacecraft, and parts thereof",10,0.019677139501693346,0.0,1206488.0,2.302585092994046,0
+Austria,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",38,0.27221447180205793,0.0,7475104.0,3.6375861597263857,0
+Austria,Edible fruit and nuts; peel of citrus fruits or melons,7,0.03541119094546895,0.0,342535.0,1.9459101490553132,0
+Austria,Edible vegetables and certain roots and tubers,10,1.4964453612225248,0.1,300483.0,2.302585092994046,1
+Austria,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",27,0.26147110759311076,0.037037037037037035,2541325.0,3.295836866004329,0
+Austria,Live animals,6,0.6726870442723389,0.0,97458.0,1.791759469228055,0
+Austria,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",11,1.4183152952861198,0.0,540865.0,2.3978952727983707,0
+Austria,Meat and edible meat offal,27,0.2866243181991067,0.0,2332810.0,3.295836866004329,0
+Austria,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",13,0.8459066462818652,0.0,299707.0,2.5649493574615367,0
+Austria,Plastics and plastic products,12,-0.7754156941229216,0.0,1290122.0,2.4849066497880004,0
+Bahrain,"Aircraft, spacecraft, and parts thereof",6,-1.1036512965339933,0.0,67255.0,1.791759469228055,0
+Bangladesh,Edible fruit and nuts; peel of citrus fruits or melons,41,0.37315533729556966,0.0,1281502.0,3.713572066704308,0
+Bangladesh,Edible vegetables and certain roots and tubers,64,0.23851884196791162,0.015625,2052746.0,4.1588830833596715,0
+Bangladesh,"Fish and crustaceans, molluscs and other aquatic invertebrates",83,-0.12909674869359603,0.0,13072190.0,4.418840607796598,0
+Belgium,"Aircraft, spacecraft, and parts thereof",17,0.5065049378916975,0.0,2031850.0,2.833213344056216,0
+Belgium,Arms and ammunition; parts and accessoriesthereof,8,-0.8347066666980256,0.125,718389.0,2.0794415416798357,0
+Belgium,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",684,-0.18483921383474153,0.011695906432748537,119894222.0,6.52795791762255,0
+Belgium,Edible fruit and nuts; peel of citrus fruits or melons,150,0.1131379452307797,0.013333333333333334,10666837.0,5.0106352940962555,0
+Belgium,Edible vegetables and certain roots and tubers,608,-0.28703290228161293,0.004934210526315789,68499151.0,6.410174881966167,0
+Belgium,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",38,-0.01524647617676474,0.0,2940932.0,3.6375861597263857,0
+Belgium,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,9,-0.3513378210213049,0.0,1266750.0,2.1972245773362196,0
+Belgium,"Fish and crustaceans, molluscs and other aquatic invertebrates",39,0.8342061182828129,0.0,5701319.0,3.6635616461296463,0
+Belgium,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",10,-0.11388576505883474,0.0,195222.0,2.302585092994046,0
+Belgium,Live animals,41,0.025372363567086907,0.07317073170731707,7075433.0,3.713572066704308,0
+Belgium,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",202,-0.3489970818533453,0.039603960396039604,8198439.0,5.308267697401205,0
+Belgium,Meat and edible meat offal,373,-0.16231400769618587,0.00804289544235925,77985186.0,5.921578419643816,0
+Belgium,Organic chemicals,30,-0.16474625449480115,0.0,13337341.0,3.4011973816621555,0
+Belgium,Plastics and plastic products,32,-0.5499072066416268,0.0,884889.0,3.4657359027997265,0
+Belgium,Products of animal origin not elsewhere specified or included,51,-0.1911108162014475,0.0,9308639.0,3.9318256327243257,0
+Belgium,"Salt; sulphur; earths and stone; plastering material, lime and cement",18,0.560180016897085,0.05555555555555555,3873598.0,2.8903717578961645,0
+Belgium,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",23,-1.0700220999105783,0.0,5071041.0,3.1354942159291497,0
+Benin,Edible fruit and nuts; peel of citrus fruits or melons,11,0.5430276967798892,0.0,906157.0,2.3978952727983707,0
+Bolivia,Edible fruit and nuts; peel of citrus fruits or melons,6,0.5181465094497687,0.0,1329385.0,1.791759469228055,0
+Brazil,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",6,0.18095668682071367,0.16666666666666666,653312.0,1.791759469228055,0
+Brazil,Edible fruit and nuts; peel of citrus fruits or melons,63,-0.46434673222155864,0.0,59567917.0,4.143134726391533,0
+Brazil,Edible vegetables and certain roots and tubers,30,-0.47807091194781565,0.0,1556452.0,3.4011973816621555,0
+Brazil,"Fish and crustaceans, molluscs and other aquatic invertebrates",5,1.0969373644532978,0.0,60918.0,1.6094379124341003,0
+Brazil,Meat and edible meat offal,39,-0.21852271691561034,0.05128205128205128,49484332.0,3.6635616461296463,0
+Bulgaria,"Aircraft, spacecraft, and parts thereof",5,-0.0006776263275387606,0.0,31838.0,1.6094379124341003,0
+Bulgaria,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",94,0.16551342120286755,0.02127659574468085,4719027.0,4.543294782270004,0
+Bulgaria,Edible fruit and nuts; peel of citrus fruits or melons,12,1.0734124869717643,0.0,319600.0,2.4849066497880004,0
+Bulgaria,Edible vegetables and certain roots and tubers,31,0.4110814555536749,0.12903225806451613,253228.0,3.4339872044851463,0
+Bulgaria,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",7,-0.3390564140186076,0.0,125237.0,1.9459101490553132,0
+Bulgaria,"Fish and crustaceans, molluscs and other aquatic invertebrates",17,-0.8752792173144461,0.0,138564.0,2.833213344056216,0
+Bulgaria,Live animals,6,-0.9429367191688223,0.0,7940.0,1.791759469228055,0
+Bulgaria,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",9,-0.38588307389682047,0.0,986183.0,2.1972245773362196,0
+Bulgaria,Meat and edible meat offal,58,0.40656998089206103,0.0,802783.0,4.060443010546419,0
+Cameroon,Edible fruit and nuts; peel of citrus fruits or melons,6,-1.693835429267076,0.0,5601045.0,1.791759469228055,0
+Cameroon,Edible vegetables and certain roots and tubers,13,-0.998920645109735,0.0,111732.0,2.5649493574615367,0
+Canada,"Aircraft, spacecraft, and parts thereof",20,-0.08168561809082345,0.25,39302482.0,2.995732273553991,1
+Canada,Arms and ammunition; parts and accessoriesthereof,5,-0.4640037407991683,0.0,1672002.0,1.6094379124341003,0
+Canada,Edible fruit and nuts; peel of citrus fruits or melons,16,0.28914968245244377,0.0,1757789.0,2.772588722239781,0
+Canada,Edible vegetables and certain roots and tubers,62,-0.38715147400517097,0.03225806451612903,26535399.0,4.127134385045092,0
+Canada,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",13,0.16477624206595204,0.0,952555.0,2.5649493574615367,0
+Canada,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,8,0.2676582079471379,0.0,503302.0,2.0794415416798357,0
+Canada,"Fish and crustaceans, molluscs and other aquatic invertebrates",81,0.7533989222789753,0.024691358024691357,23256918.0,4.394449154672439,0
+Canada,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",7,0.6318698876178005,0.5714285714285714,276081707.0,1.9459101490553132,1
+Canada,Live animals,10,-0.17411856525537558,0.0,68791.0,2.302585092994046,0
+Canada,Plastics and plastic products,6,0.9948034096335961,0.0,46799.0,1.791759469228055,0
+Canada,Products of animal origin not elsewhere specified or included,18,1.6367757985814873,0.2222222222222222,1236329.0,2.8903717578961645,1
+Canada,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",6,0.31023855625889646,0.16666666666666666,244039.0,1.791759469228055,1
+Chile,Edible fruit and nuts; peel of citrus fruits or melons,56,0.1486243370654987,0.0,43343596.0,4.02535169073515,0
+Chile,"Fish and crustaceans, molluscs and other aquatic invertebrates",16,-0.9860337001109429,0.0,1230739.0,2.772588722239781,0
+Chile,Meat and edible meat offal,19,0.7136909302860337,0.05263157894736842,3638699.0,2.9444389791664403,0
+China,"Aircraft, spacecraft, and parts thereof",26,-0.8093520586923696,0.0,2251619.0,3.258096538021482,0
+China,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",22,-0.3853255435946837,0.2727272727272727,10572140.0,3.091042453358316,1
+China,Edible fruit and nuts; peel of citrus fruits or melons,74,0.4377141400817257,0.0,8729121.0,4.30406509320417,0
+China,Edible vegetables and certain roots and tubers,299,-0.04811996373832266,0.0033444816053511705,33707765.0,5.700443573390687,0
+China,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",54,-0.9389652438336545,0.0,14166783.0,3.9889840465642745,0
+China,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,8,-1.0227108557757074,0.125,1540968.0,2.0794415416798357,0
+China,"Fish and crustaceans, molluscs and other aquatic invertebrates",214,-0.7073420894561187,0.014018691588785047,88119727.0,5.365976015021851,0
+China,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",44,0.3799530720370562,0.045454545454545456,1018198.0,3.784189633918261,0
+China,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder",5,0.8695569813091943,0.2,699470.0,1.6094379124341003,1
+China,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",35,-1.0306257816694628,0.05714285714285714,3754301.0,3.5553480614894135,0
+China,Organic chemicals,23,0.42491651756922133,0.043478260869565216,25127231.0,3.1354942159291497,0
+China,Plastics and plastic products,30,-0.2463172570177087,0.0,3484333.0,3.4011973816621555,0
+China,Products of animal origin not elsewhere specified or included,73,-0.16688305676919807,0.0,9004697.0,4.290459441148391,0
+China,"Salt; sulphur; earths and stone; plastering material, lime and cement",9,1.0779346141953028,0.1111111111111111,321421.0,2.1972245773362196,1
+China,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",6,-0.6246695837382482,0.0,498971.0,1.791759469228055,0
+Colombia,Edible fruit and nuts; peel of citrus fruits or melons,70,-0.4289064407064182,0.04285714285714286,57950139.0,4.248495242049359,0
+Colombia,Edible vegetables and certain roots and tubers,9,0.06435690308494686,0.0,41483.0,2.1972245773362196,0
+Colombia,"Fish and crustaceans, molluscs and other aquatic invertebrates",15,0.40096390895896333,0.0,574750.0,2.70805020110221,0
+Colombia,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",96,-0.1645990631385557,0.0,20462092.0,4.564348191467836,0
+Confidential Country,Products of animal origin not elsewhere specified or included,16,-0.36751021988280697,0.0,9182373.0,2.772588722239781,0
+Costa Rica,Edible fruit and nuts; peel of citrus fruits or melons,56,-1.1562726653116737,0.08928571428571429,64461258.0,4.02535169073515,0
+Costa Rica,Edible vegetables and certain roots and tubers,33,-0.5690130224595453,0.0,2215356.0,3.4965075614664802,0
+Costa Rica,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",15,0.05860247884058572,0.0,137193.0,2.70805020110221,0
+Croatia,Edible fruit and nuts; peel of citrus fruits or melons,7,-0.5339636205178533,0.0,441811.0,1.9459101490553132,0
+Croatia,Edible vegetables and certain roots and tubers,9,3.861676367720177,0.8888888888888888,223131.0,2.1972245773362196,1
+Croatia,Live animals,5,-0.7965276027433371,0.0,31750.0,1.6094379124341003,0
+Croatia,Meat and edible meat offal,8,1.2175452178313686,0.0,43699.0,2.0794415416798357,0
+Cyprus,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",45,0.45426781820516837,0.06666666666666667,42826338.0,3.8066624897703196,0
+Cyprus,Edible fruit and nuts; peel of citrus fruits or melons,13,-1.0704049867032421,0.0,1008498.0,2.5649493574615367,0
+Cyprus,Edible vegetables and certain roots and tubers,41,-0.274936310773904,0.0,3789938.0,3.713572066704308,0
+Czechia,"Aircraft, spacecraft, and parts thereof",15,0.059959390180436875,0.0,554583.0,2.70805020110221,0
+Czechia,Arms and ammunition; parts and accessoriesthereof,8,-0.6785370154524291,0.0,1173466.0,2.0794415416798357,0
+Czechia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",30,0.5446959284693602,0.0,1635235.0,3.4011973816621555,0
+Czechia,Edible vegetables and certain roots and tubers,10,0.10552776207007886,0.0,199659.0,2.302585092994046,0
+Czechia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",30,0.139568191408174,0.0,629811.0,3.4011973816621555,0
+Czechia,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,6,0.37612173856980485,0.0,31478.0,1.791759469228055,0
+Czechia,"Fish and crustaceans, molluscs and other aquatic invertebrates",12,2.1722818344307373,0.16666666666666666,627221.0,2.4849066497880004,1
+Czechia,Live animals,13,0.19449869439550657,0.0,150252.0,2.5649493574615367,0
+Czechia,Plastics and plastic products,8,1.420839593545641,0.0,72155.0,2.0794415416798357,0
+Czechia,Products of animal origin not elsewhere specified or included,10,0.14426365142854453,0.0,481009.0,2.302585092994046,0
+Denmark,"Aircraft, spacecraft, and parts thereof",9,0.28708352512563345,0.0,806963.0,2.1972245773362196,0
+Denmark,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",163,-0.11168566277491723,0.06748466257668712,77266774.0,5.093750200806762,0
+Denmark,Edible fruit and nuts; peel of citrus fruits or melons,10,0.9350788460479817,0.5,90548.0,2.302585092994046,1
+Denmark,Edible vegetables and certain roots and tubers,11,-0.8966658127255229,0.2727272727272727,1693578.0,2.3978952727983707,1
+Denmark,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",25,0.4174148102962135,0.0,3030589.0,3.2188758248682006,0
+Denmark,"Fish and crustaceans, molluscs and other aquatic invertebrates",111,0.20944839152287084,0.0,11077965.0,4.709530201312334,0
+Denmark,Live animals,18,-0.07861315097066868,0.0,1233952.0,2.8903717578961645,0
+Denmark,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",57,0.41738693915155933,0.10526315789473684,2918926.0,4.04305126783455,0
+Denmark,Meat and edible meat offal,110,-0.23316317753262122,0.09090909090909091,99244829.0,4.700480365792417,0
+Denmark,Plastics and plastic products,9,0.5866581505157034,0.0,197359.0,2.1972245773362196,0
+Denmark,Products of animal origin not elsewhere specified or included,25,-0.25048718083823046,0.0,999067.0,3.2188758248682006,0
+Denmark,"Salt; sulphur; earths and stone; plastering material, lime and cement",15,-0.20962978858235826,0.06666666666666667,5645796.0,2.70805020110221,0
+Denmark,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",5,-0.07223799453611117,0.0,6006187.0,1.6094379124341003,0
+Dominican Rep,Edible fruit and nuts; peel of citrus fruits or melons,41,-0.5774416911405879,0.0,22076763.0,3.713572066704308,0
+Dominican Rep,Edible vegetables and certain roots and tubers,27,0.07030892976167998,0.0,557111.0,3.295836866004329,0
+Dominican Rep,"Fish and crustaceans, molluscs and other aquatic invertebrates",10,0.2509335871841477,0.0,21480.0,2.302585092994046,0
+Ecuador,Edible fruit and nuts; peel of citrus fruits or melons,30,-1.0213496226798615,0.06666666666666667,22607944.0,3.4011973816621555,0
+Ecuador,Edible vegetables and certain roots and tubers,22,-0.4494874006665832,0.0,1324349.0,3.091042453358316,0
+Ecuador,"Fish and crustaceans, molluscs and other aquatic invertebrates",24,-0.47296159529217247,0.0,19833698.0,3.1780538303479458,0
+Ecuador,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",40,0.737027723959911,0.025,2071211.0,3.6888794541139363,0
+Egypt,Edible fruit and nuts; peel of citrus fruits or melons,92,-0.3873310594850788,0.043478260869565216,57009406.0,4.5217885770490405,0
+Egypt,Edible vegetables and certain roots and tubers,189,-0.24732091521818858,0.015873015873015872,32705286.0,5.241747015059643,0
+Estonia,"Aircraft, spacecraft, and parts thereof",5,-0.36256750866949705,0.0,932433.0,1.6094379124341003,0
+Estonia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",14,0.15202868737751446,0.0,188542.0,2.6390573296152584,0
+Estonia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",6,0.5975901958762174,0.0,110220.0,1.791759469228055,0
+Ethiopia,Edible vegetables and certain roots and tubers,12,0.3781565034040033,0.0,209974.0,2.4849066497880004,0
+Ethiopia,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",12,-0.15663901390119891,0.0,3866815.0,2.4849066497880004,0
+Falkland Islands,Meat and edible meat offal,9,-0.5439801112649656,0.0,483240.0,2.1972245773362196,0
+Faroe Islands,"Fish and crustaceans, molluscs and other aquatic invertebrates",108,-0.37063707995869727,0.046296296296296294,83026531.0,4.68213122712422,0
+Fiji,"Fish and crustaceans, molluscs and other aquatic invertebrates",8,0.5157791479605318,0.0,38162.0,2.0794415416798357,0
+Finland,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",5,0.3990631698805955,0.0,1105242.0,1.6094379124341003,0
+Finland,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",17,-0.4524218578021712,0.058823529411764705,207225.0,2.833213344056216,0
+France,"Aircraft, spacecraft, and parts thereof",46,0.1828006136855242,0.043478260869565216,14280231.0,3.828641396489095,0
+France,Arms and ammunition; parts and accessoriesthereof,13,-0.09261824638028908,0.0,14735580.0,2.5649493574615367,0
+France,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",1072,0.12005473119730853,0.021455223880597014,197998791.0,6.977281341630747,0
+France,Edible fruit and nuts; peel of citrus fruits or melons,454,0.1359674883904295,0.00881057268722467,51196701.0,6.118097198041348,0
+France,Edible vegetables and certain roots and tubers,983,0.014751916502561116,0.024415055951169887,90676925.0,6.890609120147166,0
+France,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",54,0.10319310518137469,0.1111111111111111,10083909.0,3.9889840465642745,0
+France,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,23,0.6099814985906269,0.0,3922226.0,3.1354942159291497,0
+France,"Fish and crustaceans, molluscs and other aquatic invertebrates",311,0.3670131953053987,0.02572347266881029,18688111.0,5.739792912179234,0
+France,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",12,0.15757216419448444,0.08333333333333333,32517863.0,2.4849066497880004,0
+France,Live animals,79,0.29309012936642875,0.0759493670886076,34270177.0,4.3694478524670215,0
+France,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",281,-0.01487130004565191,0.021352313167259787,15116543.0,5.638354669333745,0
+France,Meat and edible meat offal,711,0.20657043405625966,0.01828410689170183,75570490.0,6.566672429803241,0
+France,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder",5,0.4615249394326428,0.0,204437.0,1.6094379124341003,0
+France,Organic chemicals,21,0.3241136928784619,0.0,334128.0,3.044522437723423,0
+France,Plastics and plastic products,42,-0.16443594428207847,0.047619047619047616,2649346.0,3.7376696182833684,0
+France,Products of animal origin not elsewhere specified or included,73,-0.11993100619166448,0.0410958904109589,2632013.0,4.290459441148391,0
+France,"Salt; sulphur; earths and stone; plastering material, lime and cement",16,0.5489336228252831,0.0,399435.0,2.772588722239781,0
+France,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",15,-0.08867827417041138,0.06666666666666667,6916354.0,2.70805020110221,0
+Gambia,Edible vegetables and certain roots and tubers,8,0.34064058133370523,0.0,761448.0,2.0794415416798357,0
+Germany,"Aircraft, spacecraft, and parts thereof",41,0.39309568788583155,0.0,10930466.0,3.713572066704308,0
+Germany,Arms and ammunition; parts and accessoriesthereof,19,0.20881591962982243,0.0,37479541.0,2.9444389791664403,0
+Germany,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",722,-0.32195626777005515,0.024930747922437674,108632892.0,6.582025138892826,0
+Germany,Edible fruit and nuts; peel of citrus fruits or melons,341,0.1165363646190666,0.011730205278592375,41753298.0,5.831882477283517,0
+Germany,Edible vegetables and certain roots and tubers,545,0.19169090279749557,0.009174311926605505,54394414.0,6.300785794663244,0
+Germany,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",90,0.13498113322470956,0.08888888888888889,52703521.0,4.499809670330265,0
+Germany,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,14,0.06221033671637872,0.0,2577703.0,2.6390573296152584,0
+Germany,"Fish and crustaceans, molluscs and other aquatic invertebrates",74,0.27518010510519614,0.04054054054054054,4426306.0,4.30406509320417,0
+Germany,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",11,0.7100942984242131,0.2727272727272727,92080923.0,2.3978952727983707,1
+Germany,Live animals,42,0.5092497205156411,0.0,4226351.0,3.7376696182833684,0
+Germany,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",154,0.011496061751441463,0.03896103896103896,5791662.0,5.0369526024136295,0
+Germany,Meat and edible meat offal,480,-0.35164259859393915,0.0125,103161506.0,6.173786103901937,0
+Germany,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",26,0.059114311120081045,0.0,1104165.0,3.258096538021482,0
+Germany,Organic chemicals,51,0.25837208841062964,0.058823529411764705,3140076.0,3.9318256327243257,0
+Germany,Plastics and plastic products,39,0.04557393697676691,0.02564102564102564,1156196.0,3.6635616461296463,0
+Germany,Products of animal origin not elsewhere specified or included,123,0.058369280796250936,0.0,6276284.0,4.812184355372417,0
+Germany,"Salt; sulphur; earths and stone; plastering material, lime and cement",39,-0.137463594262181,0.02564102564102564,18056800.0,3.6635616461296463,0
+Germany,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",67,0.4846752530832936,0.029850746268656716,76755490.0,4.204692619390966,0
+Ghana,Edible fruit and nuts; peel of citrus fruits or melons,42,0.1982893684614267,0.023809523809523808,16028673.0,3.7376696182833684,0
+Ghana,Edible vegetables and certain roots and tubers,82,-0.6124557759793745,0.06097560975609756,6416653.0,4.406719247264253,0
+Ghana,"Fish and crustaceans, molluscs and other aquatic invertebrates",10,-0.15047009846278092,0.0,31050.0,2.302585092994046,0
+Greece,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",270,0.11631540550322414,0.003703703703703704,57681848.0,5.598421958998375,0
+Greece,Edible fruit and nuts; peel of citrus fruits or melons,69,0.2757487646402409,0.0,13895070.0,4.23410650459726,0
+Greece,Edible vegetables and certain roots and tubers,41,0.28514415592380066,0.024390243902439025,1236992.0,3.713572066704308,0
+Greece,"Fish and crustaceans, molluscs and other aquatic invertebrates",52,0.41080649347746756,0.0,3334171.0,3.9512437185814275,0
+Greece,Live animals,5,-0.7200078188004109,0.0,13080.0,1.6094379124341003,0
+Greece,Meat and edible meat offal,51,0.44342871649401944,0.0196078431372549,649435.0,3.9318256327243257,0
+Greece,Products of animal origin not elsewhere specified or included,7,0.6330011771720032,0.0,34327.0,1.9459101490553132,0
+Guatemala,Edible fruit and nuts; peel of citrus fruits or melons,16,-0.7843103286285613,0.0625,13934820.0,2.772588722239781,0
+Guatemala,Edible vegetables and certain roots and tubers,17,0.5278957638239655,0.0,1281057.0,2.833213344056216,0
+Honduras,Edible fruit and nuts; peel of citrus fruits or melons,10,0.11022183701425252,0.0,1544462.0,2.302585092994046,0
+Honduras,Edible vegetables and certain roots and tubers,14,-0.28467137780632995,0.0,5584910.0,2.6390573296152584,0
+Honduras,"Fish and crustaceans, molluscs and other aquatic invertebrates",9,0.1410935087423113,0.0,13861782.0,2.1972245773362196,0
+Hong Kong,"Aircraft, spacecraft, and parts thereof",12,-0.4000206860216354,0.0,396243.0,2.4849066497880004,0
+Hong Kong,Edible fruit and nuts; peel of citrus fruits or melons,10,0.4438041547042338,0.0,73411.0,2.302585092994046,0
+Hong Kong,Edible vegetables and certain roots and tubers,49,1.1045700121945567,0.0,437234.0,3.8918202981106265,0
+Hong Kong,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",31,-0.4771959437679085,0.0,1518829.0,3.4339872044851463,0
+Hong Kong,"Fish and crustaceans, molluscs and other aquatic invertebrates",14,-0.30385148365205594,0.0,331793.0,2.6390573296152584,0
+Hungary,"Aircraft, spacecraft, and parts thereof",8,-0.6039285622813115,0.0,56129.0,2.0794415416798357,0
+Hungary,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",53,0.3173495349002673,0.018867924528301886,2833962.0,3.970291913552122,0
+Hungary,Edible fruit and nuts; peel of citrus fruits or melons,7,0.9538902411146841,0.0,47106.0,1.9459101490553132,0
+Hungary,Edible vegetables and certain roots and tubers,61,0.5867481473345697,0.11475409836065574,9287841.0,4.110873864173311,0
+Hungary,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",23,-0.3193530259008586,0.0,6887510.0,3.1354942159291497,0
+Hungary,"Fish and crustaceans, molluscs and other aquatic invertebrates",11,-0.13093789119258625,0.0,738637.0,2.3978952727983707,0
+Hungary,Live animals,16,-0.29945632426874236,0.0,174360.0,2.772588722239781,0
+Hungary,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",7,-0.4420018938766534,0.0,95001.0,1.9459101490553132,0
+Hungary,Meat and edible meat offal,121,-0.39813430984527926,0.05785123966942149,7077291.0,4.795790545596741,0
+Iceland,"Fish and crustaceans, molluscs and other aquatic invertebrates",155,-0.39487621866287687,0.07096774193548387,88984290.0,5.043425116919247,0
+Iceland,Meat and edible meat offal,8,-0.6137271689339393,0.0,1457109.0,2.0794415416798357,0
+Iceland,Products of animal origin not elsewhere specified or included,7,0.18046757976490996,0.0,525028.0,1.9459101490553132,0
+India,"Aircraft, spacecraft, and parts thereof",11,-0.399112256072287,0.0,522088.0,2.3978952727983707,0
+India,Edible fruit and nuts; peel of citrus fruits or melons,116,0.0036957437394555055,0.008620689655172414,8636029.0,4.7535901911063645,0
+India,Edible vegetables and certain roots and tubers,316,-0.2652428184794172,0.0031645569620253164,31263647.0,5.755742213586912,0
+India,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,0.3793761223079138,0.0,58352.0,1.6094379124341003,0
+India,"Fish and crustaceans, molluscs and other aquatic invertebrates",150,-0.4384827838568238,0.0,26916786.0,5.0106352940962555,0
+India,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",26,0.4171340358430361,0.0,344663.0,3.258096538021482,0
+India,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder",7,-0.581323112287907,0.0,1506170.0,1.9459101490553132,0
+India,Organic chemicals,11,0.2939950764877958,0.0,313533.0,2.3978952727983707,0
+India,Products of animal origin not elsewhere specified or included,6,0.651723511758548,0.0,391283.0,1.791759469228055,0
+India,"Salt; sulphur; earths and stone; plastering material, lime and cement",6,0.5831653596316807,0.0,896413.0,1.791759469228055,0
+Indonesia,"Aircraft, spacecraft, and parts thereof",8,-0.23736801057391396,0.0,77013.0,2.0794415416798357,0
+Indonesia,Edible fruit and nuts; peel of citrus fruits or melons,16,-0.007807208232075535,0.0,2037746.0,2.772588722239781,0
+Indonesia,Edible vegetables and certain roots and tubers,7,1.1450572065397437,0.2857142857142857,157206.0,1.9459101490553132,1
+Indonesia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,-0.13334563517108336,0.0,112720.0,1.6094379124341003,0
+Indonesia,"Fish and crustaceans, molluscs and other aquatic invertebrates",90,0.06043964740168881,0.0,5464182.0,4.499809670330265,0
+Indonesia,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",12,0.6111942839957846,0.0,100335.0,2.4849066497880004,0
+Iran,Edible fruit and nuts; peel of citrus fruits or melons,33,-0.5540443775288342,0.09090909090909091,367795.0,3.4965075614664802,0
+Iran,Edible vegetables and certain roots and tubers,27,-0.4860927309960714,0.0,85428.0,3.295836866004329,0
+Iraq,Edible fruit and nuts; peel of citrus fruits or melons,7,-0.2459936480237672,0.0,370755.0,1.9459101490553132,0
+Ireland,"Aircraft, spacecraft, and parts thereof",16,-0.04295336811278736,0.0,549859.0,2.772588722239781,0
+Ireland,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",763,-0.22046229884931662,0.11140235910878113,284031890.0,6.637258031284457,0
+Ireland,Edible fruit and nuts; peel of citrus fruits or melons,234,0.3310465962039005,0.16666666666666666,15002480.0,5.455321115357702,0
+Ireland,Edible vegetables and certain roots and tubers,357,0.1756438084163678,0.10084033613445378,51840505.0,5.877735781779639,0
+Ireland,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",37,-0.3608856350526074,0.02702702702702703,2075259.0,3.6109179126442243,0
+Ireland,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,9,0.16084550519932894,0.0,211638.0,2.1972245773362196,0
+Ireland,"Fish and crustaceans, molluscs and other aquatic invertebrates",468,-0.06845003682874615,0.1346153846153846,9417167.0,6.148468295917647,0
+Ireland,Live animals,90,-0.7275377251532433,0.14444444444444443,226445144.0,4.499809670330265,0
+Ireland,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",101,-0.007543945119042,0.09900990099009901,6302545.0,4.61512051684126,0
+Ireland,Meat and edible meat offal,959,0.003393027612853882,0.08446298227320125,456044956.0,6.8658910748834385,0
+Ireland,Organic chemicals,8,0.2897479570370344,0.0,61482.0,2.0794415416798357,0
+Ireland,Plastics and plastic products,10,-0.5080549712885367,0.0,83079.0,2.302585092994046,0
+Ireland,Products of animal origin not elsewhere specified or included,84,-0.3590187260936939,0.05952380952380952,10204445.0,4.430816798843313,0
+Ireland,"Salt; sulphur; earths and stone; plastering material, lime and cement",53,-0.5335244624679389,0.0,37942637.0,3.970291913552122,0
+Ireland,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",9,-0.9611571144246476,0.1111111111111111,7003542.0,2.1972245773362196,0
+Israel,"Aircraft, spacecraft, and parts thereof",7,-0.33054103096122006,0.14285714285714285,1681378.0,1.9459101490553132,0
+Israel,Edible fruit and nuts; peel of citrus fruits or melons,39,0.34355519373515747,0.0,33390450.0,3.6635616461296463,0
+Israel,Edible vegetables and certain roots and tubers,33,-0.04009823233496836,0.030303030303030304,9115694.0,3.4965075614664802,0
+Israel,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",12,-0.16174858540288486,0.0,554429.0,2.4849066497880004,0
+Israel,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",25,0.6755541870136165,0.04,1187186.0,3.2188758248682006,0
+Israel,Organic chemicals,6,0.6366266425457551,0.0,277159.0,1.791759469228055,0
+Italy,"Aircraft, spacecraft, and parts thereof",29,-0.04059614156849469,0.0,3003244.0,3.367295829986474,0
+Italy,Arms and ammunition; parts and accessoriesthereof,13,0.5083962078836164,0.07692307692307693,33707081.0,2.5649493574615367,0
+Italy,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",469,0.5493974791276519,0.031982942430703626,117771489.0,6.150602768446279,0
+Italy,Edible fruit and nuts; peel of citrus fruits or melons,224,0.12653859254647773,0.008928571428571428,38433458.0,5.4116460518550396,0
+Italy,Edible vegetables and certain roots and tubers,514,0.3853400896640738,0.042801556420233464,33386082.0,6.2422232654551655,0
+Italy,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",47,0.021069684182362672,0.0425531914893617,5463184.0,3.8501476017100584,0
+Italy,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,9,0.4498695635395469,0.0,250053.0,2.1972245773362196,0
+Italy,"Fish and crustaceans, molluscs and other aquatic invertebrates",43,1.193422929440051,0.0,541479.0,3.7612001156935624,0
+Italy,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",9,-0.4624760540791864,0.0,919980.0,2.1972245773362196,0
+Italy,Live animals,12,0.6510147640198154,0.0,414360.0,2.4849066497880004,0
+Italy,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",142,-0.38490884625727756,0.0,12994518.0,4.955827057601261,0
+Italy,Meat and edible meat offal,365,0.4641282773715484,0.019178082191780823,39437719.0,5.8998973535824915,0
+Italy,Plastics and plastic products,19,-0.14436510225882132,0.05263157894736842,259524.0,2.9444389791664403,0
+Italy,Products of animal origin not elsewhere specified or included,20,-0.014623505183836243,0.15,428075.0,2.995732273553991,0
+Italy,"Salt; sulphur; earths and stone; plastering material, lime and cement",5,0.5180553247736698,0.2,46714.0,1.6094379124341003,1
+Italy,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",20,-0.32308480925299743,0.0,13375048.0,2.995732273553991,0
+Ivory Coast,Edible fruit and nuts; peel of citrus fruits or melons,35,-0.7136086340075961,0.0,8631447.0,3.5553480614894135,0
+Ivory Coast,Edible vegetables and certain roots and tubers,6,-1.1495891382969885,0.16666666666666666,42340.0,1.791759469228055,0
+Jamaica,Edible fruit and nuts; peel of citrus fruits or melons,7,-0.06215500007989188,0.0,45210.0,1.9459101490553132,0
+Jamaica,Edible vegetables and certain roots and tubers,39,0.2992152958662176,0.0,331941.0,3.6635616461296463,0
+Japan,"Aircraft, spacecraft, and parts thereof",9,1.0222449093006842,0.0,619280.0,2.1972245773362196,0
+Japan,Edible fruit and nuts; peel of citrus fruits or melons,11,2.150124656015583,0.18181818181818182,59208.0,2.3978952727983707,1
+Japan,Edible vegetables and certain roots and tubers,19,2.937183801368992,0.631578947368421,118487.0,2.9444389791664403,1
+Japan,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",16,0.4765059210440624,0.0,3760405.0,2.772588722239781,0
+Japan,"Fish and crustaceans, molluscs and other aquatic invertebrates",26,1.0736531852023505,0.038461538461538464,1459255.0,3.258096538021482,0
+Japan,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",5,0.4972200847625551,0.0,25565.0,1.6094379124341003,0
+Japan,Meat and edible meat offal,6,3.002718563271626,0.8333333333333334,1880949.0,1.791759469228055,1
+Japan,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",5,0.34038282439137635,0.0,170803.0,1.6094379124341003,0
+Japan,Plastics and plastic products,9,-0.1437414060565846,0.0,2000316.0,2.1972245773362196,0
+Japan,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",5,-0.6982571176417387,0.0,1259441.0,1.6094379124341003,0
+Jordan,Edible fruit and nuts; peel of citrus fruits or melons,14,0.5655399341950373,0.0,2119764.0,2.6390573296152584,0
+Jordan,Edible vegetables and certain roots and tubers,24,0.2754460460172801,0.0,1141712.0,3.1780538303479458,0
+Kenya,Edible fruit and nuts; peel of citrus fruits or melons,35,0.1635862286319604,0.0,4029416.0,3.5553480614894135,0
+Kenya,Edible vegetables and certain roots and tubers,137,0.2592914827707193,0.0,36393343.0,4.919980925828125,0
+Kenya,"Fish and crustaceans, molluscs and other aquatic invertebrates",6,0.16601478965373173,0.0,55505.0,1.791759469228055,0
+Kenya,Live animals,9,0.5282624012019741,0.0,213560.0,2.1972245773362196,0
+Kenya,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",81,0.15249783979494685,0.024691358024691357,44727537.0,4.394449154672439,0
+Latvia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",37,0.1372020021582279,0.02702702702702703,526177.0,3.6109179126442243,0
+Latvia,"Fish and crustaceans, molluscs and other aquatic invertebrates",32,-0.8114201868201748,0.0,1228507.0,3.4657359027997265,0
+Latvia,Meat and edible meat offal,27,-0.6049764834310047,0.0,1479953.0,3.295836866004329,0
+Latvia,Products of animal origin not elsewhere specified or included,11,0.17523983882085714,0.0,216039.0,2.3978952727983707,0
+Latvia,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",7,-0.1166802179432127,0.0,2533238.0,1.9459101490553132,0
+Lebanon,Edible fruit and nuts; peel of citrus fruits or melons,12,0.4022124922761458,0.16666666666666666,197107.0,2.4849066497880004,1
+Lebanon,Edible vegetables and certain roots and tubers,43,0.07309819648433274,0.0,317952.0,3.7612001156935624,0
+Lithuania,"Aircraft, spacecraft, and parts thereof",8,0.9100399627667805,0.0,246100.0,2.0794415416798357,0
+Lithuania,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",106,-0.05433212132943769,0.0,3964931.0,4.663439094112067,0
+Lithuania,Edible fruit and nuts; peel of citrus fruits or melons,6,-0.511398135709913,0.0,27145.0,1.791759469228055,0
+Lithuania,Edible vegetables and certain roots and tubers,37,0.35192092208098263,0.10810810810810811,531184.0,3.6109179126442243,0
+Lithuania,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",21,-0.0531143232565171,0.0,571967.0,3.044522437723423,0
+Lithuania,"Fish and crustaceans, molluscs and other aquatic invertebrates",51,-0.2760738840390469,0.0,1584231.0,3.9318256327243257,0
+Lithuania,Meat and edible meat offal,74,0.3265733537294252,0.0,1958480.0,4.30406509320417,0
+Lithuania,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",8,0.8078187167289096,0.0,305136.0,2.0794415416798357,0
+Luxembourg,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",25,-0.3414588709535979,0.0,759823.0,3.2188758248682006,0
+Luxembourg,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",11,0.41890447360683003,0.0,181700.0,2.3978952727983707,0
+Madagascar,"Fish and crustaceans, molluscs and other aquatic invertebrates",5,0.002147644734043641,0.0,213782.0,1.6094379124341003,0
+Malaysia,Edible fruit and nuts; peel of citrus fruits or melons,17,0.3728018158376315,0.0,2681631.0,2.833213344056216,0
+Malaysia,Edible vegetables and certain roots and tubers,9,-0.07297881331869532,0.0,43153.0,2.1972245773362196,0
+Malaysia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",9,-0.07527068104149776,0.0,155696.0,2.1972245773362196,0
+Maldives,"Fish and crustaceans, molluscs and other aquatic invertebrates",11,0.1538835298481056,0.0,114980.0,2.3978952727983707,0
+Malta,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",6,0.4012861389834923,0.0,26176.0,1.791759469228055,0
+Mauritius,"Fish and crustaceans, molluscs and other aquatic invertebrates",5,-0.17963467269939495,0.0,116881.0,1.6094379124341003,0
+Mexico,"Aircraft, spacecraft, and parts thereof",7,-0.1978331169077076,0.0,62990.0,1.9459101490553132,0
+Mexico,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",8,-0.7398617419181174,0.0,1736691.0,2.0794415416798357,0
+Mexico,Edible fruit and nuts; peel of citrus fruits or melons,25,0.29368049980225097,0.0,3518349.0,3.2188758248682006,0
+Mexico,Edible vegetables and certain roots and tubers,28,0.18785949746809885,0.0,5148729.0,3.332204510175204,0
+Mexico,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",18,-0.6404878076960467,0.0,2930679.0,2.8903717578961645,0
+Mexico,"Fish and crustaceans, molluscs and other aquatic invertebrates",8,-0.5010249707130479,0.0,258118.0,2.0794415416798357,0
+Mexico,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",8,-0.857739247523165,0.0,1572571.0,2.0794415416798357,0
+Moldova,Edible fruit and nuts; peel of citrus fruits or melons,12,-0.46436135688678787,0.0,693210.0,2.4849066497880004,0
+Morocco,"Aircraft, spacecraft, and parts thereof",8,0.12957544620236294,0.0,110797.0,2.0794415416798357,0
+Morocco,Edible fruit and nuts; peel of citrus fruits or melons,64,-0.25575678010167907,0.015625,41660592.0,4.1588830833596715,0
+Morocco,Edible vegetables and certain roots and tubers,180,-0.3019013599981471,0.022222222222222223,79126780.0,5.19295685089021,0
+Morocco,"Fish and crustaceans, molluscs and other aquatic invertebrates",9,-0.3712252668150491,0.0,426134.0,2.1972245773362196,0
+Morocco,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",9,-0.3371476015694983,0.0,1687618.0,2.1972245773362196,0
+Myanmar,Edible vegetables and certain roots and tubers,17,-0.6222052689755815,0.0,1889771.0,2.833213344056216,0
+Myanmar,"Fish and crustaceans, molluscs and other aquatic invertebrates",68,-0.7730655958549432,0.0,8988609.0,4.219507705176107,0
+Namibia,Edible fruit and nuts; peel of citrus fruits or melons,5,-0.2754017392039685,0.0,7768088.0,1.6094379124341003,0
+Netherlands,"Aircraft, spacecraft, and parts thereof",40,-0.10060992986890856,0.1,3760631.0,3.6888794541139363,0
+Netherlands,Arms and ammunition; parts and accessoriesthereof,6,-0.08545217332853272,0.16666666666666666,23951955.0,1.791759469228055,0
+Netherlands,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",853,-0.04391093655913886,0.012895662368112544,118927526.0,6.748759547491679,0
+Netherlands,Edible fruit and nuts; peel of citrus fruits or melons,754,-0.0369663170991643,0.011936339522546418,61642060.0,6.625392368007956,0
+Netherlands,Edible vegetables and certain roots and tubers,1239,0.024379565099775943,0.046811945117029866,287330837.0,7.122059881629142,0
+Netherlands,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",70,-0.3306633472420671,0.014285714285714285,10963845.0,4.248495242049359,0
+Netherlands,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,8,-0.46505098382043947,0.0,1185535.0,2.0794415416798357,0
+Netherlands,"Fish and crustaceans, molluscs and other aquatic invertebrates",406,-0.01319803962710229,0.017241379310344827,41723349.0,6.0063531596017325,0
+Netherlands,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",22,-0.0010155772265872034,0.13636363636363635,49253661.0,3.091042453358316,0
+Netherlands,Live animals,97,-0.36325531604931355,0.0,8803511.0,4.574710978503383,0
+Netherlands,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",1130,-0.06889885887307627,0.023008849557522124,303930172.0,7.029972911706386,0
+Netherlands,Meat and edible meat offal,821,-0.22292326523654016,0.010962241169305725,364810329.0,6.710523109452428,0
+Netherlands,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder",15,-0.0758820431606477,0.0,423396.0,2.70805020110221,0
+Netherlands,Organic chemicals,31,-0.6314372102161333,0.03225806451612903,27317258.0,3.4339872044851463,0
+Netherlands,Plastics and plastic products,60,-0.22915363512154324,0.0,3904438.0,4.0943445622221,0
+Netherlands,Products of animal origin not elsewhere specified or included,104,-0.3358790155191395,0.019230769230769232,10524572.0,4.6443908991413725,0
+Netherlands,"Salt; sulphur; earths and stone; plastering material, lime and cement",24,0.12397901744519062,0.0,2515468.0,3.1780538303479458,0
+Netherlands,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",46,-0.4028654969563765,0.0,10093006.0,3.828641396489095,0
+New Zealand,"Aircraft, spacecraft, and parts thereof",5,0.26218001213844744,0.0,46621.0,1.6094379124341003,0
+New Zealand,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",32,1.241615999205226,0.09375,21247883.0,3.4657359027997265,0
+New Zealand,Edible fruit and nuts; peel of citrus fruits or melons,10,0.4505873037414817,0.2,9975552.0,2.302585092994046,1
+New Zealand,Edible vegetables and certain roots and tubers,6,-0.17616488809086572,0.0,2206730.0,1.791759469228055,0
+New Zealand,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,0.08067245031296319,0.0,42081.0,1.6094379124341003,0
+New Zealand,"Fish and crustaceans, molluscs and other aquatic invertebrates",23,0.13516883452650275,0.0,1411713.0,3.1354942159291497,0
+New Zealand,Meat and edible meat offal,144,0.35317030085144857,0.0,70523317.0,4.969813299576001,0
+New Zealand,Products of animal origin not elsewhere specified or included,12,0.5998064372966777,0.08333333333333333,549564.0,2.4849066497880004,0
+Nicaragua,Edible fruit and nuts; peel of citrus fruits or melons,6,-1.3158281611596923,0.0,8617451.0,1.791759469228055,0
+Nigeria,Edible fruit and nuts; peel of citrus fruits or melons,20,-1.1714045438009426,0.5,460841.0,2.995732273553991,1
+Nigeria,Edible vegetables and certain roots and tubers,42,-2.0102136935620982,0.42857142857142855,217156.0,3.7376696182833684,1
+Nigeria,"Fish and crustaceans, molluscs and other aquatic invertebrates",12,1.691701797922632,0.08333333333333333,853205.0,2.4849066497880004,1
+Nigeria,Products of animal origin not elsewhere specified or included,5,-1.034230756358662,0.2,19218.0,1.6094379124341003,0
+North Macedonia,Live animals,5,-0.4610587397941456,0.0,29099.0,1.6094379124341003,0
+Norway,"Aircraft, spacecraft, and parts thereof",13,0.9126284664396697,0.15384615384615385,1045916.0,2.5649493574615367,1
+Norway,Arms and ammunition; parts and accessoriesthereof,7,0.1594704738237735,0.0,8884388.0,1.9459101490553132,0
+Norway,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",5,-0.023506294328038524,0.0,244187.0,1.6094379124341003,0
+Norway,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",23,-0.05530878933880761,0.0,1923618.0,3.1354942159291497,0
+Norway,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,9,0.5701408729954944,0.0,221548.0,2.1972245773362196,0
+Norway,"Fish and crustaceans, molluscs and other aquatic invertebrates",305,-0.05388634042303074,0.019672131147540985,194361697.0,5.720311776607412,0
+Norway,Plastics and plastic products,5,-0.005040387543631309,0.8,33566800.0,1.6094379124341003,1
+Norway,Products of animal origin not elsewhere specified or included,10,0.541901968647057,0.0,669015.0,2.302585092994046,0
+Oman,Edible vegetables and certain roots and tubers,7,-0.8959452778721991,0.0,148446.0,1.9459101490553132,0
+Oman,"Fish and crustaceans, molluscs and other aquatic invertebrates",12,-1.144546638252175,0.0,87558.0,2.4849066497880004,0
+Pakistan,Edible fruit and nuts; peel of citrus fruits or melons,52,0.07594235317228565,0.0,10458531.0,3.9512437185814275,0
+Pakistan,Edible vegetables and certain roots and tubers,72,0.1447438766346573,0.0,1214346.0,4.276666119016055,0
+Pakistan,"Fish and crustaceans, molluscs and other aquatic invertebrates",37,-1.0491595345166849,0.0,1020971.0,3.6109179126442243,0
+Pakistan,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder",6,-0.2209927013193287,0.0,35096.0,1.791759469228055,0
+Pakistan,"Salt; sulphur; earths and stone; plastering material, lime and cement",6,-0.23743636825060796,0.0,464343.0,1.791759469228055,0
+Palestine,Edible fruit and nuts; peel of citrus fruits or melons,6,0.9566265275886341,0.0,1045817.0,1.791759469228055,0
+Panama,Edible fruit and nuts; peel of citrus fruits or melons,10,-1.4410173498137635,0.0,4685091.0,2.302585092994046,0
+Paraguay,Meat and edible meat offal,6,0.2901860595890287,0.0,1474319.0,1.791759469228055,0
+Peru,Edible fruit and nuts; peel of citrus fruits or melons,79,-0.29233874948595595,0.0,56739262.0,4.3694478524670215,0
+Peru,Edible vegetables and certain roots and tubers,39,0.2919437025997606,0.05128205128205128,14876113.0,3.6635616461296463,0
+Peru,"Fish and crustaceans, molluscs and other aquatic invertebrates",10,0.25189211717332266,0.0,249239.0,2.302585092994046,0
+Peru,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",8,-0.5319966110733918,0.0,2414480.0,2.0794415416798357,0
+Philippines,"Aircraft, spacecraft, and parts thereof",6,0.33622083354797866,0.0,615828.0,1.791759469228055,0
+Philippines,Edible fruit and nuts; peel of citrus fruits or melons,29,0.10675768357317757,0.0,3610300.0,3.367295829986474,0
+Philippines,Edible vegetables and certain roots and tubers,6,0.5477174637943828,0.0,61868.0,1.791759469228055,0
+Philippines,"Fish and crustaceans, molluscs and other aquatic invertebrates",23,-0.06568785917872826,0.0,287682.0,3.1354942159291497,0
+Philippines,Products of animal origin not elsewhere specified or included,5,-0.14990864286226274,0.0,79216.0,1.6094379124341003,0
+Poland,"Aircraft, spacecraft, and parts thereof",19,-1.0376089673432312,0.21052631578947367,310938.0,2.9444389791664403,0
+Poland,Arms and ammunition; parts and accessoriesthereof,8,-0.6867882701100374,0.0,214996.0,2.0794415416798357,0
+Poland,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",491,-0.3526177240682613,0.006109979633401222,45162461.0,6.19644412779452,0
+Poland,Edible fruit and nuts; peel of citrus fruits or melons,71,0.1018091653099003,0.0,18402230.0,4.2626798770413155,0
+Poland,Edible vegetables and certain roots and tubers,336,-0.044764607804012854,0.03869047619047619,64031640.0,5.817111159963204,0
+Poland,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",44,0.0202239348383758,0.0,3377291.0,3.784189633918261,0
+Poland,"Fish and crustaceans, molluscs and other aquatic invertebrates",109,0.0024126999515619823,0.009174311926605505,9514508.0,4.6913478822291435,0
+Poland,Live animals,10,0.6334899307558596,0.1,110438.0,2.302585092994046,0
+Poland,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",22,0.30548542988895844,0.09090909090909091,422577.0,3.091042453358316,0
+Poland,Meat and edible meat offal,852,-0.29068497046747666,0.011737089201877934,247152318.0,6.747586526829315,0
+Poland,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",15,-0.595299936360428,0.0,87800.0,2.70805020110221,0
+Poland,Plastics and plastic products,14,-1.2729986659088168,0.0,850908.0,2.6390573296152584,0
+Poland,Products of animal origin not elsewhere specified or included,40,-0.3491250609601601,0.0,1064272.0,3.6888794541139363,0
+Poland,"Salt; sulphur; earths and stone; plastering material, lime and cement",8,0.5619365534263534,0.0,59960.0,2.0794415416798357,0
+Portugal,"Aircraft, spacecraft, and parts thereof",8,0.054586600049901665,0.0,59890.0,2.0794415416798357,0
+Portugal,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",85,0.07241794168884749,0.058823529411764705,907384.0,4.442651256490317,0
+Portugal,Edible fruit and nuts; peel of citrus fruits or melons,58,-0.014117856282754094,0.0,6877739.0,4.060443010546419,0
+Portugal,Edible vegetables and certain roots and tubers,151,-0.13881988762414083,0.013245033112582781,9172783.0,5.017279836814924,0
+Portugal,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",10,0.8275354472205944,0.0,294461.0,2.302585092994046,0
+Portugal,"Fish and crustaceans, molluscs and other aquatic invertebrates",147,0.07905904677631506,0.0,1472623.0,4.990432586778736,0
+Portugal,Live animals,9,-0.4270793252032242,0.0,97229.0,2.1972245773362196,0
+Portugal,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",22,0.25324393610689383,0.09090909090909091,2146032.0,3.091042453358316,0
+Portugal,Meat and edible meat offal,102,0.12092194649471909,0.00980392156862745,1875300.0,4.624972813284271,0
+Portugal,"Salt; sulphur; earths and stone; plastering material, lime and cement",39,-0.5713134533202061,0.0,18088886.0,3.6635616461296463,0
+Qatar,"Fish and crustaceans, molluscs and other aquatic invertebrates",5,0.3850492220511804,0.0,54277.0,1.6094379124341003,0
+Romania,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",204,-0.1641860909314159,0.00980392156862745,4358680.0,5.318119993844216,0
+Romania,Edible fruit and nuts; peel of citrus fruits or melons,15,0.6755058026513706,0.0,2414853.0,2.70805020110221,0
+Romania,Edible vegetables and certain roots and tubers,34,0.03737634807638388,0.0,346291.0,3.5263605246161616,0
+Romania,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,-1.062271241120979,0.0,485547.0,1.6094379124341003,0
+Romania,"Fish and crustaceans, molluscs and other aquatic invertebrates",22,-0.9535963771446879,0.0,167474.0,3.091042453358316,0
+Romania,Live animals,10,-0.9291988820526738,0.0,205200.0,2.302585092994046,0
+Romania,Meat and edible meat offal,192,-0.2194393803205282,0.005208333333333333,18318248.0,5.2574953720277815,0
+Romania,Products of animal origin not elsewhere specified or included,6,-0.0509441558241898,0.0,125703.0,1.791759469228055,0
+Rwanda,Edible vegetables and certain roots and tubers,27,0.24414998277681496,0.037037037037037035,1931438.0,3.295836866004329,0
+Rwanda,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",9,0.12579147295935933,0.0,326767.0,2.1972245773362196,0
+Saudi Arabia,"Aircraft, spacecraft, and parts thereof",9,-0.5017126371832509,0.0,539964.0,2.1972245773362196,0
+Saudi Arabia,Edible fruit and nuts; peel of citrus fruits or melons,10,-0.3974122713819509,0.1,1024710.0,2.302585092994046,0
+Saudi Arabia,Edible vegetables and certain roots and tubers,5,-1.227291979020584,0.0,23930.0,1.6094379124341003,0
+Saudi Arabia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",8,0.9214576956545204,0.25,2922509.0,2.0794415416798357,1
+Senegal,Edible vegetables and certain roots and tubers,40,-0.18537244515617227,0.0,11990619.0,3.6888794541139363,0
+Senegal,"Fish and crustaceans, molluscs and other aquatic invertebrates",16,0.08441347372197561,0.0,710293.0,2.772588722239781,0
+Serbia,Edible fruit and nuts; peel of citrus fruits or melons,15,-0.6177080326112275,0.0,3365361.0,2.70805020110221,0
+Serbia,Edible vegetables and certain roots and tubers,10,2.271283106162854,0.3,197959.0,2.302585092994046,1
+Serbia,Live animals,6,0.3320478989334689,0.0,43674.0,1.791759469228055,0
+Seychelles,"Fish and crustaceans, molluscs and other aquatic invertebrates",16,0.38127732156983835,0.0,881820.0,2.772588722239781,0
+Sierra Leone,Edible vegetables and certain roots and tubers,6,0.21552856406056642,0.0,173466.0,1.791759469228055,0
+Singapore,"Aircraft, spacecraft, and parts thereof",14,0.47832639462348586,0.0,614946.0,2.6390573296152584,0
+Singapore,Edible fruit and nuts; peel of citrus fruits or melons,6,-0.37348914595089244,0.0,278454.0,1.791759469228055,0
+Singapore,Edible vegetables and certain roots and tubers,5,-0.6220958074406696,0.0,113646.0,1.6094379124341003,0
+Singapore,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",14,0.47124414048537183,0.0,1907046.0,2.6390573296152584,0
+Singapore,"Fish and crustaceans, molluscs and other aquatic invertebrates",39,0.5951464718688272,0.0,1946950.0,3.6635616461296463,0
+Singapore,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",19,0.8349597547514552,0.0,122495.0,2.9444389791664403,0
+Slovakia,"Aircraft, spacecraft, and parts thereof",5,-0.3885727813160854,0.0,553213.0,1.6094379124341003,0
+Slovakia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",28,1.4782916850754746,0.21428571428571427,11938513.0,3.332204510175204,1
+Slovakia,Edible fruit and nuts; peel of citrus fruits or melons,10,1.7480868290744702,0.0,14430.0,2.302585092994046,0
+Slovakia,Edible vegetables and certain roots and tubers,5,1.1461733677422514,0.4,6678.0,1.6094379124341003,1
+Slovakia,Meat and edible meat offal,5,0.21676986742022003,0.0,61274.0,1.6094379124341003,0
+Slovakia,Products of animal origin not elsewhere specified or included,12,0.02655667004437637,0.0,1035256.0,2.4849066497880004,0
+Slovenia,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",6,-1.2137490388249612,0.16666666666666666,8417.0,1.791759469228055,0
+Slovenia,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,-0.10027951914946916,0.0,25575.0,1.6094379124341003,0
+South Africa,"Aircraft, spacecraft, and parts thereof",6,0.5130332898073827,0.0,109429.0,1.791759469228055,0
+South Africa,Edible fruit and nuts; peel of citrus fruits or melons,133,-0.15489688138861601,0.045112781954887216,135879823.0,4.890349128221754,0
+South Africa,Edible vegetables and certain roots and tubers,49,0.5864785901061416,0.04081632653061224,3778235.0,3.8918202981106265,0
+South Africa,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,0.29534366406907236,0.0,46568.0,1.6094379124341003,0
+South Africa,"Fish and crustaceans, molluscs and other aquatic invertebrates",13,-0.20190683389101954,0.0,4602208.0,2.5649493574615367,0
+South Africa,Live animals,10,-0.1744659737933534,0.0,28890.0,2.302585092994046,0
+South Africa,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",28,0.4946228173350482,0.03571428571428571,1407196.0,3.332204510175204,0
+South Korea,Edible vegetables and certain roots and tubers,22,1.4179662564596016,0.13636363636363635,95041.0,3.091042453358316,1
+South Korea,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",17,-0.5579555722073543,0.0,1115429.0,2.833213344056216,0
+South Korea,"Fish and crustaceans, molluscs and other aquatic invertebrates",14,0.5853107165533674,0.0,1504714.0,2.6390573296152584,0
+South Korea,Organic chemicals,8,-0.41344927758838224,0.0,1095899.0,2.0794415416798357,0
+Spain,"Aircraft, spacecraft, and parts thereof",28,-0.1726421419197657,0.0,1561020.0,3.332204510175204,0
+Spain,Arms and ammunition; parts and accessoriesthereof,12,1.0225382832573773,0.0,6453038.0,2.4849066497880004,0
+Spain,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",360,0.38183471504576444,0.005555555555555556,30979795.0,5.886104031450156,0
+Spain,Edible fruit and nuts; peel of citrus fruits or melons,516,-0.17502190514527488,0.011627906976744186,189837565.0,6.246106765481563,0
+Spain,Edible vegetables and certain roots and tubers,988,-0.17044372380194484,0.029352226720647773,366351513.0,6.895682697747868,0
+Spain,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",35,0.37021079946699736,0.08571428571428572,6362364.0,3.5553480614894135,0
+Spain,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,8,-0.5933411054260914,0.0,765185.0,2.0794415416798357,0
+Spain,"Fish and crustaceans, molluscs and other aquatic invertebrates",262,0.30825913271944183,0.003816793893129771,9967511.0,5.568344503761097,0
+Spain,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",13,-0.1107997068218932,0.0,650086.0,2.5649493574615367,0
+Spain,Live animals,21,-0.44537365032178766,0.0,643741.0,3.044522437723423,0
+Spain,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",134,-0.27010036467431675,0.05970149253731343,4496234.0,4.897839799950911,0
+Spain,Meat and edible meat offal,596,0.44056799126678636,0.02181208053691275,70810997.0,6.39024066706535,0
+Spain,Organic chemicals,15,-0.4482436517739836,0.0,612010.0,2.70805020110221,0
+Spain,Plastics and plastic products,12,0.4346537239719767,0.0,319783.0,2.4849066497880004,0
+Spain,Products of animal origin not elsewhere specified or included,42,-0.11867497341758389,0.047619047619047616,2274013.0,3.7376696182833684,0
+Spain,"Salt; sulphur; earths and stone; plastering material, lime and cement",51,-0.24507941006020414,0.0196078431372549,31186938.0,3.9318256327243257,0
+Spain,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",12,0.7058872909397222,0.25,85475618.0,2.4849066497880004,1
+Sri Lanka,Edible fruit and nuts; peel of citrus fruits or melons,35,-0.21530479680764736,0.0,1417722.0,3.5553480614894135,0
+Sri Lanka,Edible vegetables and certain roots and tubers,66,0.08125794120001358,0.0,931229.0,4.189654742026425,0
+Sri Lanka,"Fish and crustaceans, molluscs and other aquatic invertebrates",84,0.3045028125542203,0.0,6276244.0,4.430816798843313,0
+Sri Lanka,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",11,0.0919316108498633,0.0,75115.0,2.3978952727983707,0
+St Lucia,Edible fruit and nuts; peel of citrus fruits or melons,8,-0.6843663833904753,0.0,20231.0,2.0794415416798357,0
+Surinam,"Fish and crustaceans, molluscs and other aquatic invertebrates",6,-0.1528733072709416,0.0,179356.0,1.791759469228055,0
+Sweden,Arms and ammunition; parts and accessoriesthereof,11,0.3383381617589435,0.0,60507417.0,2.3978952727983707,0
+Sweden,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",37,-0.037864907444985565,0.0,3767084.0,3.6109179126442243,0
+Sweden,Edible vegetables and certain roots and tubers,15,-0.028066395231332527,0.06666666666666667,523944.0,2.70805020110221,0
+Sweden,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",36,0.26169945161881625,0.1388888888888889,31073338.0,3.58351893845611,0
+Sweden,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,8,-0.3786967658269975,0.0,556603.0,2.0794415416798357,0
+Sweden,"Fish and crustaceans, molluscs and other aquatic invertebrates",26,0.26924855521673796,0.038461538461538464,7516689.0,3.258096538021482,0
+Sweden,Live animals,9,-0.12662375256415526,0.0,477716.0,2.1972245773362196,0
+Sweden,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",5,-0.23883836006075804,0.0,82237.0,1.6094379124341003,0
+Sweden,Meat and edible meat offal,7,0.0016781582432418166,0.14285714285714285,103721.0,1.9459101490553132,0
+Sweden,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",10,0.3592162885382383,0.0,651402.0,2.302585092994046,0
+Sweden,Organic chemicals,5,-0.470467942825685,0.0,1595730.0,1.6094379124341003,0
+Sweden,Plastics and plastic products,17,1.3030384050405819,0.0,1375762.0,2.833213344056216,0
+Switzerland,"Aircraft, spacecraft, and parts thereof",19,0.18202674005444508,0.0,1125881.0,2.9444389791664403,0
+Switzerland,Arms and ammunition; parts and accessoriesthereof,10,-0.3158900162671583,0.0,7903418.0,2.302585092994046,0
+Switzerland,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",64,0.8124057299344731,0.0,7253270.0,4.1588830833596715,0
+Switzerland,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",21,0.009743689230993351,0.0,492454.0,3.044522437723423,0
+Switzerland,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,5,0.013302757834565753,0.0,1304471.0,1.6094379124341003,0
+Switzerland,"Fish and crustaceans, molluscs and other aquatic invertebrates",5,3.02746031071048,0.2,65148.0,1.6094379124341003,1
+Switzerland,Live animals,6,-0.16797409375683028,0.0,48916.0,1.791759469228055,0
+Switzerland,Organic chemicals,22,0.004610241445277166,0.0,746317.0,3.091042453358316,0
+Switzerland,Plastics and plastic products,8,0.9963025948173718,0.0,214726.0,2.0794415416798357,0
+Switzerland,Products of animal origin not elsewhere specified or included,7,1.1337501325346726,0.0,105208.0,1.9459101490553132,0
+Taiwan,Edible vegetables and certain roots and tubers,14,1.3334226255842183,0.07142857142857142,94813.0,2.6390573296152584,0
+Taiwan,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",21,-0.23132466790444775,0.0,1101650.0,3.044522437723423,0
+Taiwan,"Fish and crustaceans, molluscs and other aquatic invertebrates",19,1.9396566734427263,0.10526315789473684,393112.0,2.9444389791664403,1
+Tanzania,Edible vegetables and certain roots and tubers,27,-0.592735465181549,0.037037037037037035,576544.0,3.295836866004329,0
+Thailand,"Aircraft, spacecraft, and parts thereof",9,0.3873607509081874,0.0,85768.0,2.1972245773362196,0
+Thailand,Edible fruit and nuts; peel of citrus fruits or melons,56,0.531042881161327,0.0,3064499.0,4.02535169073515,0
+Thailand,Edible vegetables and certain roots and tubers,70,0.5801358481739024,0.0,811710.0,4.248495242049359,0
+Thailand,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",9,-0.5472741593821736,0.0,234682.0,2.1972245773362196,0
+Thailand,"Fish and crustaceans, molluscs and other aquatic invertebrates",59,0.2253079041834644,0.0,4774300.0,4.07753744390572,0
+Thailand,Live animals,10,0.8880856823894281,0.0,91721.0,2.302585092994046,0
+Thailand,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",14,1.3714892763086903,0.07142857142857142,85693.0,2.6390573296152584,0
+Thailand,Meat and edible meat offal,17,-0.5159781641392664,0.0,9258371.0,2.833213344056216,0
+Togo,Edible vegetables and certain roots and tubers,8,-1.5667254534317983,0.25,51299.0,2.0794415416798357,0
+Trinidad:Tobago,Organic chemicals,8,-1.4485297358054663,0.125,21813504.0,2.0794415416798357,0
+Tunisia,Edible fruit and nuts; peel of citrus fruits or melons,14,-0.24166894577870995,0.0,1775155.0,2.6390573296152584,0
+Tunisia,Products of animal origin not elsewhere specified or included,6,0.5717201734401333,0.0,19128.0,1.791759469228055,0
+Turkey,"Aircraft, spacecraft, and parts thereof",7,0.24524282114718282,0.0,148510.0,1.9459101490553132,0
+Turkey,Arms and ammunition; parts and accessoriesthereof,5,-0.795100101457431,0.0,478129.0,1.6094379124341003,0
+Turkey,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",11,0.06457768501031656,0.0,525803.0,2.3978952727983707,0
+Turkey,Edible fruit and nuts; peel of citrus fruits or melons,178,0.015159740976070828,0.0,58389521.0,5.181783550292085,0
+Turkey,Edible vegetables and certain roots and tubers,211,-0.2187106761151358,0.0,20230794.0,5.351858133476067,0
+Turkey,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",11,0.8398574381413423,0.0,1472470.0,2.3978952727983707,0
+Turkey,"Fish and crustaceans, molluscs and other aquatic invertebrates",88,-0.1075016551534063,0.011363636363636364,44056685.0,4.477336814478207,0
+Turkey,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",36,0.46356308908302807,0.0,3266980.0,3.58351893845611,0
+Turkey,"Salt; sulphur; earths and stone; plastering material, lime and cement",8,-0.09598752659672245,0.0,2693004.0,2.0794415416798357,0
+UAE,"Aircraft, spacecraft, and parts thereof",14,-0.2700113510797221,0.0,1558297.0,2.6390573296152584,0
+UAE,Edible fruit and nuts; peel of citrus fruits or melons,31,0.42336536090160215,0.0,2329853.0,3.4339872044851463,0
+UAE,Edible vegetables and certain roots and tubers,43,-0.48501365932334595,0.0,2173214.0,3.7612001156935624,0
+UAE,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",6,0.27340652680925615,0.0,35236.0,1.791759469228055,0
+UAE,Live animals,15,-0.10756492385972548,0.0,181509.0,2.70805020110221,0
+Uganda,Edible fruit and nuts; peel of citrus fruits or melons,34,-0.4944211111969865,0.029411764705882353,1253693.0,3.5263605246161616,0
+Uganda,Edible vegetables and certain roots and tubers,81,-0.17102007652701556,0.0,1286704.0,4.394449154672439,0
+Uganda,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",14,1.3694290747479294,0.07142857142857142,442439.0,2.6390573296152584,0
+Ukraine,Edible fruit and nuts; peel of citrus fruits or melons,8,-0.16810384249175203,0.0,1152083.0,2.0794415416798357,0
+Ukraine,Edible vegetables and certain roots and tubers,9,-1.1179613067870153,0.0,681863.0,2.1972245773362196,0
+Ukraine,Meat and edible meat offal,23,-0.8356795511080645,0.0,21110382.0,3.1354942159291497,0
+United States,"Aircraft, spacecraft, and parts thereof",45,0.11643206880336303,0.022222222222222223,20771556.0,3.8066624897703196,0
+United States,Arms and ammunition; parts and accessoriesthereof,36,0.33245784470816253,0.0,26872500.0,3.58351893845611,0
+United States,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",18,2.4144473148025427,0.3333333333333333,4312134.0,2.8903717578961645,1
+United States,Edible fruit and nuts; peel of citrus fruits or melons,112,0.6022206836037841,0.008928571428571428,49463155.0,4.718498871295094,0
+United States,Edible vegetables and certain roots and tubers,117,0.30170076309381905,0.05128205128205128,21082266.0,4.762173934797756,0
+United States,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",39,0.6088236252315954,0.07692307692307693,34096524.0,3.6635616461296463,0
+United States,Explosives; pyrotechnic products; matches;pyrophoric alloys; combustible materials,24,0.2159694431721536,0.0,11855948.0,3.1780538303479458,0
+United States,"Fish and crustaceans, molluscs and other aquatic invertebrates",55,0.08218786245358306,0.0,7170397.0,4.007333185232471,0
+United States,"Inorganic chemicals: organic or inorganic compounds of precious metals, of rare-earth metals, of radioactive elements or of isotopes",10,1.4540002677587993,0.3,123895022.0,2.302585092994046,1
+United States,Live animals,34,0.6033009965967113,0.029411764705882353,7533169.0,3.5263605246161616,0
+United States,"Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage",24,1.0521526573256217,0.16666666666666666,180278.0,3.1780538303479458,1
+United States,Meat and edible meat offal,9,-0.047081504934054524,0.0,1351622.0,2.1972245773362196,0
+United States,"Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories thereof",16,0.3658599574372181,0.1875,5066095.0,2.772588722239781,1
+United States,Organic chemicals,14,1.0442823775264574,0.0,2094463.0,2.6390573296152584,0
+United States,Plastics and plastic products,34,0.4866727601519904,0.0,1218152.0,3.5263605246161616,0
+United States,Products of animal origin not elsewhere specified or included,38,1.4350064446761852,0.21052631578947367,5991932.0,3.6375861597263857,1
+United States,"Salt; sulphur; earths and stone; plastering material, lime and cement",9,1.5839180158857813,0.2222222222222222,380521.0,2.1972245773362196,1
+United States,"Vehicles other than railway or tramway rolling-stock, and parts and accessories thereof",16,0.9052471296182731,0.0,1215863.0,2.772588722239781,0
+Uruguay,"Fish and crustaceans, molluscs and other aquatic invertebrates",7,-1.332889498617836,0.0,430315.0,1.9459101490553132,0
+Uruguay,Meat and edible meat offal,21,0.45232153608579523,0.0,7894247.0,3.044522437723423,0
+Uzbekistan,Edible fruit and nuts; peel of citrus fruits or melons,12,0.1296085015020856,0.0,92949.0,2.4849066497880004,0
+Vietnam,"Aircraft, spacecraft, and parts thereof",8,0.06853759721846173,0.0,1375231.0,2.0794415416798357,0
+Vietnam,Edible fruit and nuts; peel of citrus fruits or melons,51,0.4617067146124119,0.0,26273385.0,3.9318256327243257,0
+Vietnam,Edible vegetables and certain roots and tubers,39,0.6018572898427345,0.0,303624.0,3.6635616461296463,0
+Vietnam,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles",5,-0.39027933606848625,0.0,322984.0,1.6094379124341003,0
+Vietnam,"Fish and crustaceans, molluscs and other aquatic invertebrates",167,-0.41974934847063555,0.005988023952095809,45953475.0,5.117993812416755,0
+Zambia,Edible vegetables and certain roots and tubers,5,0.9478176084078982,0.0,69096.0,1.6094379124341003,0
+Zimbabwe,Edible vegetables and certain roots and tubers,7,-0.11885664344166187,0.0,260640.0,1.9459101490553132,0

@@ -29,11 +29,63 @@
 
   "solutions": [
     {
+      "tag": "Comercio Internacional / Riesgo Aduanero",
+      "title": "Detección de Anomalías en Precios de Importación y Agrupamiento de Riesgo por País",
+      "image_url": "assets/images/projects/trade-anomaly-scatter.png",
+      "description": "Isolation Forest aplicado a 39,955 registros reales de importación de aduanas del Reino Unido — valor declarado y peso por envío, consultados en vivo desde la API pública de comercio de HMRC — detecta precios unitarios que resultan estadísticamente inusuales para su categoría de producto, la misma señal que usan los equipos de riesgo aduanero para detectar sub o sobre-facturación. Verificado contra una regla estadística independiente en vez de asumirlo correcto: solo cerca de la mitad de las señales coinciden, un hallazgo honesto que muestra que ambos métodos detectan cosas genuinamente distintas. Luego K-Means separa pares país-producto en niveles de riesgo — un grupo de 41 pares tiene una tasa de anomalías del 29%, contra 1.7% en el resto.",
+      "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "API de HMRC"],
+      "stackGroup": "anomaly-clustering",
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "Los equipos de riesgo aduanero y comercial necesitan una forma económica de identificar qué declaraciones de importación merecen una segunda mirada — sin la única cosa que lo haría fácil: ejemplos etiquetados de fraude confirmado, que ninguna aduana publica."
+          },
+          {
+            "label": "Datos Reales, Consultados en Vivo",
+            "text": "39,955 envíos de importación reales — valor declarado en libras y peso neto en kg — extraídos directamente de la API pública de Estadísticas de Comercio Exterior de HM Revenue & Customs (aduanas del Reino Unido). Sin cuenta, sin clave: es dato de gobierno completamente abierto. Cuatro meses de 2024, 19 categorías de productos, 164 países, nada elegido a mano."
+          },
+          {
+            "label": "Comparando de Forma Justa",
+            "text": "Un kilo de animales vivos y un kilo de maquinaria eléctrica nunca están en la misma escala de precio, así que el precio unitario se estandariza como un puntaje z dentro de cada categoría de producto antes de cualquier otra cosa — de lo contrario el modelo simplemente redescubriría diferencias de precio entre categorías, no anomalías reales.",
+            "image": "assets/images/projects/trade-anomaly-scatter.png",
+            "caption": "Envíos reales, seis categorías: valor vs. peso, envíos marcados en rojo — fuera de la línea de precio normal para su producto."
+          },
+          {
+            "label": "Detectando los Valores Atípicos",
+            "text": "Isolation Forest, entrenado conjuntamente sobre precio y valor estandarizados, marca el 3% de envíos más inusuales — completamente no supervisado, ya que no existe una etiqueta real de fraude contra la cual entrenar.",
+            "image": "assets/images/projects/trade-anomaly-distribution.png",
+            "caption": "Los envíos marcados se concentran en los extremos de la distribución real de precios, exactamente donde deberían."
+          },
+          {
+            "label": "Una Verificación Honesta",
+            "text": "Un segundo método, independiente — una simple regla de rango intercuartílico (IQR) sobre el precio solo, sin compartir ninguna lógica con Isolation Forest — coincide con apenas la mitad de sus señales. Eso no es un fracaso: muestra que ambos métodos detectan cosas genuinamente distintas. Isolation Forest pondera precio y valor juntos, así que detecta combinaciones que se ven mal incluso cuando el precio solo no lo parece; la regla IQR detecta el caso inverso. Reportar solo la coincidencia que favorecería el resultado habría sido la versión deshonesta de este gráfico.",
+            "image": "assets/images/projects/trade-anomaly-agreement.png",
+            "caption": "602 marcados solo por Isolation Forest, 499 solo por la regla IQR, 597 donde ambos coinciden."
+          },
+          {
+            "label": "Agrupando por Riesgo",
+            "text": "K-Means agrupa pares país-producto por su desviación de precio promedio, tasa de anomalías, y volumen de envíos. Un clúster de 41 pares resulta con una tasa de anomalías del 29.3% — diecisiete veces más alta que los otros 542 pares con 1.7%. Eso no son 41 casos de fraude confirmado; son 41 lugares donde el tiempo limitado de un revisor humano realmente valdría la pena invertir.",
+            "image": "assets/images/projects/trade-anomaly-clusters.png",
+            "caption": "K-Means (k=2, elegido por puntaje de silueta) — un clúster de alto riesgo pequeño y claramente distinto se separa limpiamente del resto."
+          },
+          {
+            "label": "Por Qué Importa",
+            "text": "Todo modelo publicado de detección de fraude aduanero con buenos números de exactitud fue entrenado con etiquetas de fraude confirmado que posee internamente una agencia aduanera nacional — datos que nadie fuera de esa agencia ve jamás. Esta es la versión honesta disponible para cualquier otra persona: sin verdad de referencia contra la cual entrenar, solo verificaciones de consistencia interna y una forma defendible de priorizar dónde va el tiempo escaso de revisión."
+          }
+        ],
+        "code_lang": "Python / scikit-learn",
+        "code_spotlight": "# Estandarizar precio DENTRO de cada categoria -- nunca comparar precios crudos entre productos\ndf['z_price'] = df.groupby('category')['log_price'].transform(\n    lambda x: (x - x.mean()) / x.std())\n\niso = IsolationForest(n_estimators=300, contamination=0.03, random_state=42)\ndf['anomaly'] = iso.fit_predict(df[['z_price', 'z_value']]) == -1\n# 1,199 / 39,955 marcados (3.0%) -- solo 49.8% tambien marcados por una regla IQR independiente\n\n# K-Means sobre perfil de riesgo pais x categoria\nkm = KMeans(n_clusters=2, n_init=10, random_state=42)\n# Cluster 1: 41 pares, tasa de anomalias 29.3% vs. 1.7% en el resto",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/import-price-anomaly-detection"
+      }
+    },
+    {
       "tag": "Salud / Machine Learning",
       "title": "Detección de Riesgo Fetal y Agrupamiento",
       "image_url": "assets/images/projects/fetal-health-anomaly-pca.png",
       "description": "Un pipeline no supervisado que detecta patrones de riesgo en la frecuencia cardiaca fetal y agrupa 2,126 registros reales de cardiotocografía en niveles de riesgo — sin ver nunca el diagnóstico clínico. Las anomalías de Isolation Forest se concentran 12 veces más en los casos que los obstetras clasificaron independientemente como patológicos (48.9% vs. 4.1%), y K-Means recupera un clúster de alto riesgo donde los casos patológicos superan a los normales. Una señal de alerta temprana real, construida enteramente a partir de la señal misma.",
       "stack": ["Python", "scikit-learn", "Isolation Forest", "K-Means", "PCA"],
+      "stackGroup": "anomaly-clustering",
       "study": {
         "narrative": [
           {
@@ -77,11 +129,62 @@
       }
     },
     {
+      "tag": "Minería / Perú",
+      "title": "Planificación Automática de Despacho de Camiones para Minería a Tajo Abierto",
+      "image_url": "assets/images/projects/mine-network.png",
+      "description": "Un dominio PDDL y un planificador óptimo que rutea camiones de acarreo de una mina a tajo abierto desde los bancos de extracción hacia la planta o el botadero de desmonte sobre una red de vías de un solo sentido — el mismo problema real de despacho detrás del sistema DISPATCH®, usado en la industria minera desde 1986, resuelto ahora con optimalidad demostrable en vez de una regla heurística. El mismo dominio resuelve tres escenarios crecientes sin cambios, y agregar una segunda planta en realidad acorta el plan óptimo — el planificador encontró y usó un atajo dedicado por su cuenta.",
+      "stack": ["PDDL", "pyperplan", "A* / LM-Cut", "Planificación Clásica"],
+      "stackGroup": "planning",
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "El despacho de camiones de acarreo en minería a tajo abierto — qué camión va a qué banco, cuál entrega en la planta o en el botadero — es un problema real y de décadas de antigüedad en operaciones mineras, no un ejemplo de juguete. Modelarlo como un problema de planificación clásica y obtener una respuesta demostrablemente óptima en vez de una regla heurística de despacho."
+          },
+          {
+            "label": "Modelando un Diseño de Mina Real",
+            "text": "Vías de un solo sentido, igual que el control de tráfico real en minas a tajo abierto que mantiene a los camiones cargados y vacíos fuera de la misma vía de banco: los camiones salen del patio, llegan a un banco, recogen mineral o desmonte, y entregan — el mineral solo se acepta donde una ubicación está marcada como planta, el desmonte solo donde está marcada como botadero."
+          },
+          {
+            "label": "Resolviéndolo — de Forma Demostrable",
+            "text": "Dos camiones, dos bancos, una planta, un botadero. A* con la heurística admisible LM-Cut no solo encuentra una ruta — demuestra que es la más barata posible: 10 acciones, óptimo matemáticamente.",
+            "image": "assets/images/projects/mine-network.png",
+            "caption": "La red completa de vías de acarreo, ciclos de un solo sentido, el atajo dedicado banco-c → planta2 resaltado en dorado."
+          },
+          {
+            "label": "Escalando, Sin Tocar el Modelo",
+            "text": "Se agregó un tercer banco y una segunda carga de mineral — el mismo archivo de dominio resolvió el escenario más grande también. Cero modificaciones al modelo en sí, el plan crece a 16 acciones.",
+            "image": "assets/images/projects/mine-scaling.png",
+            "caption": "Longitud del plan óptimo a través de tres escenarios crecientes — mismo domain.pddl, sin cambios."
+          },
+          {
+            "label": "La Parte Interesante",
+            "text": "Se agregó una segunda planta con su propia vía de acarreo corta dedicada desde un banco específico. El plan óptimo para ese escenario más difícil es en realidad más corto que el más simple anterior — 15 acciones en vez de 16 — porque el planificador descubrió y usó por su cuenta el atajo para el mineral de ese banco, mientras enrutaba el mineral del otro banco de la forma normal. Nadie le dijo que lo prefiriera."
+          },
+          {
+            "label": "Por Qué Pyperplan, No Fast Downward",
+            "text": "El proyecto relacionado de planificación de rovers en este portafolio corre Fast Downward dentro de un contenedor Singularity. Este usó deliberadamente pyperplan — un planificador en Python puro, sin dependencia de contenedor ni de Linux — porque A* con una heurística admisible da la misma garantía de optimalidad demostrable de cualquier forma. Cambió la herramienta; no cambió la garantía."
+          }
+        ],
+        "pipeline": [
+          "🗺️ Modelado: dominio PDDL — mover / recoger / entregar-mineral / entregar-desmonte, genérico para cualquier número de plantas o botaderos",
+          "⛏️ Escenario 1: caso base — 2 bancos, 1 planta, 1 botadero — 10 pasos óptimos",
+          "🪨 Escenario 2: +1 banco, +1 carga de mineral — 16 pasos óptimos",
+          "🏭 Escenario 3: +1 planta con atajo dedicado — 15 pasos óptimos, el planificador usó el atajo por su cuenta",
+          "✅ Resuelto con pyperplan, búsqueda A* + heurística admisible LM-Cut — óptimo demostrable, no heurístico"
+        ],
+        "code_lang": "PDDL",
+        "code_spotlight": "(:action deliver-ore\n    :parameters (?t - truck ?l - load ?loc - location)\n    :precondition\n    (and\n        (at ?t ?loc)\n        (carrying ?t ?l)\n        (ore ?l)\n        (mill ?loc)\n    )\n    :effect\n    (and\n        (delivered ?l)\n        (free ?t)\n        (not (carrying ?t ?l))\n    )\n)\n\n; python -m pyperplan -s astar -H lmcut domain.pddl problem3.pddl\n; -> Plan length: 15 (optimo) -- el planificador enruta el mineral del banco-c por el atajo a planta2",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/mine-haul-truck-dispatch"
+      }
+    },
+    {
       "tag": "Robótica / Planificación IA",
       "title": "Planificación Automática de Misiones para Rovers Autónomos",
       "image_url": "assets/images/projects/rover-planning-network.png",
       "description": "Un dominio PDDL y un planificador óptimo (Fast Downward, A* + LM-Cut, ejecutado en un contenedor Singularity) que planifica rutas de rover con múltiples paradas sobre una red de trayectorias direccional — óptimo de forma demostrable en cada caso, validado de forma independiente contra un segundo planificador. El mismo domain.pddl resuelve tres escenarios crecientes sin cambiar una sola línea, y en el más difícil el planificador eligió por su cuenta el laboratorio más cercano para cada entrega.",
       "stack": ["PDDL", "Fast Downward", "Singularity", "A* / LM-Cut"],
+      "stackGroup": "planning",
       "study": {
         "narrative": [
           {
@@ -131,10 +234,64 @@
       }
     },
     {
+      "tag": "Comercio Internacional / Logística",
+      "title": "Conteo Automático de Cajas y Pallets por Imagen",
+      "image_url": "assets/images/projects/pallet-counting-photo.png",
+      "description": "Un pipeline clásico de visión por computadora que cuenta cajas sobre un pallet a partir de una sola imagen cenital — y una prueba honesta de la solución estándar publicada para el caso más difícil. Cuando dos cajas quedan pegadas una a la otra, el método de libro de texto (segmentación watershed, usado con éxito para contar frutas) NO logra el conteo correcto, porque las cajas rectangulares no tienen la forma de la que depende ese método. La solución que sí funciona — leer la fina línea de sombra entre cajas contiguas — acierta exactamente, en la misma dirección hacia donde apunta la literatura de investigación 2025 sobre este problema.",
+      "stack": ["Python", "OpenCV", "Umbral de Otsu", "Watershed", "Canny"],
+      "stackGroup": "cv-imaging",
+      "study": {
+        "narrative": [
+          {
+            "label": "El Reto",
+            "text": "Una pregunta rápida y honesta para cualquier operación de almacén o importación: ¿cuántas cajas hay realmente en este pallet, contadas directamente de una foto, sin tocar un lector de código de barras? Construir el pipeline de conteo, y luego probarlo contra el único caso que realmente lo rompe — dos cajas pegadas una a la otra."
+          },
+          {
+            "label": "Construyendo una Verdad de Referencia Exacta",
+            "text": "En vez de una foto real de almacén (sin forma controlada de saber el conteo verdadero), se generó una imagen sintética cenital de un pallet — 30 cajas, con tamaño, rotación y posición aleatorios, con un par empujado deliberadamente sin espacio entre ellas. El conteo se conoce exactamente porque fue dibujado.",
+            "image": "assets/images/projects/pallet-counting-photo.png",
+            "caption": "Pallet sintético cenital — 30 cajas, renderizado tono cartón, verdad de referencia conocida exactamente."
+          },
+          {
+            "label": "El Conteo Ingenuo se Queda Corto",
+            "text": "El umbral de Otsu más el conteo de componentes conectados es rápido y simple — y subcuenta por exactamente una caja, porque las dos cajas pegadas se fusionan en un solo blob dentro de la silueta binaria.",
+            "image": "assets/images/projects/pallet-counting-overview.png",
+            "caption": "Imagen en escala de grises, máscara binaria de Otsu, y el conteo ingenuo por componentes conectados — 29 en vez de 30."
+          },
+          {
+            "label": "Probando la Solución de Libro de Texto",
+            "text": "El watershed basado en transformada de distancia es el método estándar publicado para separar objetos que se tocan — es lo que hace funcionar la investigación de conteo de frutas y células. Aplicado aquí directamente, sin asumir que funcionaría, sigue devolviendo 29. La razón es estructural: watershed encuentra una \"cintura\" cóncava donde dos objetos redondos se tocan, y dos rectángulos empujados uno contra el otro no tienen ninguna cintura — su silueta es simplemente un rectángulo más grande.",
+            "image": "assets/images/projects/pallet-counting-methods.png",
+            "caption": "Ingenuo, watershed por transformada de distancia, y corrección basada en bordes, lado a lado — solo uno llega a 30."
+          },
+          {
+            "label": "Lo Que Sí Funciona",
+            "text": "Dos cajas que se tocan igual proyectan una fina línea de sombra donde se juntan sus superficies — una señal física real que una foto mostraría, invisible para una silueta binaria. La detección de bordes de Canny recupera esa línea directamente de la imagen en escala de grises y la usa para cortar la máscara antes de volver a contar.",
+            "image": "assets/images/projects/pallet-counting-zoom.png",
+            "caption": "Zoom sobre el par pegado — la solución de libro de texto sigue fusionada, la corrección basada en bordes las separa correctamente."
+          },
+          {
+            "label": "El Resultado",
+            "text": "30 de 30, exactamente igual a la verdad de referencia — y llegar ahí requirió entender por qué la solución obvia no aplica a este tipo de objeto, no simplemente probar más algoritmos.",
+            "image": "assets/images/projects/pallet-counting-chart.png",
+            "caption": "Conteo de cajas por método: verdad de referencia 30, ingenuo 29, watershed 29, corrección basada en bordes 30."
+          },
+          {
+            "label": "Por Qué Importa",
+            "text": "Esto corre sobre una sola foto 2D, no necesita datos de entrenamiento ni GPU, y la investigación 2025 actual sobre este mismo problema se está moviendo hacia la reconstrucción 3D completa precisamente porque las imágenes planas pierden señales que importan para cajas que se tocan u ocluyen — la misma limitación que este proyecto encontró directamente, a una fracción de la complejidad. Eso lo vuelve un piloto barato y rápido para probar contra fotos reales de pallets antes de decidir si vale la pena construir algo más grande."
+          }
+        ],
+        "code_lang": "Python / OpenCV",
+        "code_spotlight": "# Solucion de libro de texto para objetos que se tocan -- NO funciona para rectangulos pegados\ndist = cv2.distanceTransform(binary, cv2.DIST_L2, 5)\n# -> sigue en 29/30: no hay \"cintura\" concava entre dos rectangulos pegados\n\n# Lo que si funciona: leer la linea real, no la silueta\nedges = cv2.Canny(gray, 40, 120)\ncut = cv2.bitwise_and(binary, cv2.bitwise_not(cv2.dilate(edges, kernel)))\nn_labels, labels, stats, _ = cv2.connectedComponentsWithStats(cut)\n# -> 30/30, coincide exactamente con la verdad de referencia",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/pallet-box-counting"
+      }
+    },
+    {
       "tag": "Visión por Computadora / Procesamiento de Imágenes",
       "title": "Restauración de Ruido Impulsivo y Realce de Contraste",
       "image_url": "assets/images/projects/image-restoration-dashboard.png",
       "description": "Dos pipelines clásicos de procesamiento de imágenes — filtrado de mediana para eliminar ruido y realce de contraste — construidos desde cero en NumPy y comparados contra OpenCV en vez de asumirlos correctos. El filtro de mediana propio iguala la calidad de restauración de OpenCV con una diferencia de apenas 0.04 dB en PSNR (reducción de MSE superior al 94%), aunque corre cuatro órdenes de magnitud más lento — precisamente la razón por la que ningún sistema en producción itera píxel por píxel en Python. Un segundo hallazgo, honesto: la corrección gamma aclara una imagen oscura de forma confiable, pero no aumenta el contraste de forma confiable — sólo la ecualización de histograma lo logra.",
+      "stackGroup": "cv-imaging",
       "stack": ["Python", "NumPy", "OpenCV", "scikit-image"],
       "study": {
         "narrative": [

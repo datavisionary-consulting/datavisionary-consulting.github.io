@@ -1,0 +1,33 @@
+{
+  "n_records": 39955,
+  "n_categories": 19,
+  "n_countries": 164,
+  "n_months": 4,
+  "n_anomalies": 1199,
+  "anomaly_pct": 3.000875985483669,
+  "iqr_agreement_count": 597,
+  "iqr_agreement_pct": 49.79149291075897,
+  "iso_only": 602,
+  "iqr_only": 499,
+  "best_k": 2,
+  "silhouette_scores": {
+    "2": 0.5470109494820778,
+    "3": 0.3490666012224262,
+    "4": 0.3345868153720142,
+    "5": 0.33943693552996046,
+    "6": 0.3315006723440403
+  },
+  "n_country_category_pairs": 583,
+  "clusters": {
+    "0": {
+      "n": 542,
+      "mean_anomaly_rate": 0.017368896448106023,
+      "mean_z_price": -0.012339711864483604
+    },
+    "1": {
+      "n": 41,
+      "mean_anomaly_rate": 0.29262688976264073,
+      "mean_z_price": 1.1169937877988392
+    }
+  }
+}

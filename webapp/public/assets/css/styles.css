@@ -267,6 +267,84 @@ section {
 }
 
 /* =========================
+   STACKED CARD DECK (2 related solutions)
+========================= */
+.card-deck {
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.deck-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-radius: 8px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.deck-shadow-1 {
+  width: calc(100% - 16px);
+  height: 96%;
+  bottom: -6px;
+}
+
+.deck-shadow-2 {
+  width: calc(100% - 32px);
+  height: 94%;
+  bottom: -12px;
+  opacity: 0.7;
+}
+
+.deck-tabs {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  margin-bottom: -1px;
+}
+
+.deck-tab {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-bottom: none;
+  background: var(--cream);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 7px 6px;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deck-tab.active {
+  background: var(--white);
+  color: var(--navy);
+  border-color: var(--line);
+}
+
+.deck-tab:not(.active):hover {
+  color: var(--navy);
+}
+
+.deck-stage {
+  position: relative;
+  z-index: 1;
+}
+
+.deck-stage .card {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  overflow: hidden;
+}
+
+/* =========================
    TITLES
 ========================= */
 .section-title {

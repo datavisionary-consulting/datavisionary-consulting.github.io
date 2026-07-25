@@ -1,0 +1,15 @@
+{
+  "ground_truth": 30,
+  "naive_count": 29,
+  "naive_error_cartons": 1,
+  "naive_error_pct": 3.3333333333333335,
+  "naive_time_ms": 3.5370999999031483,
+  "watershed_count": 29,
+  "watershed_error_cartons": 1,
+  "watershed_error_pct": 3.3333333333333335,
+  "watershed_time_ms": 34.98100000024351,
+  "edge_count": 30,
+  "edge_error_cartons": 0,
+  "edge_error_pct": 0.0,
+  "edge_time_ms": 5.42330000007496
+}
