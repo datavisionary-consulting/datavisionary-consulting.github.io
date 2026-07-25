@@ -11,9 +11,6 @@ export default function StackedCards({ cards, onOpenProject }) {
 
   return (
     <div className="card-deck">
-      <div className="deck-shadow deck-shadow-2" />
-      <div className="deck-shadow deck-shadow-1" />
-
       <div className="deck-tabs">
         {cards.map((c, idx) => (
           <button
@@ -31,6 +28,7 @@ export default function StackedCards({ cards, onOpenProject }) {
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={cards[active].title}
+            className="deck-stage-inner"
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -16 }}

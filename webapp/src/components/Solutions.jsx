@@ -36,6 +36,7 @@ export default function Solutions({ solutions, onOpenProject }) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={cardWrapperVariants}
+            style={{ height: '100%' }}
           >
             {unit.length > 1 ? (
               <StackedCards cards={unit} onOpenProject={onOpenProject} />

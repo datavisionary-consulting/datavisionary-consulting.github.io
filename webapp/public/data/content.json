@@ -360,8 +360,8 @@
   "proof": {
     "headline": "Built for organizations that run on data",
     "metrics": [
-      { "value": "8+",    "label": "Projects delivered" },
-      { "value": "3",     "label": "Industries served" },
+      { "value": "13+",   "label": "Projects delivered" },
+      { "value": "5",     "label": "Industries served" },
       { "value": "100%",  "label": "On-time delivery" },
       { "value": "Lima",  "label": "Based in Peru, working regionally" }
     ],

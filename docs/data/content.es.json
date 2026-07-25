@@ -360,8 +360,8 @@
   "proof": {
     "headline": "Construido para organizaciones que operan con datos",
     "metrics": [
-      { "value": "8+",    "label": "Proyectos entregados" },
-      { "value": "3",     "label": "Industrias atendidas" },
+      { "value": "13+",   "label": "Proyectos entregados" },
+      { "value": "5",     "label": "Industrias atendidas" },
       { "value": "100%",  "label": "Entregas a tiempo" },
       { "value": "Lima",  "label": "Con base en Perú, trabajo regional" }
     ],
