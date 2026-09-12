@@ -354,6 +354,52 @@
       "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/criptoradar-btc-eth-ltc",
       "dashboard_url": "https://app.powerbi.com/view?r=eyJrIjoiNWMyZDJkYjgtMmM5Yy00NjAzLWE3NGMtY2VkMjc0ZmQxNDVkIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9",
       "stack": ["Python", "Power BI", "GitHub Actions"]
+    },
+    {
+      "tag": "Machine Learning / Data Science",
+      "title": "Steam Review Helpfulness Classification",
+      "image_url": "assets/images/projects/steam-review-helpfulness.png",
+      "description": "A lakehouse-scale supervised learning pipeline on 6.4 million real Steam reviews (PySpark on Databricks) — including a mid-project pivot when the data itself contradicted the original plan. Baseline AUC 0.578 rose to 0.658 once real text features (TF-IDF) replaced surface stats, and a confusion matrix exposed a class-imbalance recall problem the headline AUC alone hid.",
+      "stack": ["Python", "PySpark", "Databricks", "Delta Lake", "MLlib"],
+      "study": {
+        "narrative": [
+          {
+            "label": "The Plan vs. the Data",
+            "text": "This started as a regression project: predict how many \"helpful\" votes a Steam review would get. EDA on the real 6.4-million-row dataset showed the field maxes out at 1 — it's a binary flag, not a count. Rather than force a regression the data doesn't support, the project pivoted to classification on the spot."
+          },
+          {
+            "label": "Real Scale, Real Platform",
+            "text": "6,417,106 real English-language Steam reviews (Sobkowicz, 2017), downloaded directly into a Databricks lakehouse and persisted as a governed Delta table — no raw file ever touches a laptop. 14.7% of reviews are marked helpful.",
+            "image": "assets/images/projects/steam-review-class-balance.png",
+            "caption": "Class balance across all 6.4 million real reviews."
+          },
+          {
+            "label": "Surface Features Alone Barely Beat Chance",
+            "text": "A baseline Logistic Regression on review length, word count, and punctuation scored AUC 0.578 — barely better than a coin flip. Adding TF-IDF text features (Tokenizer → HashingTF → IDF, 2,000 dimensions) pushed AUC to 0.657: the actual words in a review matter far more than its shape.",
+            "image": "assets/images/projects/steam-review-auc-progression.png",
+            "caption": "AUC across four modeling iterations — this is where the signal actually came from."
+          },
+          {
+            "label": "Tuning Plateaued — and That's a Finding",
+            "text": "A 3-fold CrossValidator over a small regParam × elasticNetParam grid moved AUC by only +0.0004. Not a failed experiment: it shows the model wasn't overfitting, and that HashingTF's hashed, non-vocabulary features (traded for speed and memory at this scale) are the real ceiling, not the regularization strength."
+          },
+          {
+            "label": "What AUC Alone Hides",
+            "text": "At the default 0.5 threshold, recall on the \"helpful\" class is only 1.2%, even with a respectable 0.66 AUC — class imbalance (85/15) pulls point predictions toward the majority class. A real deployment would rank reviews by predicted probability, not apply a hard cutoff.",
+            "image": "assets/images/projects/steam-review-confusion-matrix.png",
+            "caption": "Confusion matrix at the default threshold — where the recall problem actually lives."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "Mean-centering a sparse 2,000-dimension TF-IDF vector would have densified it and blown up compute cost, so the interpretability pass scaled by variance only. The strongest resulting effect: reviews that don't recommend the game are more often marked helpful than purely positive ones — consistent with published research that review extremity and depth, not just sentiment, drive perceived helpfulness.",
+            "image": "assets/images/projects/steam-review-coefficients.png",
+            "caption": "Standardized coefficients — the one interpretable slice of the model."
+          }
+        ],
+        "code_lang": "Python / PySpark",
+        "code_spotlight": "# Mean-centering a sparse 2,000-dim TF-IDF vector densifies it --\n# blows up cost across 5M+ rows. Scale by variance only:\nscaler = StandardScaler(\n    inputCol=\"features\", outputCol=\"scaled_features\",\n    withMean=False, withStd=True,   # withMean=True here would OOM\n)\n\n# CrossValidator also needs a UC Volume path for caching on\n# serverless compute -- not set by default:\nos.environ[\"SPARKML_TEMP_DFS_PATH\"] = \"/Volumes/workspace/steam_reviews/raw_data/tmp\"",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/steam-review-helpfulness-classification"
+      }
     }
   ],
 
