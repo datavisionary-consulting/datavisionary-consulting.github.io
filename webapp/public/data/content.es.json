@@ -390,10 +390,14 @@
             "caption": "Matriz de confusión en el umbral por defecto — donde realmente vive el problema de recall."
           },
           {
-            "label": "Por Qué Importa",
+            "label": "El Único Resultado Interpretable",
             "text": "Centrar en la media un vector TF-IDF disperso de 2,000 dimensiones lo habría densificado, disparando el costo de cómputo, así que el paso de interpretabilidad escaló solo por varianza. El efecto resultante más fuerte: las reseñas que no recomiendan el juego se marcan como útiles con más frecuencia que las puramente positivas — consistente con investigación publicada que muestra que la extremidad y profundidad de la reseña, no solo el sentimiento, impulsan la utilidad percibida.",
             "image": "assets/images/projects/steam-review-coefficients.png",
             "caption": "Coeficientes estandarizados — la única porción interpretable del modelo."
+          },
+          {
+            "label": "Por Qué Importa",
+            "text": "Respuesta corta para un gerente: sí sirve, pero no como piloto automático. El modelo ordena de forma confiable las reseñas de más a menos probablemente útil, así un equipo puede mostrar primero las mejores a los compradores, o enviar las más prometedoras a la cola de un moderador. Todavía no es lo bastante preciso para decidir solo, con un sí o no, sobre una reseña individual y actuar sin que una persona la revise. Sirve para decidir dónde poner la atención, no para reemplazarla."
           }
         ],
         "code_lang": "Python / PySpark",

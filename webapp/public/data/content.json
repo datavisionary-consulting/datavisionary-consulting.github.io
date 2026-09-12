@@ -390,10 +390,14 @@
             "caption": "Confusion matrix at the default threshold — where the recall problem actually lives."
           },
           {
-            "label": "Why It Matters",
+            "label": "The One Interpretable Result",
             "text": "Mean-centering a sparse 2,000-dimension TF-IDF vector would have densified it and blown up compute cost, so the interpretability pass scaled by variance only. The strongest resulting effect: reviews that don't recommend the game are more often marked helpful than purely positive ones — consistent with published research that review extremity and depth, not just sentiment, drive perceived helpfulness.",
             "image": "assets/images/projects/steam-review-coefficients.png",
             "caption": "Standardized coefficients — the one interpretable slice of the model."
+          },
+          {
+            "label": "Why It Matters",
+            "text": "Short answer for a manager: yes, this is useful, but not as an autopilot. The model reliably sorts reviews from most to least likely to be helpful, so a team can put the best ones in front of shoppers first, or route the most promising ones to a moderator's queue. It is not yet accurate enough to make a hard automatic yes/no call on one review and act on it with no human checking. Use it to decide where attention goes, not to replace the attention itself."
           }
         ],
         "code_lang": "Python / PySpark",
