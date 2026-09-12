@@ -79,7 +79,7 @@
         ],
         "code_lang": "Python / PySpark",
         "code_spotlight": "# Mean-centering a sparse 2,000-dim TF-IDF vector densifies it --\n# blows up cost across 5M+ rows. Scale by variance only:\nscaler = StandardScaler(\n    inputCol=\"features\", outputCol=\"scaled_features\",\n    withMean=False, withStd=True,   # withMean=True here would OOM\n)\n\n# CrossValidator also needs a UC Volume path for caching on\n# serverless compute -- not set by default:\nos.environ[\"SPARKML_TEMP_DFS_PATH\"] = \"/Volumes/workspace/steam_reviews/raw_data/tmp\"",
-        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/steam-review-helpfulness-classification"
+        "github_url": "https://github.com/datavisionary-consulting/databricks/tree/main/steam-review-helpfulness-classification"
       }
     },
     {

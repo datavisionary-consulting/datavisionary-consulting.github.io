@@ -79,7 +79,7 @@
         ],
         "code_lang": "Python / PySpark",
         "code_spotlight": "# Centrar en la media un vector TF-IDF disperso de 2,000 dim lo\n# densifica -- dispara el costo en 5M+ filas. Escalar solo por varianza:\nscaler = StandardScaler(\n    inputCol=\"features\", outputCol=\"scaled_features\",\n    withMean=False, withStd=True,   # withMean=True aqui causaria OOM\n)\n\n# CrossValidator tambien necesita una ruta de Volumen UC para su\n# cache en computo serverless -- no viene configurada por defecto:\nos.environ[\"SPARKML_TEMP_DFS_PATH\"] = \"/Volumes/workspace/steam_reviews/raw_data/tmp\"",
-        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/steam-review-helpfulness-classification"
+        "github_url": "https://github.com/datavisionary-consulting/databricks/tree/main/steam-review-helpfulness-classification"
       }
     },
     {
