@@ -19,3 +19,7 @@ The temptation is to write "this would save 30% of review time" when nothing in 
 ## The audience is a non-technical decision-maker first
 
 Assume the reader deciding whether to hire this consultancy does not know what AUC, TF-IDF, or a confusion matrix is, and never will. The card description and the final narrative block should be readable by that person with zero jargon. Save the vocabulary for the middle of the narrative and the README's Method section, where a technical reviewer (or a future engineer extending the work) is the audience instead.
+
+## Databricks is the lead section, on purpose
+
+Databricks/lakehouse work is what's in demand right now, so the `solutions` array in `content.json` / `content.es.json` leads with it — `steam-review-helpfulness-classification` is `solutions[0]`, first card on the page, not last. When another Databricks-based case study is added (the probability-decile / triage dashboard discussed for a future study is the first candidate), it goes into this same leading position or immediately after it, so the front of the page reads as "this is the Databricks section" at a glance. Keep new Databricks case studies as their own standalone cards (not stacked via `stackGroup` with an unrelated study) unless a future pair genuinely shares the same technique on two different domains, the way the existing stacked pairs do.

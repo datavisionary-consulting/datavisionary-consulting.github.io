@@ -29,6 +29,60 @@
 
   "solutions": [
     {
+      "tag": "Databricks / Confianza y Seguridad",
+      "title": "Clasificación de Utilidad de Reseñas de Steam",
+      "image_url": "assets/images/projects/steam-review-helpfulness.png",
+      "description": "Un pipeline de aprendizaje supervisado a escala lakehouse sobre 6.4 millones de reseñas reales de Steam (PySpark en Databricks), construido alrededor de la pregunta que enfrenta cualquier plataforma con más comentarios de clientes que personal para leerlos: ¿a dónde debería ir realmente la atención humana? El hallazgo principal no es el AUC, es que un corte automático de sí o no es la herramienta equivocada. Con el umbral estándar, el modelo enviaría solo 0.4% de las reseñas a una cola y aun así dejaría pasar el 98.8% de las que sí importan — por eso el diseño correcto es una cola priorizada con una regla dura debajo: los casos que deben llegar a una persona sin importar lo que diga el modelo, como una cuenta VIP, una queja con riesgo legal o un reclamo repetido del mismo usuario.",
+      "stack": ["Python", "PySpark", "Databricks", "Delta Lake", "MLlib"],
+      "study": {
+        "narrative": [
+          {
+            "label": "El Plan vs. los Datos",
+            "text": "Este proyecto comenzó como una regresión: predecir cuántos votos de \"útil\" recibiría una reseña de Steam. El análisis exploratorio sobre las 6.4 millones de filas reales mostró que el campo llega como máximo a 1 — es una bandera binaria, no un conteo. En lugar de forzar una regresión que los datos no respaldan, el proyecto pivotó a clasificación de inmediato."
+          },
+          {
+            "label": "Escala Real, Plataforma Real",
+            "text": "6,417,106 reseñas reales de Steam en inglés (Sobkowicz, 2017), descargadas directamente a un lakehouse de Databricks y persistidas como tabla Delta gobernada — el archivo crudo nunca toca una laptop. El 14.7% de las reseñas están marcadas como útiles.",
+            "image": "assets/images/projects/steam-review-class-balance.png",
+            "caption": "Balance de clases sobre las 6.4 millones de reseñas reales."
+          },
+          {
+            "label": "Las Features Superficiales Apenas Superan al Azar",
+            "text": "Una Regresión Logística base sobre longitud de reseña, conteo de palabras y puntuación obtuvo un AUC de 0.578 — apenas mejor que lanzar una moneda. Agregar features de texto TF-IDF (Tokenizer → HashingTF → IDF, 2,000 dimensiones) elevó el AUC a 0.657: las palabras reales de una reseña importan mucho más que su forma.",
+            "image": "assets/images/projects/steam-review-auc-progression.png",
+            "caption": "AUC a través de las cuatro iteraciones del modelo — de aquí vino la señal real."
+          },
+          {
+            "label": "El Ajuste de Hiperparámetros se Estancó — y Eso es un Hallazgo",
+            "text": "Un CrossValidator de 3 folds sobre una grilla pequeña de regParam × elasticNetParam movió el AUC solo +0.0004. No es un experimento fallido: muestra que el modelo no estaba sobreajustado, y que las features sin vocabulario de HashingTF (un intercambio deliberado por velocidad y memoria a esta escala) son el verdadero techo, no la fuerza de regularización."
+          },
+          {
+            "label": "Lo que el AUC por sí Solo Oculta",
+            "text": "En el umbral por defecto de 0.5, el recall sobre la clase \"útil\" es de apenas 1.2%, incluso con un AUC respetable de 0.66 — el desbalance de clases (85/15) empuja las predicciones puntuales hacia la clase mayoritaria. Un despliegue real ordenaría las reseñas por probabilidad predicha, no aplicaría un corte fijo.",
+            "image": "assets/images/projects/steam-review-confusion-matrix.png",
+            "caption": "Matriz de confusión en el umbral por defecto — donde realmente vive el problema de recall."
+          },
+          {
+            "label": "El Único Resultado Interpretable",
+            "text": "Centrar en la media un vector TF-IDF disperso de 2,000 dimensiones lo habría densificado, disparando el costo de cómputo, así que el paso de interpretabilidad escaló solo por varianza. El efecto resultante más fuerte: las reseñas que no recomiendan el juego se marcan como útiles con más frecuencia que las puramente positivas — consistente con investigación publicada que muestra que la extremidad y profundidad de la reseña, no solo el sentimiento, impulsan la utilidad percibida.",
+            "image": "assets/images/projects/steam-review-coefficients.png",
+            "caption": "Coeficientes estandarizados — la única porción interpretable del modelo."
+          },
+          {
+            "label": "El Hallazgo Real: A Dónde Debe Ir la Atención Humana",
+            "text": "Esto importa más que cualquier número de AUC: un corte automático de sí o no es la forma equivocada de resolver este problema. Con el umbral por defecto, el modelo marca solo 5,244 de las 1,284,488 reseñas de prueba — 0.4% — como \"útiles\", y aun así deja pasar el 98.8% de las reseñas que realmente resultan útiles. Eso no es una falla de ajuste, es prueba de que la salida debe ser una cola priorizada, no una puerta cerrada: poner las reseñas mejor puntuadas frente a una persona primero, en lugar de pedirle a un solo corte de probabilidad que decida solo."
+          },
+          {
+            "label": "Lo Que el Modelo Nunca Puede Ver",
+            "text": "Una cola priorizada tampoco es toda la respuesta, y aquí es donde más importan los límites del modelo. Fue entrenado con el texto de la reseña y conteos de votos, así que no tiene forma de saber que un usuario es una cuenta VIP cuya queja podría convertirse en un conflicto legal, o que ese mismo usuario ya presentó el mismo reclamo cinco veces antes — esos casos tienen un costo que el modelo nunca aprendió a medir, así que no pueden simplemente esperar su turno en una cola ordenada por probabilidad. En un despliegue real, eso se convierte en una regla dura por encima del modelo: las cuentas de alto riesgo conocidas y los reclamos repetidos escalan directo a una persona antes de siquiera consultar el puntaje del modelo; todo lo demás se trabaja de arriba hacia abajo según la probabilidad predicha; solo las reseñas donde el modelo tiene alta confianza de que no aportan valor se dejan en respuesta totalmente automática. Ningún set de datos — el de Steam incluido — tiene una etiqueta de \"esto se convierte en una demanda\" para entrenar contra ella, así que esta regla no puede salir del modelo. Tiene que salir de las personas que ya han manejado estos casos antes."
+          }
+        ],
+        "code_lang": "Python / PySpark",
+        "code_spotlight": "# Centrar en la media un vector TF-IDF disperso de 2,000 dim lo\n# densifica -- dispara el costo en 5M+ filas. Escalar solo por varianza:\nscaler = StandardScaler(\n    inputCol=\"features\", outputCol=\"scaled_features\",\n    withMean=False, withStd=True,   # withMean=True aqui causaria OOM\n)\n\n# CrossValidator tambien necesita una ruta de Volumen UC para su\n# cache en computo serverless -- no viene configurada por defecto:\nos.environ[\"SPARKML_TEMP_DFS_PATH\"] = \"/Volumes/workspace/steam_reviews/raw_data/tmp\"",
+        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/steam-review-helpfulness-classification"
+      }
+    },
+    {
       "tag": "Comercio Internacional / Riesgo Aduanero",
       "title": "Detección de Anomalías en Precios de Importación y Agrupamiento de Riesgo por País",
       "image_url": "assets/images/projects/trade-anomaly-scatter.png",
@@ -354,60 +408,6 @@
       "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/criptoradar-btc-eth-ltc",
       "dashboard_url": "https://app.powerbi.com/view?r=eyJrIjoiNWMyZDJkYjgtMmM5Yy00NjAzLWE3NGMtY2VkMjc0ZmQxNDVkIiwidCI6IjBlMGNiMDYwLTA5YWQtNDlmNS1hMDA1LTY4YjliNDlhYTFmNiIsImMiOjR9",
       "stack": ["Python", "Power BI", "GitHub Actions"]
-    },
-    {
-      "tag": "Machine Learning / Trust & Safety",
-      "title": "Clasificación de Utilidad de Reseñas de Steam",
-      "image_url": "assets/images/projects/steam-review-helpfulness.png",
-      "description": "Un pipeline de aprendizaje supervisado a escala lakehouse sobre 6.4 millones de reseñas reales de Steam (PySpark en Databricks), construido alrededor de la pregunta que enfrenta cualquier plataforma con más comentarios de clientes que personal para leerlos: ¿a dónde debería ir realmente la atención humana? El hallazgo principal no es el AUC, es que un corte automático de sí o no es la herramienta equivocada. Con el umbral estándar, el modelo enviaría solo 0.4% de las reseñas a una cola y aun así dejaría pasar el 98.8% de las que sí importan — por eso el diseño correcto es una cola priorizada con una regla dura debajo: los casos que deben llegar a una persona sin importar lo que diga el modelo, como una cuenta VIP, una queja con riesgo legal o un reclamo repetido del mismo usuario.",
-      "stack": ["Python", "PySpark", "Databricks", "Delta Lake", "MLlib"],
-      "study": {
-        "narrative": [
-          {
-            "label": "El Plan vs. los Datos",
-            "text": "Este proyecto comenzó como una regresión: predecir cuántos votos de \"útil\" recibiría una reseña de Steam. El análisis exploratorio sobre las 6.4 millones de filas reales mostró que el campo llega como máximo a 1 — es una bandera binaria, no un conteo. En lugar de forzar una regresión que los datos no respaldan, el proyecto pivotó a clasificación de inmediato."
-          },
-          {
-            "label": "Escala Real, Plataforma Real",
-            "text": "6,417,106 reseñas reales de Steam en inglés (Sobkowicz, 2017), descargadas directamente a un lakehouse de Databricks y persistidas como tabla Delta gobernada — el archivo crudo nunca toca una laptop. El 14.7% de las reseñas están marcadas como útiles.",
-            "image": "assets/images/projects/steam-review-class-balance.png",
-            "caption": "Balance de clases sobre las 6.4 millones de reseñas reales."
-          },
-          {
-            "label": "Las Features Superficiales Apenas Superan al Azar",
-            "text": "Una Regresión Logística base sobre longitud de reseña, conteo de palabras y puntuación obtuvo un AUC de 0.578 — apenas mejor que lanzar una moneda. Agregar features de texto TF-IDF (Tokenizer → HashingTF → IDF, 2,000 dimensiones) elevó el AUC a 0.657: las palabras reales de una reseña importan mucho más que su forma.",
-            "image": "assets/images/projects/steam-review-auc-progression.png",
-            "caption": "AUC a través de las cuatro iteraciones del modelo — de aquí vino la señal real."
-          },
-          {
-            "label": "El Ajuste de Hiperparámetros se Estancó — y Eso es un Hallazgo",
-            "text": "Un CrossValidator de 3 folds sobre una grilla pequeña de regParam × elasticNetParam movió el AUC solo +0.0004. No es un experimento fallido: muestra que el modelo no estaba sobreajustado, y que las features sin vocabulario de HashingTF (un intercambio deliberado por velocidad y memoria a esta escala) son el verdadero techo, no la fuerza de regularización."
-          },
-          {
-            "label": "Lo que el AUC por sí Solo Oculta",
-            "text": "En el umbral por defecto de 0.5, el recall sobre la clase \"útil\" es de apenas 1.2%, incluso con un AUC respetable de 0.66 — el desbalance de clases (85/15) empuja las predicciones puntuales hacia la clase mayoritaria. Un despliegue real ordenaría las reseñas por probabilidad predicha, no aplicaría un corte fijo.",
-            "image": "assets/images/projects/steam-review-confusion-matrix.png",
-            "caption": "Matriz de confusión en el umbral por defecto — donde realmente vive el problema de recall."
-          },
-          {
-            "label": "El Único Resultado Interpretable",
-            "text": "Centrar en la media un vector TF-IDF disperso de 2,000 dimensiones lo habría densificado, disparando el costo de cómputo, así que el paso de interpretabilidad escaló solo por varianza. El efecto resultante más fuerte: las reseñas que no recomiendan el juego se marcan como útiles con más frecuencia que las puramente positivas — consistente con investigación publicada que muestra que la extremidad y profundidad de la reseña, no solo el sentimiento, impulsan la utilidad percibida.",
-            "image": "assets/images/projects/steam-review-coefficients.png",
-            "caption": "Coeficientes estandarizados — la única porción interpretable del modelo."
-          },
-          {
-            "label": "El Hallazgo Real: A Dónde Debe Ir la Atención Humana",
-            "text": "Esto importa más que cualquier número de AUC: un corte automático de sí o no es la forma equivocada de resolver este problema. Con el umbral por defecto, el modelo marca solo 5,244 de las 1,284,488 reseñas de prueba — 0.4% — como \"útiles\", y aun así deja pasar el 98.8% de las reseñas que realmente resultan útiles. Eso no es una falla de ajuste, es prueba de que la salida debe ser una cola priorizada, no una puerta cerrada: poner las reseñas mejor puntuadas frente a una persona primero, en lugar de pedirle a un solo corte de probabilidad que decida solo."
-          },
-          {
-            "label": "Lo Que el Modelo Nunca Puede Ver",
-            "text": "Una cola priorizada tampoco es toda la respuesta, y aquí es donde más importan los límites del modelo. Fue entrenado con el texto de la reseña y conteos de votos, así que no tiene forma de saber que un usuario es una cuenta VIP cuya queja podría convertirse en un conflicto legal, o que ese mismo usuario ya presentó el mismo reclamo cinco veces antes — esos casos tienen un costo que el modelo nunca aprendió a medir, así que no pueden simplemente esperar su turno en una cola ordenada por probabilidad. En un despliegue real, eso se convierte en una regla dura por encima del modelo: las cuentas de alto riesgo conocidas y los reclamos repetidos escalan directo a una persona antes de siquiera consultar el puntaje del modelo; todo lo demás se trabaja de arriba hacia abajo según la probabilidad predicha; solo las reseñas donde el modelo tiene alta confianza de que no aportan valor se dejan en respuesta totalmente automática. Ningún set de datos — el de Steam incluido — tiene una etiqueta de \"esto se convierte en una demanda\" para entrenar contra ella, así que esta regla no puede salir del modelo. Tiene que salir de las personas que ya han manejado estos casos antes."
-          }
-        ],
-        "code_lang": "Python / PySpark",
-        "code_spotlight": "# Centrar en la media un vector TF-IDF disperso de 2,000 dim lo\n# densifica -- dispara el costo en 5M+ filas. Escalar solo por varianza:\nscaler = StandardScaler(\n    inputCol=\"features\", outputCol=\"scaled_features\",\n    withMean=False, withStd=True,   # withMean=True aqui causaria OOM\n)\n\n# CrossValidator tambien necesita una ruta de Volumen UC para su\n# cache en computo serverless -- no viene configurada por defecto:\nos.environ[\"SPARKML_TEMP_DFS_PATH\"] = \"/Volumes/workspace/steam_reviews/raw_data/tmp\"",
-        "github_url": "https://github.com/datavisionary-consulting/datavisionary-consulting.github.io/tree/main/research/steam-review-helpfulness-classification"
-      }
     }
   ],
 
