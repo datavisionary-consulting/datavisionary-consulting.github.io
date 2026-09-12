@@ -356,10 +356,10 @@
       "stack": ["Python", "Power BI", "GitHub Actions"]
     },
     {
-      "tag": "Machine Learning / Data Science",
+      "tag": "Machine Learning / Trust & Safety",
       "title": "Steam Review Helpfulness Classification",
       "image_url": "assets/images/projects/steam-review-helpfulness.png",
-      "description": "A lakehouse-scale supervised learning pipeline on 6.4 million real Steam reviews (PySpark on Databricks) — including a mid-project pivot when the data itself contradicted the original plan. Baseline AUC 0.578 rose to 0.658 once real text features (TF-IDF) replaced surface stats, and a confusion matrix exposed a class-imbalance recall problem the headline AUC alone hid.",
+      "description": "A lakehouse-scale supervised learning pipeline on 6.4 million real Steam reviews (PySpark on Databricks), built around the question every platform with more feedback than staff eventually hits: where should a human actually spend their time? The headline finding isn't the AUC — it's that a hard automatic yes/no cutoff is the wrong tool. At the standard threshold the model would route just 0.4% of reviews to a queue and still miss 98.8% of the ones that matter, which is why the real design is a ranked queue with a hard override underneath it for the cases — a VIP account, a legal complaint, a repeat complainant — that must reach a human no matter what the model says.",
       "stack": ["Python", "PySpark", "Databricks", "Delta Lake", "MLlib"],
       "study": {
         "narrative": [
@@ -396,8 +396,12 @@
             "caption": "Standardized coefficients — the one interpretable slice of the model."
           },
           {
-            "label": "Why It Matters",
-            "text": "Short answer for a manager: yes, this is useful, but not as an autopilot. The model reliably sorts reviews from most to least likely to be helpful, so a team can put the best ones in front of shoppers first, or route the most promising ones to a moderator's queue. It is not yet accurate enough to make a hard automatic yes/no call on one review and act on it with no human checking. Use it to decide where attention goes, not to replace the attention itself."
+            "label": "The Real Finding: Where Human Attention Should Go",
+            "text": "This matters more than any AUC number: a hard automatic yes/no cutoff is the wrong shape for this problem. At the default threshold, the model flags just 5,244 of the 1,284,488 test reviews — 0.4% — as \"helpful,\" and still misses 98.8% of the reviews that actually turn out to be helpful. That's not a tuning failure, it's proof the output needs to be a ranked queue, not a gate: put the highest-scoring reviews in front of a human first, instead of asking one probability cutoff to decide alone."
+          },
+          {
+            "label": "What the Model Can Never See",
+            "text": "A ranked queue still isn't the whole answer, and this is where the model's limits matter most. It was trained on review text and vote counts, so it has no way of knowing a reviewer is a VIP account whose complaint could turn into a legal dispute, or that the same user has filed the same complaint five times before — those cases carry a cost the model was never trained to weigh, so they can't just wait their turn in a probability-ranked queue. In a real deployment, that becomes a hard rule sitting above the model: known high-risk accounts and repeat complainants escalate straight to a human before the score is even consulted; everything else gets worked top-down by predicted probability; only the reviews the model is confident add no value get left fully automatic. No dataset — Steam's included — has a \"this becomes a lawsuit\" label to train against, so this rule can't come from the model. It has to come from the people who've handled these cases before."
           }
         ],
         "code_lang": "Python / PySpark",
