@@ -23,13 +23,22 @@ export default function App() {
     initialScrollDone.current = true;
     if (window.location.hash) {
       const id = window.location.hash.slice(1);
-      setTimeout(() => scrollToId(id), 100);
+      const bySlug = (data.solutions || []).find((s) => s.slug === id);
+      if (bySlug) {
+        setActiveProject(bySlug);
+      } else {
+        setTimeout(() => scrollToId(id), 100);
+      }
     }
   }, [data]);
 
-  const handleOpenProject = (solution) => setActiveProject(solution);
+  const handleOpenProject = (solution) => {
+    setActiveProject(solution);
+    if (solution.slug) window.history.pushState(null, '', `#${solution.slug}`);
+  };
   const handleBack = () => {
     setActiveProject(null);
+    window.history.pushState(null, '', '#solutions');
     setTimeout(() => scrollToId('solutions'), 0);
   };
 

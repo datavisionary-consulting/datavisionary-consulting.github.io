@@ -30,6 +30,7 @@
   "solutions": [
     {
       "tag": "Supply Chain / Databricks",
+      "slug": "global-shipping-chokepoints",
       "title": "Global Shipping Chokepoints",
       "image_url": "assets/images/projects/global-shipping-map.png",
       "stackGroup": "databricks",
@@ -74,6 +75,7 @@
     {
       "tag": "Trust & Safety / Databricks",
       "stackGroup": "databricks",
+      "slug": "steam-review-helpfulness-classification",
       "title": "Steam Review Helpfulness Classification",
       "image_url": "assets/images/projects/steam-review-helpfulness.png",
       "description": "A lakehouse-scale supervised learning pipeline on 6.4 million real Steam reviews (PySpark on Databricks), built around the question every platform with more feedback than staff eventually hits: where should a human actually spend their time? The headline finding isn't the AUC — it's that a hard automatic yes/no cutoff is the wrong tool. At the standard threshold the model would route just 0.4% of reviews to a queue and still miss 98.8% of the ones that matter, which is why the real design is a ranked queue with a hard override underneath it for the cases — a VIP account, a legal complaint, a repeat complainant — that must reach a human no matter what the model says.",

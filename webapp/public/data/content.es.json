@@ -30,6 +30,7 @@
   "solutions": [
     {
       "tag": "Cadena de Suministro / Databricks",
+      "slug": "global-shipping-chokepoints",
       "title": "Cuellos de Botella del Comercio Marítimo Mundial",
       "image_url": "assets/images/projects/global-shipping-map.png",
       "stackGroup": "databricks",
@@ -74,6 +75,7 @@
     {
       "tag": "Confianza y Seguridad / Databricks",
       "stackGroup": "databricks",
+      "slug": "steam-review-helpfulness-classification",
       "title": "Clasificación de Utilidad de Reseñas de Steam",
       "image_url": "assets/images/projects/steam-review-helpfulness.png",
       "description": "Un pipeline de aprendizaje supervisado a escala lakehouse sobre 6.4 millones de reseñas reales de Steam (PySpark en Databricks), construido alrededor de la pregunta que enfrenta cualquier plataforma con más comentarios de clientes que personal para leerlos: ¿a dónde debería ir realmente la atención humana? El hallazgo principal no es el AUC, es que un corte automático de sí o no es la herramienta equivocada. Con el umbral estándar, el modelo enviaría solo 0.4% de las reseñas a una cola y aun así dejaría pasar el 98.8% de las que sí importan — por eso el diseño correcto es una cola priorizada con una regla dura debajo: los casos que deben llegar a una persona sin importar lo que diga el modelo, como una cuenta VIP, una queja con riesgo legal o un reclamo repetido del mismo usuario.",
