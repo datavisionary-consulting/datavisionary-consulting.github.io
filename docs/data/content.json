@@ -29,7 +29,51 @@
 
   "solutions": [
     {
-      "tag": "Databricks / Trust & Safety",
+      "tag": "Supply Chain / Databricks",
+      "title": "Global Shipping Chokepoints",
+      "image_url": "assets/images/projects/global-shipping-map.png",
+      "stackGroup": "databricks",
+      "description": "Two independent, real measurements of the world's 9 major shipping chokepoints, built at lakehouse scale in Databricks: AIS ship-position traffic density (World Bank, 3,040,763 measured traffic cells) and cargo-carrying capacity (IMF PortWatch, from ~90,000 tracked vessels). By capacity, the Strait of Malacca carries the largest share of the group at 39.3%. By traffic density, the Danish Straits carry the largest share at 69.5%.",
+      "stack": ["Python", "PySpark", "Databricks", "GDAL / rasterio", "Plotly"],
+      "study": {
+        "narrative": [
+          {
+            "label": "The Goal",
+            "text": "A global view of the world's shipping traffic and its major chokepoints, built at lakehouse scale in Databricks, using real, independently sourced data rather than a single dashboard's own numbers."
+          },
+          {
+            "label": "The Data",
+            "text": "Two real, independent datasets measure the same 9 major global shipping chokepoints: the Strait of Malacca, Suez Canal, Panama Canal, Strait of Hormuz, Bab-el-Mandeb, the Danish Straits, Strait of Dover, Strait of Gibraltar, and Bosphorus Strait. The World Bank's Global Shipping Traffic Density dataset counts real AIS ship positions from 2015-2021, reduced from its native ~500m global raster to a 0.05° grid, leaving 3,040,763 measured traffic cells. IMF PortWatch separately tracks daily vessel counts and real cargo-carrying capacity at the same locations, from AIS signals on roughly 90,000 ships, averaged here over a trailing 365-day period.",
+            "image": "assets/images/projects/global-shipping-map.png",
+            "caption": "The 9 measured chokepoints. Background: measured traffic density. Markers: sized by cargo capacity."
+          },
+          {
+            "label": "By Traffic Density",
+            "text": "Measured by how often a ship's position was recorded in each area: the Danish Straits account for 69.5% of the combined traffic across the 9 chokepoints, followed by the Strait of Malacca (14.0%), the Strait of Hormuz (6.4%), and the Strait of Dover (5.1%). The Suez Canal and Bosphorus Strait each register 0.8%. The Panama Canal registers 0.08%."
+          },
+          {
+            "label": "By Cargo Capacity",
+            "text": "Measured by the real cargo-carrying capacity of vessels transiting each location daily: the Strait of Malacca accounts for 39.3% of the combined capacity, followed by the Strait of Gibraltar (16.0%), the Strait of Dover (15.7%), and the Strait of Hormuz and Suez Canal (6.8% each). The Panama Canal accounts for 4.2%. The Danish Straits account for 0.46%.",
+            "image": "assets/images/projects/global-shipping-density-vs-capacity.png",
+            "caption": "Each chokepoint's share of traffic density next to its share of real cargo capacity."
+          },
+          {
+            "label": "About These Two Measurements",
+            "text": "Traffic density counts vessel position reports; cargo capacity measures the freight-carrying capacity of the vessels making those reports. A narrow, engineered canal (Panama, Suez) routes ships single-file through one corridor, producing fewer distinct position reports per transit than a wide strait carrying a comparable or smaller amount of cargo. A wide strait with frequent short-distance regional traffic (the Danish Straits) produces many position reports from vessels that individually carry comparatively little cargo."
+          },
+          {
+            "label": "Sources",
+            "text": "World Bank Group, \"Global Shipping Traffic Density\" (real AIS positions, Jan 2015–Feb 2021, all vessel types, ~500m native resolution). NGA World Port Index, via ArcGIS Hub (3,669 ports). IMF PortWatch, \"Daily Chokepoint Transit Calls and Trade Volume Estimates\" (public ArcGIS FeatureServer, trailing 365-day average). World coastline: Natural Earth 110m, via world-atlas."
+          }
+        ],
+        "code_lang": "Python / PySpark / GDAL",
+        "code_spotlight": "# Resampling.sum only works for warp ops, not a plain decimated read --\n# every block is the same size, so average * block_area recovers the sum:\nwith rasterio.open(RASTER_PATH) as src:\n    data = src.read(1, out_shape=(out_h, out_w), resampling=Resampling.average, out_dtype=\"float64\")\n    data *= BLOCK * BLOCK\n# 3,040,763 non-zero 0.05-degree cells out of ~24.5M possible globally\n\n# IMF PortWatch: real daily vessel capacity for the same 9 chokepoints\nresp = requests.get(PORTWATCH_URL, params={\"where\": f\"portid='{portid}' AND date >= DATE '{start}'\"})",
+        "github_url": "https://github.com/datavisionary-consulting/databricks/tree/main/global-shipping-chokepoints"
+      }
+    },
+    {
+      "tag": "Trust & Safety / Databricks",
+      "stackGroup": "databricks",
       "title": "Steam Review Helpfulness Classification",
       "image_url": "assets/images/projects/steam-review-helpfulness.png",
       "description": "A lakehouse-scale supervised learning pipeline on 6.4 million real Steam reviews (PySpark on Databricks), built around the question every platform with more feedback than staff eventually hits: where should a human actually spend their time? The headline finding isn't the AUC — it's that a hard automatic yes/no cutoff is the wrong tool. At the standard threshold the model would route just 0.4% of reviews to a queue and still miss 98.8% of the ones that matter, which is why the real design is a ranked queue with a hard override underneath it for the cases — a VIP account, a legal complaint, a repeat complainant — that must reach a human no matter what the model says.",

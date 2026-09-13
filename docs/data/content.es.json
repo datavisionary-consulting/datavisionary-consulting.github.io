@@ -29,7 +29,51 @@
 
   "solutions": [
     {
-      "tag": "Databricks / Confianza y Seguridad",
+      "tag": "Cadena de Suministro / Databricks",
+      "title": "Cuellos de Botella del Comercio Marítimo Mundial",
+      "image_url": "assets/images/projects/global-shipping-map.png",
+      "stackGroup": "databricks",
+      "description": "Dos mediciones reales e independientes de los 9 cuellos de botella marítimos más importantes del mundo, construidas a escala lakehouse en Databricks: densidad de tráfico de barcos por AIS (Banco Mundial, 3,040,763 celdas reales de tráfico) y capacidad de carga (IMF PortWatch, a partir de unos 90,000 barcos rastreados). Por capacidad, el Estrecho de Malaca concentra la mayor participación del grupo con 39.3%. Por densidad de tráfico, los Estrechos Daneses concentran la mayor participación con 69.5%.",
+      "stack": ["Python", "PySpark", "Databricks", "GDAL / rasterio", "Plotly"],
+      "study": {
+        "narrative": [
+          {
+            "label": "El Objetivo",
+            "text": "Una visión global del tráfico marítimo mundial y sus principales cuellos de botella, construida a escala lakehouse en Databricks, usando datos reales de fuentes independientes en vez de los números propios de un solo panel."
+          },
+          {
+            "label": "Los Datos",
+            "text": "Dos datasets reales e independientes miden los mismos 9 cuellos de botella marítimos globales: el Estrecho de Malaca, el Canal de Suez, el Canal de Panamá, el Estrecho de Ormuz, Bab-el-Mandeb, los Estrechos Daneses, el Estrecho de Dover, el Estrecho de Gibraltar y el Estrecho del Bósforo. El dataset de Densidad de Tráfico Marítimo Global del Banco Mundial cuenta posiciones reales de AIS entre 2015 y 2021, reducidas desde su ráster global nativo de ~500m a una grilla de 0.05°, dejando 3,040,763 celdas reales de tráfico medido. IMF PortWatch mide por separado la cantidad diaria de barcos y la capacidad real de carga en esos mismos lugares, a partir de señales AIS de aproximadamente 90,000 barcos, promediadas aquí sobre un período de 365 días.",
+            "image": "assets/images/projects/global-shipping-map.png",
+            "caption": "Los 9 cuellos de botella medidos. Fondo: densidad de tráfico medida. Marcadores: según su capacidad de carga."
+          },
+          {
+            "label": "Por Densidad de Tráfico",
+            "text": "Medido por cuántas veces se registró la posición de un barco en cada zona: los Estrechos Daneses concentran el 69.5% del tráfico combinado entre los 9 cuellos de botella, seguidos por el Estrecho de Malaca (14.0%), el Estrecho de Ormuz (6.4%) y el Estrecho de Dover (5.1%). El Canal de Suez y el Estrecho del Bósforo registran 0.8% cada uno. El Canal de Panamá registra 0.08%."
+          },
+          {
+            "label": "Por Capacidad de Carga",
+            "text": "Medido por la capacidad real de carga de los barcos que transitan cada lugar a diario: el Estrecho de Malaca concentra el 39.3% de la capacidad combinada, seguido por el Estrecho de Gibraltar (16.0%), el Estrecho de Dover (15.7%), y el Estrecho de Ormuz junto con el Canal de Suez (6.8% cada uno). El Canal de Panamá concentra el 4.2%. Los Estrechos Daneses concentran el 0.46%.",
+            "image": "assets/images/projects/global-shipping-density-vs-capacity.png",
+            "caption": "La participación de tráfico de cada cuello de botella junto a su participación real de capacidad de carga."
+          },
+          {
+            "label": "Sobre Estas Dos Mediciones",
+            "text": "La densidad de tráfico cuenta reportes de posición de los barcos; la capacidad de carga mide la capacidad de transporte de esos mismos barcos. Un canal angosto y construido (Panamá, Suez) hace pasar a los barcos en fila por un solo corredor, generando menos reportes de posición distintos por viaje que un estrecho ancho que transporta una cantidad de carga comparable o menor. Un estrecho ancho con tráfico regional frecuente de trayecto corto (los Estrechos Daneses) genera muchos reportes de posición de barcos que individualmente cargan relativamente poco."
+          },
+          {
+            "label": "Fuentes",
+            "text": "Banco Mundial, \"Global Shipping Traffic Density\" (posiciones reales de AIS, ene 2015–feb 2021, todos los tipos de barco, resolución nativa de ~500m). World Port Index de la NGA, vía ArcGIS Hub (3,669 puertos). IMF PortWatch, \"Daily Chokepoint Transit Calls and Trade Volume Estimates\" (ArcGIS FeatureServer público, promedio de los últimos 365 días). Contorno mundial: Natural Earth 110m, vía world-atlas."
+          }
+        ],
+        "code_lang": "Python / PySpark / GDAL",
+        "code_spotlight": "# Resampling.sum only works for warp ops, not a plain decimated read --\n# every block is the same size, so average * block_area recovers the sum:\nwith rasterio.open(RASTER_PATH) as src:\n    data = src.read(1, out_shape=(out_h, out_w), resampling=Resampling.average, out_dtype=\"float64\")\n    data *= BLOCK * BLOCK\n# 3,040,763 non-zero 0.05-degree cells out of ~24.5M possible globally\n\n# IMF PortWatch: real daily vessel capacity for the same 9 chokepoints\nresp = requests.get(PORTWATCH_URL, params={\"where\": f\"portid='{portid}' AND date >= DATE '{start}'\"})",
+        "github_url": "https://github.com/datavisionary-consulting/databricks/tree/main/global-shipping-chokepoints"
+      }
+    },
+    {
+      "tag": "Confianza y Seguridad / Databricks",
+      "stackGroup": "databricks",
       "title": "Clasificación de Utilidad de Reseñas de Steam",
       "image_url": "assets/images/projects/steam-review-helpfulness.png",
       "description": "Un pipeline de aprendizaje supervisado a escala lakehouse sobre 6.4 millones de reseñas reales de Steam (PySpark en Databricks), construido alrededor de la pregunta que enfrenta cualquier plataforma con más comentarios de clientes que personal para leerlos: ¿a dónde debería ir realmente la atención humana? El hallazgo principal no es el AUC, es que un corte automático de sí o no es la herramienta equivocada. Con el umbral estándar, el modelo enviaría solo 0.4% de las reseñas a una cola y aun así dejaría pasar el 98.8% de las que sí importan — por eso el diseño correcto es una cola priorizada con una regla dura debajo: los casos que deben llegar a una persona sin importar lo que diga el modelo, como una cuenta VIP, una queja con riesgo legal o un reclamo repetido del mismo usuario.",
