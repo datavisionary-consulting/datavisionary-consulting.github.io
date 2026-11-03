@@ -512,10 +512,10 @@
   },
 
   "about": {
-    "name": "Lic. Alexander Sandoval",
-    "role": "Analytics Engineer · BI & Data Pipelines · 6+ Years",
+    "name": "Alexander Sandoval",
+    "role": "Analytics Engineer · BI & Data Pipelines · 5+ Years",
     "photo": "assets/images/foto_alexander_sandoval.jpg",
-    "bio": "Analytics engineer with 6+ years turning messy operational data into systems that make decisions faster — inventory monitoring that catches problems before they become losses, invoice processing that used to take hours and now takes seconds, and dashboards leadership actually checks. I work hands-on, end to end, and use AI tools daily to move from idea to working system faster. Recently expanded into large-scale distributed data processing and applied statistics for production-grade alerting.",
+    "bio": "Analytics engineer with 5+ years turning messy operational data into systems that make decisions faster — inventory monitoring that catches problems before they become losses, invoice processing that used to take hours and now takes seconds, and dashboards leadership actually checks. I work hands-on, end to end, and use AI tools daily to move from idea to working system faster. Recently expanded into large-scale distributed data processing and applied statistics for production-grade alerting.",
     "highlights": [
       "Real-time inventory monitoring across hundreds of stores — flags unusual activity automatically instead of waiting for a monthly review",
       "Invoice automation that cut per-document processing from over an hour to seconds, feeding live dashboards",

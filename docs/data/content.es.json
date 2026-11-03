@@ -512,10 +512,10 @@
   },
 
   "about": {
-    "name": "Lic. Alexander Sandoval",
+    "name": "Alexander Sandoval",
     "role": "Analytics Engineer · BI & Data Pipelines · 5+ Años",
     "photo": "assets/images/foto_alexander_sandoval.jpg",
-    "bio": "Analytics engineer con más de 6 años convirtiendo datos operativos desordenados en sistemas que aceleran las decisiones — monitoreo de inventario que detecta problemas antes de que se conviertan en pérdidas, procesamiento de facturas que antes tomaba horas y ahora toma segundos, y dashboards que la gerencia realmente revisa. Trabajo de forma práctica, de punta a punta, y uso herramientas de IA a diario para pasar de la idea a un sistema funcionando más rápido. Recientemente amplié mi especialización hacia procesamiento de datos distribuido a gran escala y estadística aplicada para sistemas de alertas en producción.",
+    "bio": "Analytics engineer con más de 5 años convirtiendo datos operativos desordenados en sistemas que aceleran las decisiones — monitoreo de inventario que detecta problemas antes de que se conviertan en pérdidas, procesamiento de facturas que antes tomaba horas y ahora toma segundos, y dashboards que la gerencia realmente revisa. Trabajo de forma práctica, de punta a punta, y uso herramientas de IA a diario para pasar de la idea a un sistema funcionando más rápido. Recientemente amplié mi especialización hacia procesamiento de datos distribuido a gran escala y estadística aplicada para sistemas de alertas en producción.",
     "highlights": [
       "Monitoreo de inventario en tiempo real en cientos de tiendas — detecta actividad inusual automáticamente en lugar de esperar una revisión mensual",
       "Automatización de facturas que redujo el procesamiento por documento de más de una hora a segundos, alimentando dashboards en vivo",
